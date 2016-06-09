@@ -1,0 +1,4 @@
+blog: .PHONY
+	brutal .
+
+.PHONY:
