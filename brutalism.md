@@ -8,7 +8,7 @@ So it is with web design.
 
 <a href="http://motherfuckingwebsite.com/">Websites like this</a>
 are a satire.
-But it is a satirical reaction a real thing.
+But it is a satirical reaction to a real thing.
 
 Obese websites.
 
