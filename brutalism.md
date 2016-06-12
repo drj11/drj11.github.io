@@ -23,9 +23,11 @@ Some would call them brutal.
 
 ## Inspiring Brutal
 
-- Brutalism;
-- The wave of "static site generators", Jekyll, Nikola, &c;
-- Despicable dependencies (Nikola requires a C compiler, wtf!?).
+Inspired by
+
+- Brutalism; and,
+- The wave of "static site generators", Jekyll, Nikola, &c; and,
+- Despicable dependencies (Nikola requires a C compiler, wtf!?)…
 
 I created [brutal](https://github.com/drj11/brutal).
 It's too stupid to do anything clever,
