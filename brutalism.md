@@ -6,6 +6,8 @@ Brutalism in architecture, derived from the French <em>brut</em>
 for <em>raw</em>, has the idea that structure should be exposed.
 So it is with web design.
 
+![Arts Tower, Sheffield](../image/Arts_tower.jpg "Arts Tower, Sheffield")
+
 <a href="http://motherfuckingwebsite.com/">Websites like this</a>
 are a satire.
 But it is a satirical reaction to a real thing.
