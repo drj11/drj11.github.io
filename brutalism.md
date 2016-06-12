@@ -1,4 +1,4 @@
-.. title: brutalism in web design
+.. title: Brutalism in Web Design
 .. author: David Jones
 .. date: 2016-05-25
 
