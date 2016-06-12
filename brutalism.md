@@ -20,3 +20,15 @@ The movement is small,
 many may not recognise themselves as participating.
 Some would call these minimalist rather than brutalist.
 Some would call them brutal.
+
+## Inspiring Brutal
+
+- Brutalism;
+- The wave of "static site generators", Jekyll, Nikola, &c;
+- Despicable dependencies (Nikola requires a C compiler, wtf!?).
+
+I created [brutal](https://github.com/drj11/brutal).
+It's too stupid to do anything clever,
+but it does convert `markdown` to `HTML`.
+Mostly relying on the 3rd party Python library
+[Markdown](https://pypi.python.org/pypi/Markdown).
