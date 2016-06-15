@@ -1,6 +1,6 @@
-.. title: Brutalism in Web Design
-.. author: David Jones
-.. date: 2016-05-25
+[brutal]: #title "Brutalism in Web Design"
+[brutal]: #author "David Jones"
+[brutal]: #date "2016-05-25"
 
 Brutalism in architecture, derived from the French <em>brut</em>
 for <em>raw</em>, has the idea that structure should be exposed.

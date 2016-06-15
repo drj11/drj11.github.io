@@ -1,6 +1,6 @@
-.. title: using Python Markdown
-.. author: David Jones
-.. date: 2016-05-23
+[brutal]: #title "using Python Markdown"
+[brutal]: #author "David Jones"
+[brutal]: #date "2016-05-23"
 
 To install
 
