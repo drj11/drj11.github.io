@@ -33,7 +33,7 @@ have been revealed to be racists.
 
 It's that it's now okay to be racist.
 And after persecution on the basis of race,
-comes persecuation of the basis of religion, gender, sexuality,
+comes persecution of the basis of religion, gender, sexuality,
 disability, and trade union membership.
 The Universal Declaration of Human Rights is a two-edged sword.
 It is both a rallying banner for liberal freedoms,
