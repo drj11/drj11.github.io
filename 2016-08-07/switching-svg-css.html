@@ -1,0 +1,59 @@
+<meta charset="utf-8">
+<title>Switching CSS in SVG</title>
+<body>
+<nav>
+</nav>
+<article>
+<h1>Switching CSS in SVG</h1>
+<time>2016-08-07</time>
+<address>by David Jones</address>
+<p>SVG, stands for Scalable Vector Graphics,
+is a way of making graphics from lines and curves and stuff
+(as opposed to pixels, which is how JPEG and PNG and things work).</p>
+<p>It's great.
+I use Inkscape to maintain a scale drawing of my back garden in SVG:</p>
+<p><img src="https://drj11.github.io/house/rear-garden.svg"></p>
+<p>That version is in colour.</p>
+<p>For planning the garden,
+i like to
+print out the scale drawing
+and draw on it with pen and pencil.
+But for that, a black and white outline is more useful.</p>
+<p>I'd like to be able to define a second CSS stylesheet,
+and switch between the two.
+Fun fact: you can style SVG using CSS, just like you can HTML.
+Fun fun fact: this works because HTML and SVG are both XML based.</p>
+<p>I didn't find a good way to do this, but I did find a way.</p>
+<p>I can create an HTML page
+which includes the SVG via an <code>OBJECT</code> tag.
+I can then run some JavaScript
+which fetches the DOM on the SVG object
+and modifies the SVG to add a <code>style</code> element.</p>
+<p><a href="https://drj11.github.io/house/rear-garden-outline.html">Here is the vector outline
+version</a>.</p>
+<p>Notes:</p>
+<ul>
+<li>
+<p>This is technically quite an obscure corner of the web.
+I suspect that there are better approaches.
+If you find one, please write it up.</p>
+</li>
+<li>
+<p>There is a Flash Of Unstyled Content (FOUC).
+You sometimes see a flash of colour,
+which is actually the original syle,
+not unstyled content.</p>
+</li>
+<li>
+<p>The HTML document and the SVG each have DOMs,
+and they are separate.
+In particular, adding style to the HTML document
+does not style the SVG document.</p>
+</li>
+<li>
+<p>SVG really is XML, so when adding a <code>style</code> tag,
+you have to get the case right, and the namespace right.</p>
+</li>
+</ul>
+</article>
+
