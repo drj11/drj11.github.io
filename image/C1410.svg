@@ -1,0 +1,504 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns:a3="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" height="600" viewBox="0 0 800 600" width="800" a3:scriptImplementation="Adobe">
+  <!-- Created with SVG.Graph -->
+  <!-- SVG.Graph by Jason R. Coombs -->
+  <!-- Based on SVG::Graph by Sean E. Russel -->
+  <!-- Based on Perl SVG:TT:Graph by Leo Lapworth & Stephan Morgan -->
+  <!-- //////////////////////////////////////////////////////////////////-->
+  <defs>
+    <style type="text/css">/*&#13;
+Base styles for svg.charts.Graph&#13;
+*/
+.svgBackground {
+    fill: #fff
+    }
+.graphBackground {
+    fill: #f0f0f0
+    }
+/* graphs titles */
+.mainTitle {
+    text-anchor: middle;
+    fill: #000;
+    font-size: 16px;
+    font-family: "Arial", sans-serif;
+    font-weight: normal
+    }
+.subTitle {
+    text-anchor: middle;
+    fill: #999;
+    font-size: 14px;
+    font-family: "Arial", sans-serif;
+    font-weight: normal
+    }
+.axis {
+    stroke: #000;
+    stroke-width: 1px
+    }
+.guideLines {
+    stroke: #666;
+    stroke-width: 1px;
+    stroke-dasharray: 5, 5
+    }
+.xAxisLabels {
+    text-anchor: middle;
+    fill: #000;
+    font-size: 12px;
+    font-family: "Arial", sans-serif;
+    font-weight: normal
+    }
+.yAxisLabels {
+    text-anchor: end;
+    fill: #000;
+    font-size: 12px;
+    font-family: "Arial", sans-serif;
+    font-weight: normal
+    }
+.xAxisTitle {
+    text-anchor: middle;
+    fill: #f00;
+    font-size: 14px;
+    font-family: "Arial", sans-serif;
+    font-weight: normal
+    }
+.yAxisTitle {
+    fill: #f00;
+    text-anchor: middle;
+    font-size: 14px;
+    font-family: "Arial", sans-serif;
+    font-weight: normal
+    }
+.dataPointLabel {
+    fill: #000;
+    text-anchor: middle;
+    font-size: 10px;
+    font-family: "Arial", sans-serif;
+    font-weight: normal
+    }
+.staggerGuideLine {
+    fill: none;
+    stroke: #000;
+    stroke-width: 0.5px
+    }
+.keyText {
+    fill: #000;
+    text-anchor: start;
+    font-size: 10px;
+    font-family: "Arial", sans-serif;
+    font-weight: normal
+    }
+/*&#13;
+default line styles&#13;
+*/
+.line1 {
+    fill: none;
+    stroke: #f00;
+    stroke-width: 1px
+    }
+.line2 {
+    fill: none;
+    stroke: #00f;
+    stroke-width: 1px
+    }
+.line3 {
+    fill: none;
+    stroke: #0f0;
+    stroke-width: 1px
+    }
+.line4 {
+    fill: none;
+    stroke: #fc0;
+    stroke-width: 1px
+    }
+.line5 {
+    fill: none;
+    stroke: #0cf;
+    stroke-width: 1px
+    }
+.line6 {
+    fill: none;
+    stroke: #f0f;
+    stroke-width: 1px
+    }
+.line7 {
+    fill: none;
+    stroke: #0ff;
+    stroke-width: 1px
+    }
+.line8 {
+    fill: none;
+    stroke: #ff0;
+    stroke-width: 1px
+    }
+.line9 {
+    fill: none;
+    stroke: #c66;
+    stroke-width: 1px
+    }
+.line10 {
+    fill: none;
+    stroke: #639;
+    stroke-width: 1px
+    }
+.line11 {
+    fill: none;
+    stroke: #390;
+    stroke-width: 1px
+    }
+.line12 {
+    fill: none;
+    stroke: #96F;
+    stroke-width: 1px
+    }
+/* default fill styles */
+.fill1 {
+    fill: #c00;
+    fill-opacity: 0.2;
+    stroke: none
+    }
+.fill2 {
+    fill: #00c;
+    fill-opacity: 0.2;
+    stroke: none
+    }
+.fill3 {
+    fill: #0c0;
+    fill-opacity: 0.2;
+    stroke: none
+    }
+.fill4 {
+    fill: #fc0;
+    fill-opacity: 0.2;
+    stroke: none
+    }
+.fill5 {
+    fill: #0cf;
+    fill-opacity: 0.2;
+    stroke: none
+    }
+.fill6 {
+    fill: #f0f;
+    fill-opacity: 0.2;
+    stroke: none
+    }
+.fill7 {
+    fill: #0ff;
+    fill-opacity: 0.2;
+    stroke: none
+    }
+.fill8 {
+    fill: #ff0;
+    fill-opacity: 0.2;
+    stroke: none
+    }
+.fill9 {
+    fill: #c66;
+    fill-opacity: 0.2;
+    stroke: none
+    }
+.fill10 {
+    fill: #639;
+    fill-opacity: 0.2;
+    stroke: none
+    }
+.fill11 {
+    fill: #390;
+    fill-opacity: 0.2;
+    stroke: none
+    }
+.fill12 {
+    fill: #96F;
+    fill-opacity: 0.2;
+    stroke: none
+    }
+/* default line styles */
+.key1, .dataPoint1 {
+    fill: #f00;
+    stroke: none;
+    stroke-width: 1px
+    }
+.key2, .dataPoint2 {
+    fill: #00f;
+    stroke: none;
+    stroke-width: 1px
+    }
+.key3, .dataPoint3 {
+    fill: #0f0;
+    stroke: none;
+    stroke-width: 1px
+    }
+.key4, .dataPoint4 {
+    fill: #fc0;
+    stroke: none;
+    stroke-width: 1px
+    }
+.key5, .dataPoint5 {
+    fill: #0cf;
+    stroke: none;
+    stroke-width: 1px
+    }
+.key6, .dataPoint6 {
+    fill: #f0f;
+    stroke: none;
+    stroke-width: 1px
+    }
+.key7, .dataPoint7 {
+    fill: #0ff;
+    stroke: none;
+    stroke-width: 1px
+    }
+.key8, .dataPoint8 {
+    fill: #ff0;
+    stroke: none;
+    stroke-width: 1px
+    }
+.key9, .dataPoint9 {
+    fill: #c66;
+    stroke: none;
+    stroke-width: 1px
+    }
+.key10, .dataPoint10 {
+    fill: #639;
+    stroke: none;
+    stroke-width: 1px
+    }
+.key11, .dataPoint11 {
+    fill: #390;
+    stroke: none;
+    stroke-width: 1px
+    }
+.key12, .dataPoint12 {
+    fill: #96F;
+    stroke: none;
+    stroke-width: 1px
+    }
+.constantLine {
+    color: navy;
+    stroke: navy;
+    stroke-width: 1px;
+    stroke-dasharray: 9, 1, 1
+    }</style>
+  </defs>
+  <!-- include default stylesheet if none specified -->
+  <!--SVG Background-->
+  <rect class="svgBackground" height="600" width="800" x="0" y="0"/>
+  <g transform="translate (47.599999999999994 26)">
+    <rect class="graphBackground" height="536" width="699.4" x="0" y="0"/>
+    <path class="axis" d="M 0 0 v536" id="xAxis"/>
+    <path class="axis" d="M 0 536 h699.4" id="yAxis"/>
+    <text class="xAxisLabels" x="0.0" y="551" style="text-anchor: middle">0.0</text>
+    <text class="xAxisLabels" x="127.19397363465161" y="551" style="text-anchor: middle">100.0</text>
+    <text class="xAxisLabels" x="254.38794726930323" y="551" style="text-anchor: middle">200.0</text>
+    <text class="xAxisLabels" x="381.5819209039548" y="551" style="text-anchor: middle">300.0</text>
+    <text class="xAxisLabels" x="508.77589453860645" y="551" style="text-anchor: middle">400.0</text>
+    <text class="xAxisLabels" x="635.9698681732581" y="551" style="text-anchor: middle">500.0</text>
+    <path class="guideLines" d="M 127.19397363465161 0 v536"/>
+    <path class="guideLines" d="M 254.38794726930323 0 v536"/>
+    <path class="guideLines" d="M 381.5819209039548 0 v536"/>
+    <path class="guideLines" d="M 508.77589453860645 0 v536"/>
+    <path class="guideLines" d="M 635.9698681732581 0 v536"/>
+    <text class="yAxisLabels" x="-3" y="540.0" style="text-anchor: end">0.0</text>
+    <text class="yAxisLabels" x="-3" y="473.5064935064935" style="text-anchor: end">1.0</text>
+    <text class="yAxisLabels" x="-3" y="407.01298701298697" style="text-anchor: end">2.0</text>
+    <text class="yAxisLabels" x="-3" y="340.5194805194805" style="text-anchor: end">3.0</text>
+    <text class="yAxisLabels" x="-3" y="274.025974025974" style="text-anchor: end">4.0</text>
+    <text class="yAxisLabels" x="-3" y="207.53246753246748" style="text-anchor: end">5.0</text>
+    <text class="yAxisLabels" x="-3" y="141.03896103896102" style="text-anchor: end">6.0</text>
+    <text class="yAxisLabels" x="-3" y="74.5454545454545" style="text-anchor: end">7.0</text>
+    <path class="guideLines" d="M 0 469.5064935064935 h699.4"/>
+    <path class="guideLines" d="M 0 403.01298701298697 h699.4"/>
+    <path class="guideLines" d="M 0 336.5194805194805 h699.4"/>
+    <path class="guideLines" d="M 0 270.025974025974 h699.4"/>
+    <path class="guideLines" d="M 0 203.53246753246748 h699.4"/>
+    <path class="guideLines" d="M 0 137.03896103896102 h699.4"/>
+    <path class="guideLines" d="M 0 70.5454545454545 h699.4"/>
+    <circle class="dataPoint1" cx="0.22894915254237286" cy="373.0909090909091" r="2.5"/>
+    <circle class="dataPoint1" cx="0.5342146892655366" cy="478.84883116883117" r="2.5"/>
+    <circle class="dataPoint1" cx="1.7807156308851222" cy="218.49350649350652" r="2.5"/>
+    <circle class="dataPoint1" cx="2.2767721280602635" cy="197.681038961039" r="2.5"/>
+    <circle class="dataPoint1" cx="2.3403691148775896" cy="325.8805194805195" r="2.5"/>
+    <circle class="dataPoint1" cx="2.3530885122410545" cy="174.94025974025982" r="2.5"/>
+    <circle class="dataPoint1" cx="3.2434463276836154" cy="412.6545454545455" r="2.5"/>
+    <circle class="dataPoint1" cx="4.9605649717514115" cy="393.7038961038961" r="2.5"/>
+    <circle class="dataPoint1" cx="5.011442561205272" cy="160.97662337662342" r="2.5"/>
+    <circle class="dataPoint1" cx="16.47161958568738" cy="394.2358441558441" r="2.5"/>
+    <circle class="dataPoint1" cx="19.664188323917138" cy="359.7922077922078" r="2.5"/>
+    <circle class="dataPoint1" cx="22.106312617702446" cy="378.0779220779221" r="2.5"/>
+    <circle class="dataPoint1" cx="25.96029001883239" cy="24.000000000000057" r="2.5"/>
+    <circle class="dataPoint1" cx="27.855480225988696" cy="408.9974025974026" r="2.5"/>
+    <circle class="dataPoint1" cx="29.839706214689265" cy="336.51948051948057" r="2.5"/>
+    <circle class="dataPoint1" cx="35.105536723163844" cy="274.348051948052" r="2.5"/>
+    <circle class="dataPoint1" cx="43.18235404896422" cy="377.412987012987" r="2.5"/>
+    <circle class="dataPoint1" cx="48.549939736346516" cy="373.8888311688312" r="2.5"/>
+    <circle class="dataPoint1" cx="63.724180790960446" cy="303.70493506493506" r="2.5"/>
+    <circle class="dataPoint1" cx="68.26500564971751" cy="459.23324675324676" r="2.5"/>
+    <circle class="dataPoint1" cx="70.274670433145" cy="199.54285714285714" r="2.5"/>
+    <circle class="dataPoint1" cx="74.15408662900188" cy="359.1272727272727" r="2.5"/>
+    <circle class="dataPoint1" cx="74.59926553672315" cy="386.7220779220779" r="2.5"/>
+    <circle class="dataPoint1" cx="80.38659133709982" cy="384.72727272727275" r="2.5"/>
+    <circle class="dataPoint1" cx="81.16247457627118" cy="424.2909090909091" r="2.5"/>
+    <circle class="dataPoint1" cx="94.75951035781543" cy="293.2987012987013" r="2.5"/>
+    <circle class="dataPoint1" cx="127.1939736346516" cy="376.4155844155845" r="2.5"/>
+    <circle class="dataPoint1" cx="131.13698681732578" cy="230.86129870129872" r="2.5"/>
+    <circle class="dataPoint1" cx="157.72052730696797" cy="163.63636363636368" r="2.5"/>
+    <circle class="dataPoint1" cx="177.9443691148776" cy="373.8555844155844" r="2.5"/>
+    <circle class="dataPoint1" cx="226.15088512241056" cy="227.47012987012988" r="2.5"/>
+    <circle class="dataPoint1" cx="248.04096798493407" cy="266.0363636363636" r="2.5"/>
+    <circle class="dataPoint1" cx="254.89672316384178" cy="409.26337662337664" r="2.5"/>
+    <circle class="dataPoint1" cx="439.9639548022598" cy="307.9272727272728" r="2.5"/>
+    <circle class="dataPoint1" cx="599.083615819209" cy="417.90753246753246" r="2.5"/>
+    <circle class="dataPoint1" cx="675.4" cy="357.46493506493505" r="2.5"/>
+    <g>
+      <text id="label-None" style="fill: #000; text-anchor: start;" text="(0.18, 2.45)" visibility="hidden" x="5.228949152542373" y="361.0909090909091"/>
+      <circle cx="0.22894915254237286" cy="373.0909090909091" onmouseout="document.getElementById('label-None').setAttribute('visibility', hidden)" onmouseover="document.getElementById('label-None').setAttribute('visibility', visible)" r="10" style="opacity: 0;"/>
+      <text class="dataPointLabel" style="None stroke: #fff; stroke-width: 2;" x="0.22894915254237286" y="367.0909090909091">ME</text>
+      <text class="dataPointLabel" x="0.22894915254237286" y="367.0909090909091">ME</text>
+      <text id="label-None" style="fill: #000; text-anchor: start;" text="(0.42, 0.86)" visibility="hidden" x="5.534214689265537" y="466.84883116883117"/>
+      <circle cx="0.5342146892655366" cy="478.84883116883117" onmouseout="document.getElementById('label-None').setAttribute('visibility', hidden)" onmouseover="document.getElementById('label-None').setAttribute('visibility', visible)" r="10" style="opacity: 0;"/>
+      <text class="dataPointLabel" style="None stroke: #fff; stroke-width: 2;" x="0.5342146892655366" y="472.84883116883117">CY</text>
+      <text class="dataPointLabel" x="0.5342146892655366" y="472.84883116883117">CY</text>
+      <text id="label-None" style="fill: #000; text-anchor: start;" text="(1.40, 4.78)" visibility="hidden" x="6.780715630885123" y="206.49350649350652"/>
+      <circle cx="1.7807156308851222" cy="218.49350649350652" onmouseout="document.getElementById('label-None').setAttribute('visibility', hidden)" onmouseover="document.getElementById('label-None').setAttribute('visibility', visible)" r="10" style="opacity: 0;"/>
+      <text class="dataPointLabel" style="None stroke: #fff; stroke-width: 2;" x="1.7807156308851222" y="212.49350649350652">LU</text>
+      <text class="dataPointLabel" x="1.7807156308851222" y="212.49350649350652">LU</text>
+      <text id="label-None" style="fill: #000; text-anchor: start;" text="(1.79, 5.09)" visibility="hidden" x="7.276772128060264" y="185.681038961039"/>
+      <circle cx="2.2767721280602635" cy="197.681038961039" onmouseout="document.getElementById('label-None').setAttribute('visibility', hidden)" onmouseover="document.getElementById('label-None').setAttribute('visibility', visible)" r="10" style="opacity: 0;"/>
+      <text class="dataPointLabel" style="None stroke: #fff; stroke-width: 2;" x="2.2767721280602635" y="191.681038961039">CH</text>
+      <text class="dataPointLabel" x="2.2767721280602635" y="191.681038961039">CH</text>
+      <text id="label-None" style="fill: #000; text-anchor: start;" text="(1.84, 3.16)" visibility="hidden" x="7.340369114877589" y="313.8805194805195"/>
+      <circle cx="2.3403691148775896" cy="325.8805194805195" onmouseout="document.getElementById('label-None').setAttribute('visibility', hidden)" onmouseover="document.getElementById('label-None').setAttribute('visibility', visible)" r="10" style="opacity: 0;"/>
+      <text class="dataPointLabel" style="None stroke: #fff; stroke-width: 2;" x="2.3403691148775896" y="319.8805194805195">SI</text>
+      <text class="dataPointLabel" x="2.3403691148775896" y="319.8805194805195">SI</text>
+      <text id="label-None" style="fill: #000; text-anchor: start;" text="(1.85, 5.43)" visibility="hidden" x="7.3530885122410545" y="162.94025974025982"/>
+      <circle cx="2.3530885122410545" cy="174.94025974025982" onmouseout="document.getElementById('label-None').setAttribute('visibility', hidden)" onmouseover="document.getElementById('label-None').setAttribute('visibility', visible)" r="10" style="opacity: 0;"/>
+      <text class="dataPointLabel" style="None stroke: #fff; stroke-width: 2;" x="2.3530885122410545" y="168.94025974025982">NL</text>
+      <text class="dataPointLabel" x="2.3530885122410545" y="168.94025974025982">NL</text>
+      <text id="label-None" style="fill: #000; text-anchor: start;" text="(2.55, 1.85)" visibility="hidden" x="8.243446327683616" y="400.6545454545455"/>
+      <circle cx="3.2434463276836154" cy="412.6545454545455" onmouseout="document.getElementById('label-None').setAttribute('visibility', hidden)" onmouseover="document.getElementById('label-None').setAttribute('visibility', visible)" r="10" style="opacity: 0;"/>
+      <text class="dataPointLabel" style="None stroke: #fff; stroke-width: 2;" x="3.2434463276836154" y="406.6545454545455">MK</text>
+      <text class="dataPointLabel" x="3.2434463276836154" y="406.6545454545455">MK</text>
+      <text id="label-None" style="fill: #000; text-anchor: start;" text="(3.90, 2.14)" visibility="hidden" x="9.960564971751412" y="381.7038961038961"/>
+      <circle cx="4.9605649717514115" cy="393.7038961038961" onmouseout="document.getElementById('label-None').setAttribute('visibility', hidden)" onmouseover="document.getElementById('label-None').setAttribute('visibility', visible)" r="10" style="opacity: 0;"/>
+      <text class="dataPointLabel" style="None stroke: #fff; stroke-width: 2;" x="4.9605649717514115" y="387.7038961038961">XK</text>
+      <text class="dataPointLabel" x="4.9605649717514115" y="387.7038961038961">XK</text>
+      <text id="label-None" style="fill: #000; text-anchor: start;" text="(3.94, 5.64)" visibility="hidden" x="10.011442561205271" y="148.97662337662342"/>
+      <circle cx="5.011442561205272" cy="160.97662337662342" onmouseout="document.getElementById('label-None').setAttribute('visibility', hidden)" onmouseover="document.getElementById('label-None').setAttribute('visibility', visible)" r="10" style="opacity: 0;"/>
+      <text class="dataPointLabel" style="None stroke: #fff; stroke-width: 2;" x="5.011442561205272" y="154.97662337662342">BE</text>
+      <text class="dataPointLabel" x="5.011442561205272" y="154.97662337662342">BE</text>
+      <text id="label-None" style="fill: #000; text-anchor: start;" text="(12.95, 2.13)" visibility="hidden" x="21.47161958568738" y="382.2358441558441"/>
+      <circle cx="16.47161958568738" cy="394.2358441558441" onmouseout="document.getElementById('label-None').setAttribute('visibility', hidden)" onmouseover="document.getElementById('label-None').setAttribute('visibility', visible)" r="10" style="opacity: 0;"/>
+      <text class="dataPointLabel" style="None stroke: #fff; stroke-width: 2;" x="16.47161958568738" y="388.2358441558441">AL</text>
+      <text class="dataPointLabel" x="16.47161958568738" y="388.2358441558441">AL</text>
+      <text id="label-None" style="fill: #000; text-anchor: start;" text="(15.46, 2.65)" visibility="hidden" x="24.664188323917138" y="347.7922077922078"/>
+      <circle cx="19.664188323917138" cy="359.7922077922078" onmouseout="document.getElementById('label-None').setAttribute('visibility', hidden)" onmouseover="document.getElementById('label-None').setAttribute('visibility', visible)" r="10" style="opacity: 0;"/>
+      <text class="dataPointLabel" style="None stroke: #fff; stroke-width: 2;" x="19.664188323917138" y="353.7922077922078">BA</text>
+      <text class="dataPointLabel" x="19.664188323917138" y="353.7922077922078">BA</text>
+      <text id="label-None" style="fill: #000; text-anchor: start;" text="(17.38, 2.38)" visibility="hidden" x="27.106312617702446" y="366.0779220779221"/>
+      <circle cx="22.106312617702446" cy="378.0779220779221" onmouseout="document.getElementById('label-None').setAttribute('visibility', hidden)" onmouseover="document.getElementById('label-None').setAttribute('visibility', visible)" r="10" style="opacity: 0;"/>
+      <text class="dataPointLabel" style="None stroke: #fff; stroke-width: 2;" x="22.106312617702446" y="372.0779220779221">SK</text>
+      <text class="dataPointLabel" x="22.106312617702446" y="372.0779220779221">SK</text>
+      <text id="label-None" style="fill: #000; text-anchor: start;" text="(20.41, 7.70)" visibility="hidden" x="30.96029001883239" y="12.000000000000057"/>
+      <circle cx="25.96029001883239" cy="24.000000000000057" onmouseout="document.getElementById('label-None').setAttribute('visibility', hidden)" onmouseover="document.getElementById('label-None').setAttribute('visibility', visible)" r="10" style="opacity: 0;"/>
+      <text class="dataPointLabel" style="None stroke: #fff; stroke-width: 2;" x="25.96029001883239" y="18.000000000000057">IE</text>
+      <text class="dataPointLabel" x="25.96029001883239" y="18.000000000000057">IE</text>
+      <text id="label-None" style="fill: #000; text-anchor: start;" text="(21.90, 1.91)" visibility="hidden" x="32.8554802259887" y="396.9974025974026"/>
+      <circle cx="27.855480225988696" cy="408.9974025974026" onmouseout="document.getElementById('label-None').setAttribute('visibility', hidden)" onmouseover="document.getElementById('label-None').setAttribute('visibility', visible)" r="10" style="opacity: 0;"/>
+      <text class="dataPointLabel" style="None stroke: #fff; stroke-width: 2;" x="27.855480225988696" y="402.9974025974026">BG</text>
+      <text class="dataPointLabel" x="27.855480225988696" y="402.9974025974026">BG</text>
+      <text id="label-None" style="fill: #000; text-anchor: start;" text="(23.46, 3.00)" visibility="hidden" x="34.839706214689265" y="324.51948051948057"/>
+      <circle cx="29.839706214689265" cy="336.51948051948057" onmouseout="document.getElementById('label-None').setAttribute('visibility', hidden)" onmouseover="document.getElementById('label-None').setAttribute('visibility', visible)" r="10" style="opacity: 0;"/>
+      <text class="dataPointLabel" style="None stroke: #fff; stroke-width: 2;" x="29.839706214689265" y="330.51948051948057">HR</text>
+      <text class="dataPointLabel" x="29.839706214689265" y="330.51948051948057">HR</text>
+      <text id="label-None" style="fill: #000; text-anchor: start;" text="(27.60, 3.94)" visibility="hidden" x="40.105536723163844" y="262.348051948052"/>
+      <circle cx="35.105536723163844" cy="274.348051948052" onmouseout="document.getElementById('label-None').setAttribute('visibility', hidden)" onmouseover="document.getElementById('label-None').setAttribute('visibility', visible)" r="10" style="opacity: 0;"/>
+      <text class="dataPointLabel" style="None stroke: #fff; stroke-width: 2;" x="35.105536723163844" y="268.348051948052">AT</text>
+      <text class="dataPointLabel" x="35.105536723163844" y="268.348051948052">AT</text>
+      <text id="label-None" style="fill: #000; text-anchor: start;" text="(33.95, 2.39)" visibility="hidden" x="48.18235404896422" y="365.412987012987"/>
+      <circle cx="43.18235404896422" cy="377.412987012987" onmouseout="document.getElementById('label-None').setAttribute('visibility', hidden)" onmouseover="document.getElementById('label-None').setAttribute('visibility', visible)" r="10" style="opacity: 0;"/>
+      <text class="dataPointLabel" style="None stroke: #fff; stroke-width: 2;" x="43.18235404896422" y="371.412987012987">EE</text>
+      <text class="dataPointLabel" x="43.18235404896422" y="371.412987012987">EE</text>
+      <text id="label-None" style="fill: #000; text-anchor: start;" text="(38.17, 2.44)" visibility="hidden" x="53.549939736346516" y="361.8888311688312"/>
+      <circle cx="48.549939736346516" cy="373.8888311688312" onmouseout="document.getElementById('label-None').setAttribute('visibility', hidden)" onmouseover="document.getElementById('label-None').setAttribute('visibility', visible)" r="10" style="opacity: 0;"/>
+      <text class="dataPointLabel" style="None stroke: #fff; stroke-width: 2;" x="48.549939736346516" y="367.8888311688312">RS</text>
+      <text class="dataPointLabel" x="48.549939736346516" y="367.8888311688312">RS</text>
+      <text id="label-None" style="fill: #000; text-anchor: start;" text="(50.10, 3.49)" visibility="hidden" x="68.72418079096045" y="291.70493506493506"/>
+      <circle cx="63.724180790960446" cy="303.70493506493506" onmouseout="document.getElementById('label-None').setAttribute('visibility', hidden)" onmouseover="document.getElementById('label-None').setAttribute('visibility', visible)" r="10" style="opacity: 0;"/>
+      <text class="dataPointLabel" style="None stroke: #fff; stroke-width: 2;" x="63.724180790960446" y="297.70493506493506">CZ</text>
+      <text class="dataPointLabel" x="63.724180790960446" y="297.70493506493506">CZ</text>
+      <text id="label-None" style="fill: #000; text-anchor: start;" text="(53.67, 1.15)" visibility="hidden" x="73.26500564971751" y="447.23324675324676"/>
+      <circle cx="68.26500564971751" cy="459.23324675324676" onmouseout="document.getElementById('label-None').setAttribute('visibility', hidden)" onmouseover="document.getElementById('label-None').setAttribute('visibility', visible)" r="10" style="opacity: 0;"/>
+      <text class="dataPointLabel" style="None stroke: #fff; stroke-width: 2;" x="68.26500564971751" y="453.23324675324676">PT</text>
+      <text class="dataPointLabel" x="68.26500564971751" y="453.23324675324676">PT</text>
+      <text id="label-None" style="fill: #000; text-anchor: start;" text="(55.25, 5.06)" visibility="hidden" x="75.274670433145" y="187.54285714285714"/>
+      <circle cx="70.274670433145" cy="199.54285714285714" onmouseout="document.getElementById('label-None').setAttribute('visibility', hidden)" onmouseover="document.getElementById('label-None').setAttribute('visibility', visible)" r="10" style="opacity: 0;"/>
+      <text class="dataPointLabel" style="None stroke: #fff; stroke-width: 2;" x="70.274670433145" y="193.54285714285714">DK</text>
+      <text class="dataPointLabel" x="70.274670433145" y="193.54285714285714">DK</text>
+      <text id="label-None" style="fill: #000; text-anchor: start;" text="(58.30, 2.66)" visibility="hidden" x="79.15408662900188" y="347.1272727272727"/>
+      <circle cx="74.15408662900188" cy="359.1272727272727" onmouseout="document.getElementById('label-None').setAttribute('visibility', hidden)" onmouseover="document.getElementById('label-None').setAttribute('visibility', visible)" r="10" style="opacity: 0;"/>
+      <text class="dataPointLabel" style="None stroke: #fff; stroke-width: 2;" x="74.15408662900188" y="353.1272727272727">HU</text>
+      <text class="dataPointLabel" x="74.15408662900188" y="353.1272727272727">HU</text>
+      <text id="label-None" style="fill: #000; text-anchor: start;" text="(58.65, 2.25)" visibility="hidden" x="79.59926553672315" y="374.7220779220779"/>
+      <circle cx="74.59926553672315" cy="386.7220779220779" onmouseout="document.getElementById('label-None').setAttribute('visibility', hidden)" onmouseover="document.getElementById('label-None').setAttribute('visibility', visible)" r="10" style="opacity: 0;"/>
+      <text class="dataPointLabel" style="None stroke: #fff; stroke-width: 2;" x="74.59926553672315" y="380.7220779220779">LV</text>
+      <text class="dataPointLabel" x="74.59926553672315" y="380.7220779220779">LV</text>
+      <text id="label-None" style="fill: #000; text-anchor: start;" text="(63.20, 2.27)" visibility="hidden" x="85.38659133709982" y="372.72727272727275"/>
+      <circle cx="80.38659133709982" cy="384.72727272727275" onmouseout="document.getElementById('label-None').setAttribute('visibility', hidden)" onmouseover="document.getElementById('label-None').setAttribute('visibility', visible)" r="10" style="opacity: 0;"/>
+      <text class="dataPointLabel" style="None stroke: #fff; stroke-width: 2;" x="80.38659133709982" y="378.72727272727275">LT</text>
+      <text class="dataPointLabel" x="80.38659133709982" y="378.72727272727275">LT</text>
+      <text id="label-None" style="fill: #000; text-anchor: start;" text="(63.81, 1.68)" visibility="hidden" x="86.16247457627118" y="412.2909090909091"/>
+      <circle cx="81.16247457627118" cy="424.2909090909091" onmouseout="document.getElementById('label-None').setAttribute('visibility', hidden)" onmouseover="document.getElementById('label-None').setAttribute('visibility', visible)" r="10" style="opacity: 0;"/>
+      <text class="dataPointLabel" style="None stroke: #fff; stroke-width: 2;" x="81.16247457627118" y="418.2909090909091">EL</text>
+      <text class="dataPointLabel" x="81.16247457627118" y="418.2909090909091">EL</text>
+      <text id="label-None" style="fill: #000; text-anchor: start;" text="(74.50, 3.65)" visibility="hidden" x="99.75951035781543" y="281.2987012987013"/>
+      <circle cx="94.75951035781543" cy="293.2987012987013" onmouseout="document.getElementById('label-None').setAttribute('visibility', hidden)" onmouseover="document.getElementById('label-None').setAttribute('visibility', visible)" r="10" style="opacity: 0;"/>
+      <text class="dataPointLabel" style="None stroke: #fff; stroke-width: 2;" x="94.75951035781543" y="287.2987012987013">NO</text>
+      <text class="dataPointLabel" x="94.75951035781543" y="287.2987012987013">NO</text>
+      <text id="label-None" style="fill: #000; text-anchor: start;" text="(100.00, 2.40)" visibility="hidden" x="132.1939736346516" y="364.4155844155845"/>
+      <circle cx="127.1939736346516" cy="376.4155844155845" onmouseout="document.getElementById('label-None').setAttribute('visibility', hidden)" onmouseover="document.getElementById('label-None').setAttribute('visibility', visible)" r="10" style="opacity: 0;"/>
+      <text class="dataPointLabel" style="None stroke: #fff; stroke-width: 2;" x="127.1939736346516" y="370.4155844155845">TR</text>
+      <text class="dataPointLabel" x="127.1939736346516" y="370.4155844155845">TR</text>
+      <text id="label-None" style="fill: #000; text-anchor: start;" text="(103.10, 4.59)" visibility="hidden" x="136.13698681732578" y="218.86129870129872"/>
+      <circle cx="131.13698681732578" cy="230.86129870129872" onmouseout="document.getElementById('label-None').setAttribute('visibility', hidden)" onmouseover="document.getElementById('label-None').setAttribute('visibility', visible)" r="10" style="opacity: 0;"/>
+      <text class="dataPointLabel" style="None stroke: #fff; stroke-width: 2;" x="131.13698681732578" y="224.86129870129872">FR</text>
+      <text class="dataPointLabel" x="131.13698681732578" y="224.86129870129872">FR</text>
+      <text id="label-None" style="fill: #000; text-anchor: start;" text="(124.00, 5.60)" visibility="hidden" x="162.72052730696797" y="151.63636363636368"/>
+      <circle cx="157.72052730696797" cy="163.63636363636368" onmouseout="document.getElementById('label-None').setAttribute('visibility', hidden)" onmouseover="document.getElementById('label-None').setAttribute('visibility', visible)" r="10" style="opacity: 0;"/>
+      <text class="dataPointLabel" style="None stroke: #fff; stroke-width: 2;" x="157.72052730696797" y="157.63636363636368">UK</text>
+      <text class="dataPointLabel" x="157.72052730696797" y="157.63636363636368">UK</text>
+      <text id="label-None" style="fill: #000; text-anchor: start;" text="(139.90, 2.44)" visibility="hidden" x="182.9443691148776" y="361.8555844155844"/>
+      <circle cx="177.9443691148776" cy="373.8555844155844" onmouseout="document.getElementById('label-None').setAttribute('visibility', hidden)" onmouseover="document.getElementById('label-None').setAttribute('visibility', visible)" r="10" style="opacity: 0;"/>
+      <text class="dataPointLabel" style="None stroke: #fff; stroke-width: 2;" x="177.9443691148776" y="367.8555844155844">IT</text>
+      <text class="dataPointLabel" x="177.9443691148776" y="367.8555844155844">IT</text>
+      <text id="label-None" style="fill: #000; text-anchor: start;" text="(177.80, 4.64)" visibility="hidden" x="231.15088512241056" y="215.47012987012988"/>
+      <circle cx="226.15088512241056" cy="227.47012987012988" onmouseout="document.getElementById('label-None').setAttribute('visibility', hidden)" onmouseover="document.getElementById('label-None').setAttribute('visibility', visible)" r="10" style="opacity: 0;"/>
+      <text class="dataPointLabel" style="None stroke: #fff; stroke-width: 2;" x="226.15088512241056" y="221.47012987012988">DE</text>
+      <text class="dataPointLabel" x="226.15088512241056" y="221.47012987012988">DE</text>
+      <text id="label-None" style="fill: #000; text-anchor: start;" text="(195.01, 4.06)" visibility="hidden" x="253.04096798493407" y="254.0363636363636"/>
+      <circle cx="248.04096798493407" cy="266.0363636363636" onmouseout="document.getElementById('label-None').setAttribute('visibility', hidden)" onmouseover="document.getElementById('label-None').setAttribute('visibility', visible)" r="10" style="opacity: 0;"/>
+      <text class="dataPointLabel" style="None stroke: #fff; stroke-width: 2;" x="248.04096798493407" y="260.0363636363636">SE</text>
+      <text class="dataPointLabel" x="248.04096798493407" y="260.0363636363636">SE</text>
+      <text id="label-None" style="fill: #000; text-anchor: start;" text="(200.40, 1.91)" visibility="hidden" x="259.8967231638418" y="397.26337662337664"/>
+      <circle cx="254.89672316384178" cy="409.26337662337664" onmouseout="document.getElementById('label-None').setAttribute('visibility', hidden)" onmouseover="document.getElementById('label-None').setAttribute('visibility', visible)" r="10" style="opacity: 0;"/>
+      <text class="dataPointLabel" style="None stroke: #fff; stroke-width: 2;" x="254.89672316384178" y="403.26337662337664">RO</text>
+      <text class="dataPointLabel" x="254.89672316384178" y="403.26337662337664">RO</text>
+      <text id="label-None" style="fill: #000; text-anchor: start;" text="(345.90, 3.43)" visibility="hidden" x="444.9639548022598" y="295.9272727272728"/>
+      <circle cx="439.9639548022598" cy="307.9272727272728" onmouseout="document.getElementById('label-None').setAttribute('visibility', hidden)" onmouseover="document.getElementById('label-None').setAttribute('visibility', visible)" r="10" style="opacity: 0;"/>
+      <text class="dataPointLabel" style="None stroke: #fff; stroke-width: 2;" x="439.9639548022598" y="301.9272727272728">FI</text>
+      <text class="dataPointLabel" x="439.9639548022598" y="301.9272727272728">FI</text>
+      <text id="label-None" style="fill: #000; text-anchor: start;" text="(471.00, 1.78)" visibility="hidden" x="604.083615819209" y="405.90753246753246"/>
+      <circle cx="599.083615819209" cy="417.90753246753246" onmouseout="document.getElementById('label-None').setAttribute('visibility', hidden)" onmouseover="document.getElementById('label-None').setAttribute('visibility', visible)" r="10" style="opacity: 0;"/>
+      <text class="dataPointLabel" style="None stroke: #fff; stroke-width: 2;" x="599.083615819209" y="411.90753246753246">ES</text>
+      <text class="dataPointLabel" x="599.083615819209" y="411.90753246753246">ES</text>
+      <text id="label-None" style="fill: #000; text-anchor: start;" text="(531.00, 2.69)" visibility="hidden" x="680.4" y="345.46493506493505"/>
+      <circle cx="675.4" cy="357.46493506493505" onmouseout="document.getElementById('label-None').setAttribute('visibility', hidden)" onmouseover="document.getElementById('label-None').setAttribute('visibility', visible)" r="10" style="opacity: 0;"/>
+      <text class="dataPointLabel" style="None stroke: #fff; stroke-width: 2;" x="675.4" y="351.46493506493505">PL</text>
+      <text class="dataPointLabel" x="675.4" y="351.46493506493505">PL</text>
+    </g>
+  </g>
+  <text class="mainTitle" x="400.0" y="16">Agricultural yield, Eurostat countries</text>
+  <text class="xAxisTitle" x="400.0" y="593">Production Area, k hectares</text>
+  <text class="yAxisTitle" x="17" y="300.0" transform="rotate(-90, 17, 300.0)">Yield, tonne / hectare</text>
+  <g transform="translate(757 46)">
+    <rect class="key1" height="12" width="12" x="0" y="0"/>
+    <text class="keyText" x="17" y="12">Oats</text>
+  </g>
+</svg>
