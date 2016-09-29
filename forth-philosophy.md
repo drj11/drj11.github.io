@@ -9,10 +9,10 @@ I'm creating a Forth system, so some of the philosophy is
 rubbing off on me.
 As I see it, the philosophy of Forth is:
 
-Implicit notation
-The dictionary: a threaded list of words that is extensible
-Chumminess with the implementation
-Uniformity
+- Implicit notation
+- The dictionary: a threaded list of words that is extensible
+  Chumminess with the implementation
+- Uniformity
 
 The use of "chumminess" here is a reference to Ritchie declaring
 that [some particular C struct hack was
