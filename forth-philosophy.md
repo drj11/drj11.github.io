@@ -28,7 +28,9 @@ But I'm also covering a second: the general lack of syntax.
 And I don't just mean the syntax is small,
 it's almost non-existant.
 
-Let's do these separately. The Stack.
+Let's do these separately.
+
+### The Stack
 
 The stack is data structure that holds a varying number of items.
 Each item is stored in a _cell_ (ANSI Forth terminology),
@@ -83,6 +85,8 @@ They add the same three numbers up in a different order.
 Of course with integer addition we get the same answer,
 but that might not be true of other operations.
 
+### Swap, Drop, Over
+
 There are all sorts of cunning stack reordering operations
 which are useful all the time.
 `SWAP` swaps the order of the top two items, effectively it
@@ -105,7 +109,7 @@ or how many inputs they take, or how many results they push.
 
 It also does your head in a bit.
 
-So, onto syntax.
+### Syntax
 
 The syntax is so implicit that its
 almost non-existent.
@@ -121,15 +125,16 @@ Consider the definition of this new word:
 (this word selects either the 2nd or the 3rd item on the stack,
 according to the value of the Top of Stack)
 
-`:` introduces the definition of a new word.
+`:` (pronounced "colon") introduces the definition of a new word.
 In this case the new word's name is `select`.
 The definition consists of a sequence of words up to the
-terminating `;`, which is itself a word.
+terminating `;` (pronounced semicolon), which is itself a word.
 
 `IF` works in a slightly reverse polish way.
 It pops the Top of Stack and if it is 0
-(a representation of false) the words beteen `IF` and `THEN` are
-skipped and control then resumes after `THEN`.
+(a representation of false)
+the words between `IF` and `THEN` are skipped
+and control then resumes after `THEN`.
 If the Top of Stack is any non-0 value
 (the canonical value for true is "binary all 1s",
 but in this case any non-0 value will do)
@@ -137,7 +142,7 @@ then execution proceeds in the normal way, with the words
 immediately following `IF`.
 In this case executing a `SWAP`.
 Nothing happens when we get to `THEN`,
-we simply carry on after the `THEN`.
+we ignore the `THEN`, then carry on with the following words.
 
 So the action of `select` is to remove the Top of Stack and
 either drop the new Top of Stack (if the item removed was 0), or
