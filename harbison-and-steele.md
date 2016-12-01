@@ -75,6 +75,8 @@ At times it's brutally rude (for example, to see an explanation
 of the rules of pointer type compatibility before you see the
 syntax for pointer expressions).
 
+## Setting a bad example
+
 As hinted at previously,
 many of the examples are examples of how not to do things
 (in that they show techniques that are either obscure
@@ -93,3 +95,32 @@ It's bad code.
 It's an obscure and unclear trick introduced because they were
 too weak to avoid the siren call of premature performance
 optimisation.
+
+(the bizarre thing is at some level the authors know this,
+they frequently signal the code with
+"avoid in most situations" or
+"you will rarely have good reason to do this")
+
+If you have a copy of the book,
+the exemplar example is on page 276 at the end of section 8.7 on
+the switch statement.
+It is too horrible to repeat here.
+
+# Ancient C
+
+They call it "Traditional C", I call it ancient.
+It's the C we programmed before Standard C was published.
+In 1990.
+Actually a lot of it predates even that period.
+Even before Standard C was published
+a lot of compiler vendors were moving towards a C
+that was more like Standard C
+(partly because the vendors were basing their
+compiler implementations on draft standards,
+but also because the standard was standardising existing
+common behavour of implementations).
+So there was a light before the dawn.
+(admittedly, there was also a shadow after dawn,
+vendors dragging their heels and support for older systems
+meant that we were still discussing in 1995
+if we should write C for "pre ANSI" compilers).
