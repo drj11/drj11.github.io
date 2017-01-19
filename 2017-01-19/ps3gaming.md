@@ -23,7 +23,7 @@ they'll stop making ones in the right form factor.
 
 I've already lost the power to play MGS4 online.
 Because Konami closed down the online server.
-Fair enough, I suppose.
+Fair enough, I suppose; they can't keep the server running forever.
 But it's very common for games to
 have some sort of online component now.
 How long does the online mode work for?
