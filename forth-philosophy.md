@@ -9,10 +9,10 @@ I'm creating a Forth system, so some of the philosophy is
 rubbing off on me.
 As I see it, the philosophy of Forth is:
 
-- Implicit notation
-- The dictionary: a threaded list of words that is extensible
-  Chumminess with the implementation
-- Uniformity
+- Implicit notation;
+- The dictionary: a threaded list of words that is extensible;
+- Chumminess with the implementation;
+- Uniformity.
 
 The use of "chumminess" here is a reference to Ritchie declaring
 that [some particular C struct hack was
@@ -40,18 +40,22 @@ and a least accessible part (all the cells below Top of Stack,
 all the way down to the bottom).
 Items are added onto the stack; the newest item becomes the Top
 of Stack, and the previous Top of Stack now sits below it.
-When an item is removed (generally the Top of Stack or one near
-it), it is forgotten.
+When an item is removed
+(generally the Top of Stack or one near it), it is forgotten.
 
 Traditionally the act of putting a new item on the stack is
 called _pushing_,
 and the act of removing the top item is
 called _popping_ (_push_ and _pop_ respectively).
-Those terms don't appear in the Forth language, but
+In a typical Forth program,
+items get pushed onto and popped from the stack all the time.
+But curiously, the terms `push` and `pop`
+don't appear in the Forth language, but
 you're bound to see them in discussion.
 
-This allows operations in Forth to have implicit inputs,
+The stack allows operations in Forth to have implicit inputs:
 they find their inputs on the stack.
+Outputs are implicit too: Outputs are pushed onto the stack.
 Generally operations in Forth work by removing some items from
 the stack, and placing a result on the Top of Stack.
 
