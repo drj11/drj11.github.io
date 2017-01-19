@@ -63,3 +63,8 @@ I expect much of my downloaded content will stop working too.
 Basically the whole ecosystem is designed around giving Sony
 the power to Just Say No.
 Which makes me a bit uncomfortable.
+
+Oh by the way, my PSN identifier is `WaMangoMango`.
+Add me!
+(You would think I could figure out a way to get a URL
+that you click to add me as a friend on PSN. But I can't)
