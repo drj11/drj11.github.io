@@ -6,8 +6,9 @@ I am writing a review of a book about C.
 Harbison and Steele's «C A Reference Manual».
 The book is a classic and has been revised many times.
 In this case I'm reviewing the fifth edition, published in 2002
-(mostly because that's what was available
-in The University of Sheffield library).
+(this appears to be the most recent edition,
+but it is also whatmostly because that's what was available
+The University of Sheffield library stocks).
 
 Because this review is bound to say lots of negative and
 nitpicky things
@@ -124,3 +125,50 @@ So there was a light before the dawn.
 vendors dragging their heels and support for older systems
 meant that we were still discussing in 1995
 if we should write C for "pre ANSI" compilers).
+
+In 2002 we should have been proposing that
+programmers start using `restrict` a bit more,
+not persuading them to use prototype function declarations.
+Protoype function declarations are ones that include the type of
+the formal arguments inside the parentheses
+(for example `int floor(float x)` is a prototype,
+`int floor(x) float x ; {` is the old-style "K & R" style
+definition.
+The old-style definitions were old in 1990
+(since many compilers had already been supporting
+the Standard C prototype syntax), never mind 2002.
+
+So I don't really want to see (on page 286) "whether to use
+prototypes in C programs is a tricky portability issue".
+It's not.
+Use prototypes.
+
+There is a quite a lot of discussion of Traditional C in the book,
+and I'd rather it were just removed.
+You can always refer readers to earlier editions of the book if
+they really have to maintain code that uses Traditional C
+features.
+
+# C1999
+
+On the flip side the coverage of
+the language changes
+introduced with the 1999 version of the C Standard are
+most welcome.
+But.
+But there isn't enough discussion of them.
+
+I've already mentioned `restrict`
+and it's quite a major new feature ("new" as in "new in 1999")
+of the language.
+It grants to C what every Fortran programmer already had,
+the ability to declare that
+the array a function writes the result into
+is separate from the array the function reads from.
+It's perfect for large matrix multiplies.
+
+But `restrict` is hardly discussed in the book
+and appears only once in the index.
+This is a real shame, because we desparately need
+material to use to train all the C programmers on
+how to use `restrict` productively.
