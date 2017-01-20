@@ -7,6 +7,8 @@ Forth has a number of flow control constructs:
 
 `IF` is similar to the `if` construct from many languages:
 
+        ...
+        code to compute condition
     IF
         code when true
         ...
@@ -19,20 +21,20 @@ Forth has a number of flow control constructs:
 and `THEN` marks the end
 (note that the position of `THEN` differs from Basic,
 where it separates the condition from the "when true" code).
-In Forth, `IF` expects the condition that is to be tested
-to be already evaluated with the result left on the stack
-(again, contrast with Basic where
-the code for the condition to be tested is
-between `if` and `then`).
+In Forth, the condition appears before the `IF`,
+so that the condition is on the Top of Stack
+when the `IF` is executed.
 
-Forth implements a convention of treating 0 (all bits zero)
-as false,
-and any other non-zero value as true.
-`IF` pops the value at the Top of Stack and tests it;
-if true, the code between `IF` and `ELSE` runs,
-and then execution continues after `THEN`;
-if false, the code between `ELSE` and `THEN` runs,
-and then execution continues after `THEN`.
+`IF` pops this value at the Top of Stack and tests it;
+
+By convention in Forth a `false` value is 0 (all bits zero),
+and any other (non-zero) value is `true`.
+
+If the value popped by `IF` is `true`,
+the code between `IF` and `ELSE` runs;
+if false, the code between `ELSE` and `THEN` runs;
+in either case,
+execution then continues after `THEN`.
 
 When translated into threaded code,
 the action of `IF` is implemented by a conditional branch:
@@ -43,7 +45,7 @@ that is called `ZEROBRANCH` in my implementation
 (I suspect I have some dim deep memory of
 this primitive being called `0BRANCH` in
 some version of Forth that I investigated as a child,
-possible Sinclair ZX81 FORTH).
+possibly Sinclair ZX81 FORTH).
 
 `ZEROBRANCH` tests the Top of Stack and branches if it is 0.
 The branch destination is stored in the following cell.
