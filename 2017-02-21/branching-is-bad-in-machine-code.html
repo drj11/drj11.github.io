@@ -1,0 +1,166 @@
+<meta charset="utf-8">
+<title>Branching is bad (in machine code)</title>
+<body>
+<nav>
+<a href="../2017-01-19/ps3gaming.html">(previous)</a>
+</nav>
+<article>
+<h1>Branching is bad (in machine code)</h1>
+<time>2017-02-21</time>
+<address>by David Jones</address>
+<p>A modern CPU executes machine instructions at great speed,
+and part of this speed comes from <em>pipelined execution</em>.
+This is where the procedure to execute an instruction is
+broken down into many steps,
+with the steps being joined together to make a pipeline.
+Classically, these steps are <em>Fetch</em>, <em>Decode</em>, <em>Execute</em>,
+<em>Write-back</em>, but these days pipelines are deeper and have more stages.
+This improves speed because the sections of the pipeline can
+execute concurrently.
+Once the first instruction has been fetched
+it proceeds to decode;
+while it is being decoded, the next instruction is fetched.</p>
+<p><img alt="Example 4-stage pipeline" src="../image/Pipeline,_4_stage.svg" title="4-stage pipeline"></p>
+<p>The optimal case is when all stages of the pipeline
+take the same time, and they are all occupied.
+A 4-stage pipeline permits
+4 instructions to be executed concurrently.
+In principle this works well,
+until it becomes unclear where the next instruction comes from.</p>
+<p>A conditional branch instruction tests some processor state
+(such as whether the carry flag is set, or whether a register is zero)
+and then continues execution at either the next instruction,
+or branches to a new instruction stream whose address is
+specified by the branch instruction.</p>
+<p>In pipelined execution, branch instructions are bad news.
+That's because you don't know where the next instruction comes
+from until after you've executed the branch.
+In our classic 4-stage pipeline we should have fetched and
+decoded it by then!
+The typical solution to this is to attempt a <em>branch prediction</em>
+and <em>speculatively execute</em> the new stream.
+Later, when the results of the branch are known,
+the fate of the speculative instructions is known and they are
+either discarded (if the prediction is wrong) or marked for
+completion (if the prediction was right).</p>
+<p><a href="https://en.wikipedia.org/wiki/Branch_predictor">The Wikipedia article on Branch Prediction</a>
+provides a pretty good overview.</p>
+<p>If the prediction is incorrect then we suffer a <em>misprediction penalty</em>.
+The speculatively executed instructions are discarded and
+the CPU has to wait while instructions are fetched from
+the new instructions stream.</p>
+<p>Each branch instruction comes with the burden of misprediction.
+Better to reduce the branch instructions you use, right?</p>
+<p>I am implementing a Forth system in 64-bit Intel assembly language.
+It is a silly project,
+but it keeps me happy and
+implementing it gives me a few very geeky anecdotes.</p>
+<h1>Implementing ABS</h1>
+<p>One of these anecdotes is eliminating branches
+from the implemention of ABS.
+<code>ABS</code> is a procedure that computes the <em>absolute value</em> of a number.
+In the version I am implementing,
+the input is a signed 64-bit integer,
+and the output is the positive integer with the same magnitude.</p>
+<p>The first version I implement is <a href="https://github.com/drj11/sixtyforth/commit/296d92e47b2a01af68b50cb43170f11d060ca3de">on github</a>.</p>
+<p>When you remove the Forth procedure entry and exit code,
+it's basically:</p>
+<pre><code>        mov rax, [rbp-8]    ; NASM syntax, destination on left
+        test rax, rax
+        jns .pos
+        neg rax
+pos:    mov [rbp-8], rax
+</code></pre>
+<p>Having executed <code>test rax, rax</code>, the <code>jns</code> instruction
+Jumps if Not Signed.
+In this case Signed means "has the sign bit set" which means
+negative;
+So if <code>rax</code> is 0 or positive the jump is taken and
+so the <code>neg rax</code> instruction is skipped.
+<code>neg rax</code> negates <code>rax</code>.</p>
+<p>This is roughly equivalent to the pseudo code:</p>
+<pre><code>if rax &lt; 0:
+    rax = -rax
+</code></pre>
+<p>And this does implement ABS.</p>
+<p>But it contains a conditional branch.</p>
+<h1>Branchless</h1>
+<p>In a whimsical moment I decided to "improve" the code by making
+it branchless.</p>
+<p>The new version is <a href="https://github.com/drj11/sixtyforth/commit/756eadd27c18800e1697ea86953ca7694880024d">also on github</a>.</p>
+<p>The code is:</p>
+<pre><code>; Convert carry flag to Forth boolean in rcx
+mov rcx, rax
+shl rcx, 1
+sbb rcx, rcx
+; rcx is now 0 or -1
+; If rcx is -1, negate the old-school way.
+xor rax, rcx
+sub rax, rcx
+mov [rbp-8], rax
+</code></pre>
+<p>Observations: more code; more comments are required;
+the comments are (slightly) misleading.</p>
+<p>In the first comment,
+"Forth boolean" means a value that is either 0 or -1.
+And while it is true that the carry flag is converted,
+first the sign flag is shifted into the carry flag.</p>
+<p>The new implementation is in two parts:
+1. compute a value, in <code>rcx</code>, that is either 0 or -1; then,
+2. cunningly use this to either negate <code>rax</code> or leave it unchanged.</p>
+<p>The first part also involves a bit of cunning:</p>
+<p>The "Subtract with Borrow" instruction computes
+<code>(Rd - Rs) - B</code>
+where <code>Rd</code> is the destination register,
+<code>Rs</code> is a source register, and
+<code>B</code> is the borrow (aka carry) flag which is either 0 or 1.</p>
+<p>In <code>sbb rcx, rcx</code> the source and destination are the same:
+the value computed is <code>(Rd - Rd) - B</code>,
+which is the same as <code>- B</code>.
+so the result is 0 when the carry flag is 0,
+and -1 when the carry flag is 1.</p>
+<p>This is a neat trick to turn a carry flag into 0 or -1.
+Wish I had thought of it, but I didn't.
+I found it somewhere on the internet,
+and now I can't find out where.</p>
+<h1>2's complement</h1>
+<p>The second part relies on 2's complement notation.
+-1 is 0b1111...1111 (64 bits, all set to 1).
+0b1111...1111 - S is the same as
+0b1111...1111 XOR S (because there are no borrows).
+We want to compute 0 - S.
+Well, -1 - S is nearly right. Just add 1 to the answer:</p>
+<p>0 - S == (1 - 1) - S == 1 + (-1 - S)</p>
+<p>And adding 1 is the same as subtracting -1.</p>
+<p>How does this all help?
+We want to compute:</p>
+<p>0 - S</p>
+<p>which is the same as</p>
+<p>1 + (-1 - S)</p>
+<p>same as</p>
+<p>(-1 - S) - (-1)</p>
+<p>same as</p>
+<p>(S XOR -1) - (-1)</p>
+<p>same as</p>
+<p>(S XOR RCX) - RCX</p>
+<p>when RCX is -1.</p>
+<p>So, when RCX is -1 we can negate S by
+computing <code>(S XOR RCX) - RCX</code>.</p>
+<p>When RCX is 0 note that <code>(S XOR 0) - 0</code> is S.
+So S is unchanged.</p>
+<p>Perfect, that's exactly what we want.</p>
+<h1>This is an Improvement?</h1>
+<p>Well, there's a reason I used scare quotes around "improve",
+above.</p>
+<p>There are fewer branches. That's good.</p>
+<p>There is more code. That's bad.</p>
+<p>More registers are used. That's bad too.</p>
+<p>Ideally I would benchmark, but I haven't.
+<code>ABS</code> is such a small part of even an unrealistic benchmark.
+There are so many other branches,
+that removing one is going to make a tiny difference.</p>
+<p>So no benchmark.
+But I am warmed by the satisfaction that
+there is one fewer branch in the code. :)</p>
+</article>
+
