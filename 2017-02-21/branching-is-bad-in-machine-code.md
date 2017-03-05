@@ -144,6 +144,8 @@ This is a neat trick to turn a carry flag into 0 or -1.
 Wish I had thought of it, but I didn't.
 I found it somewhere on the internet,
 and now I can't find out where.
+[update: it was probably from [this blog
+article](http://www.retroprogramming.com/2012/06/itsy-forth-compiler.html?m=1)]
 
 # 2's complement
 
