@@ -1,11 +1,13 @@
 [brutal]: #title "Why I donate to Arts Emergency"
 [brutal]: #author "David Jones"
-[brutal]: #date "2017-04-21"
 
 The horror we face, of war, poverty, genocide, displacement.
 The struggle.
 
-How do we cope?
+![Dulce et decorum est](image/Memorial_Amphitheater_-_rear_pediment_-_Arlington_National_Cemetery_-_2011.JPG
+"Inscription reads Dulce et decorum est on Arlington Memorial Ampitheater")
+
+In this crisis of despair, how do we cope?
 
 The arts and humanities are how we appreciate what it is to be human.
 
@@ -22,4 +24,4 @@ It is not the job of The Arts to document,
 a simple automaton can do that.
 It's the job of The Arts to take what is there, and show what is not.
 
-That's why I help fund Arts Emergency.
+That's why I help fund [Arts Emergency](http://www.arts-emergency.org/).

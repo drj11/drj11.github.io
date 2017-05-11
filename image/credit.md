@@ -8,3 +8,8 @@ Wikimedia Commons
 
 Is taken from
 https://commons.wikimedia.org/wiki/File:Pipeline,_4_stage.svg
+
+# Memorial_Amphitheater_-_rear_pediment_-_Arlington_National_Cemetery_-_2011.JPG
+
+Wikipedia user Tim1965
+https://en.wikipedia.org/wiki/File:Memorial_Amphitheater_-_rear_pediment_-_Arlington_National_Cemetery_-_2011.JPG
