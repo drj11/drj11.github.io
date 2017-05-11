@@ -1,5 +1,6 @@
 [brutal]: #title "Why I donate to Arts Emergency"
 [brutal]: #author "David Jones"
+[brutal]: #date "2017-05-11"
 
 The horror we face, of war, poverty, genocide, displacement.
 The struggle.
@@ -13,7 +14,7 @@ The arts and humanities are how we appreciate what it is to be human.
 
 They are how we recognise the humanity in each other,
 and ultimately, in ourselves.
-_Violence against one, is violence against all_
+_Violence against one, is violence against all_.
 
 The clue is in the name, _humanities_.
 
