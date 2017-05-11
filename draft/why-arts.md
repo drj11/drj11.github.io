@@ -4,7 +4,7 @@
 The horror we face, of war, poverty, genocide, displacement.
 The struggle.
 
-![Dulce et decorum est](image/Memorial_Amphitheater_-_rear_pediment_-_Arlington_National_Cemetery_-_2011.JPG
+![Dulce et decorum est](../image/Memorial_Amphitheater_-_rear_pediment_-_Arlington_National_Cemetery_-_2011.JPG
 "Inscription reads Dulce et decorum est on Arlington Memorial Ampitheater")
 
 In this crisis of despair, how do we cope?
