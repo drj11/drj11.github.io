@@ -120,7 +120,7 @@ they frequently signal the code with
 
 If you have a copy of the book,
 the stand-out example is on page 276 at the end of section 8.7 on
-the switch statement.
+the `switch` statement.
 It is too horrible to repeat here.
 Needless to say,
 it would make a great example of how not to interview
@@ -140,10 +140,10 @@ compiler implementations on draft standards,
 but also because the standard was standardising existing
 common behavour of implementations).
 So there was a light before the dawn.
-(admittedly, there were also clouds after the dawn,
+Admittedly, there were also clouds after the dawn,
 vendors dragging their heels and support for older systems
 meant that we were still discussing in 1995
-if we should write C for "pre ANSI" compilers).
+if we should write C for "pre ANSI" compilers)
 
 In 2002 (when this edition was published)
 we should have been proposing that
@@ -233,7 +233,7 @@ and a whole lot of code was simply unportable
 to 64-bit UltraSPARC, 64-bit MIPS, or Digital ALPHA.
 
 To fix this,
-the wise old owls invented `<stdint.h>`,
+the wise owls invented `<stdint.h>`,
 which was a way of getting an integer type that was exactly 32-bits,
 or, if you were more relaxed about it,
 an integer type that was at least 32-bits.
