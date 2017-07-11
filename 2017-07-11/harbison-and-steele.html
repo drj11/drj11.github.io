@@ -1,0 +1,236 @@
+<meta charset="utf-8">
+<title>C A Reference Manual</title>
+<body>
+<nav>
+<a href="../2017-05-31/covfefe.html">(previous)</a>
+</nav>
+<article>
+<h1>C A Reference Manual</h1>
+<time>2017-07-11</time>
+<address>by David Jones</address>
+<p>Prompted by conversations with @samathy and Matthew Hughes
+I am writing a review of a book about C.</p>
+<p>Harbison and Steele's «C A Reference Manual».
+The book is a classic and has been revised many times.
+In this case I'm reviewing the fifth edition, published in 2002
+(this appears to be the most recent edition,
+but it is also mostly because that's what was available
+The University of Sheffield library stocks).</p>
+<h2>Harbison and Steele is good</h2>
+<p>Because this review is bound to say lots of negative and
+nitpicky things
+I'm going to open by saying that
+this is a good book and I recommend it.
+It is not a good book for beginners;
+the reference manual style leaves little room for
+gently easing you into difficult topics
+or expanding upon subtle ones.
+But if you can write a program in C then
+this book would make an excellent choice.</p>
+<p>Good books on C are rare, and this is a good book.
+The authors know they're stuff,
+and while they are not always as clear as possible on some topics,
+they are assiduous and correct.</p>
+<h2>Of course it could be better</h2>
+<p>My chief criticisms of the book are:</p>
+<ul>
+<li>the order;</li>
+<li>the examples;</li>
+<li>too much focus on pre Standard C</li>
+<li>not enough focus on C99 topics: <code>restrict</code> and <code>&lt;stdint.h&gt;</code> and
+  designated initialisers.</li>
+</ul>
+<h2>Well out of order</h2>
+<p>The order of the book roughly follows the order of the C standard.</p>
+<p>Practically, this means
+the most abstruse and technical parts of C are covered first.
+And I mean really obscure.
+Like how preprocessor token concatenation used to work
+before ANSI came along and standardised it.
+This particular topic, of token pasting, allows me to briefly
+preview two of other gripes: The examples chosen to illustrate
+various language features; and, too much focus on pre-Standard C.</p>
+<p>For token pasting,
+the authors have an example of how it used to be done,
+before Standard C.
+Maybe in 1990 it would be useful to have a compare-and-contrast
+between Traditional C and Standard C,
+but this edition was published in 2002,
+12 years after the first Standard for the C programming language
+was published.
+The example in this case is an example of how not to do it,
+and it just clutters the book.</p>
+<p>This ordering problem manifests most obviously in the fact that
+<code>main()</code>, which is the only function that a (hosted) C program
+<em>must</em> provide and which defines the entry point to a C program,
+doesn't appear until page 303.
+Which is well after halfway in this 533 page book
+(generously counting the appendices and the indexes).
+For comparison, it's page 6 in Kernighan and Ritchie's even more
+venerable classic «The C Programming Language».</p>
+<p>Whilst reading I made a note that page 259,
+which is the start of Chapter 8, «Statements»,
+"would be a great place to start".
+And it would be.
+Statements are a fairly basic thing in C.
+Every C programmer will already be familiar with them
+(we're talking things like <code>if</code>, <code>while</code>, <code>return</code>),
+and this would make a great topic to take
+a programmer's practical knowledge of statements
+and extend it with some grounded theory and solid reference material.</p>
+<p>It's a reference work, I get that.
+But even so, I think the order of the material is poor.
+At times it's brutally rude (for example, to see an explanation
+of the rules of pointer type compatibility before you see the
+syntax for pointer expressions).
+Other times it is merely capricious.</p>
+<h2>Setting a bad example</h2>
+<p>As hinted at previously,
+many of the examples are examples of how not to do things
+(in that they show techniques that are either obscure
+or invoke undefined behaviour),
+or they are examples that apply to Traditional C
+(either "how we did it in the old days" or
+"why this traditional technique no longer works").</p>
+<p>An example of this, chosen more or less at random,
+is on page 212 after the discussion of array notation
+there is a program that flattens a 2-dimensional array.
+It does this by casting
+an array (<code>double matrix[SIZE][SIZE]</code>) to
+a pointer (<code>(double *)matrix</code>) so that they can show
+their "trick" of using a single loop.
+It's bad code.
+It's an obscure and unclear trick introduced
+because the authors were too weak
+to avoid the siren call of premature performance optimisation.</p>
+<p>(the bizarre thing is at some level the authors know this,
+they frequently signal the code with
+"avoid in most situations" or
+"you will rarely have good reason to do this")</p>
+<p>If you have a copy of the book,
+the stand-out example is on page 276 at the end of section 8.7 on
+the <code>switch</code> statement.
+It is too horrible to repeat here.
+Needless to say,
+it would make a great example of how not to interview
+candidate C programmers.</p>
+<h2>Ancient C</h2>
+<p>They call it "Traditional C", I call it ancient.
+It's the C we programmed before Standard C was published.
+In 1990.
+Actually a lot of it predates even that period.
+Even before Standard C was published
+a lot of compiler vendors were moving towards a C
+that was more like Standard C
+(partly because the vendors were basing their
+compiler implementations on draft standards,
+but also because the standard was standardising existing
+common behavour of implementations).
+So there was a light before the dawn.
+Admittedly, there were also clouds after the dawn,
+vendors dragging their heels and support for older systems
+meant that we were still discussing in 1995
+if we should write C for "pre ANSI" compilers)</p>
+<p>In 2002 (when this edition was published)
+we should have been proposing that
+programmers start using <code>restrict</code> a bit more,
+not persuading them to use prototype function declarations.</p>
+<p>Protoype function declarations are ones that include the type of
+the formal arguments inside the parentheses:</p>
+<pre><code>int floor(float x)
+</code></pre>
+<p>as opposed to old-style "K &amp; R" definitions:</p>
+<pre><code>int floor(x)
+float x ;
+{ ... }
+</code></pre>
+<p>Prototype were standardised in 1990, but
+the old-style definitions were already old in 1990,
+since many compilers had already been supporting
+the Standard C prototype syntax.
+In 2002, it just seems bizarre.</p>
+<p>So I don't really want to see (on page 286) "whether to use
+prototypes in C programs is a tricky portability issue".
+It's not.
+Use prototypes.</p>
+<p>There is a quite a lot of discussion of Traditional C in the book,
+and I'd rather it were just removed.
+You can always refer readers to earlier editions of the book if
+they really have to maintain code that uses Traditional C
+features.</p>
+<h2>C1999</h2>
+<p>On the flip side the coverage of
+the language changes
+introduced with the 1999 version of the C Standard are
+most welcome.
+But.
+But there isn't enough discussion of them.</p>
+<p>I've already mentioned <code>restrict</code>
+and it's quite a major new feature ("new" as in "new in 1999")
+of the language.
+It grants to C what every Fortran programmer already had,
+the ability to declare that
+the output array of a function
+is separate (in terms of memory layout)
+from the input array of a function.
+It's perfect for large matrix multiplies,
+because it means that the function implementing them can,
+as long as it computes a reasonable answer,
+read the inputs and perform the sub-calculations in any order,
+safe in the knowledge that writing into the result matrix cannot
+change the input matrix.
+This freedom to choose the order can make a large difference for
+heavily optimised algorithms.</p>
+<p>But <code>restrict</code> is hardly discussed in the book
+and appears only once in the index.
+This is a real shame,
+because we desparately need material to use
+to train all the C programmers
+on how to use <code>restrict</code> productively.
+It's much better than using vendor-specific pragmas.
+Even OpenMP ones.</p>
+<h2>Fun with ints</h2>
+<p>We love int types, right?</p>
+<p>One of the fun things about C in the early days was that
+integer types mapped fairly naturally to low-level machine quantities.
+So on the Motorola 68000 CPU,
+which had 32-bit registers and a 16-bit memory bus,
+<code>int</code> was a 16-bit type, and <code>long</code> was a 32-bit type.</p>
+<p>Then other people got their hands on C and there were many more
+bizarre architectures with 37-bit types and tagged 42-bit types,
+and no-one knew what any type was any more,
+but we all knew that <code>int</code> was "obviously 32-bits"
+on "any sensible machine",
+except when it wasn't,
+and a whole lot of code was simply unportable
+to 64-bit UltraSPARC, 64-bit MIPS, or Digital ALPHA.</p>
+<p>To fix this,
+the wise owls invented <code>&lt;stdint.h&gt;</code>,
+which was a way of getting an integer type that was exactly 32-bits,
+or, if you were more relaxed about it,
+an integer type that was at least 32-bits.</p>
+<p><code>int_least32_t</code> has a nice ring to it don't you think?</p>
+<p>Anyway, not enough programmers know about them,
+and their good and profitable use
+doesn't have enough discussion in the book.</p>
+<h2>Designated Initialisers</h2>
+<p>OMG how cool are <em>designated initialisers</em>.
+We didn't even have these last time I wrote C,
+and pretty much everything I know about them I got from reading
+bits of the draft standard.</p>
+<p>They are really useful in initialising structs where you don't
+know the layout,
+which happens when they're not your structs,
+but you found them in someone else's header file.</p>
+<p>Again, major new portability feature of C1999,
+not discussed nearly enough in this book.</p>
+<h2>Wrapping up</h2>
+<p>Recommended.
+But not as your first C book.</p>
+<p>Take a thick marker pen and strike out any section about
+Traditional C.
+You'll add a lot of black ink to the book,
+but you'll avoid burning your eyes on ancient texts
+that are not meant for mortals.</p>
+</article>
+
