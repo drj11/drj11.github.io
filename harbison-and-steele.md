@@ -1,6 +1,8 @@
-# C A Reference Manual
+[brutal]: #title "C A Reference Manual"
+[brutal]: #author "David Jones"
+[brutal]: #date "2017-07-11"
 
-Prompted by conversations with samathy and matthew hughes
+Prompted by conversations with @samathy and Matthew Hughes
 I am writing a review of a book about C.
 
 Harbison and Steele's «C A Reference Manual».
