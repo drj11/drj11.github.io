@@ -26,7 +26,7 @@ But if you can write a program in C then
 this book would make an excellent choice.
 
 Good books on C are rare, and this is a good book.
-The authors know they're stuff,
+The authors know their stuff,
 and while they are not always as clear as possible on some topics,
 they are assiduous and correct.
 
