@@ -15,16 +15,21 @@ As I see it, the philosophy of Forth is:
 - Uniformity.
 
 The use of "chumminess" here is a reference to Ritchie declaring
-that [some particular C struct hack was
+that some particular C struct hack was
 "unwarranted chumminess with the C implementation"](http://c-faq.com/struct/structhack.html)
 
 ## Implicit Notation
 
-I'm covering two points here with "Implicit Notation".
-One is, the stack;
-Forth's (famous) data stack is the place where
-most computational data gets manipulated.
-But I'm also covering a second: the general lack of syntax.
+I'm covering two points here with "Implicit Notation":
+- the stack;
+- the (lack of) syntax.
+
+If you've heard anything about Forth,
+you've probably heard that it is a "stack based language".
+It's the thing that makes it different from other languages.
+
+The second point is syntax.
+There is a general lack of it.
 And I don't just mean the syntax is small,
 it's almost non-existant.
 
@@ -108,7 +113,7 @@ but the stack is very flexible and powerful.
 And time honoured.
 
 The implicit nature of the operators leads to very terse code.
-Sequences don't need to say where their inputs come from,
+Functions don't need to say where their inputs come from,
 or how many inputs they take, or how many results they push.
 
 It also does your head in a bit.
