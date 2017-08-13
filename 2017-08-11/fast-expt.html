@@ -1,0 +1,76 @@
+<meta charset="utf-8">
+<title>Fast (Matrix) Exponentiation in R</title>
+<body>
+<nav>
+<a href="../2017-07-11/harbison-and-steele.html">(previous)</a>
+</nav>
+<article>
+<h1>Fast (Matrix) Exponentiation in R</h1>
+<time>2017-08-11</time>
+<address>by David Jones</address>
+<p>A few days ago,
+Eric published
+<a href="https://eric.netlify.com/2017/08/08/taking-powers-of-a-matrix-in-r/">the blog post titled "Taking powers of a matrix in R"</a>.
+It's quite a nice post,
+and certainly re-introduces me to some linear algebra which I
+may have once known.
+Who can say.</p>
+<p>Let's say want to raise a matrix <em>M</em> to some power <em>k</em>
+(exponentiation).
+Because I got annoyed with unicode superscripts,
+I'm going to use the notation <em>pow(M, k)</em> for this.</p>
+<p>Eric's (cute) observation is that we can decompose a matrix <em>M</em>
+into a diagonal form <em>PDP⁻¹</em>;
+then <em>pow(M, k)</em> is <em>P(pow(D, k))P⁻¹</em>.
+Since <em>D</em> is diagonal, it's far faster to exponentiate it than
+a general matrix.</p>
+<p>Eric discusses one drawback to this approach:</p>
+<ul>
+<li>only better for large <em>n</em> (<em>n &gt; 80</em>)</li>
+</ul>
+<p>There are a couple of other drawbacks:</p>
+<ul>
+<li>complex arithmetic (for real or integer matrixes);</li>
+<li>not exact for integer inputs;</li>
+<li>not actually very fast.</li>
+</ul>
+<p>The fast way is repeated squaring.
+To take an example:
+<em>pow(M, 8)</em> is
+M-squared-squared-squared.
+Instead of 8 (or 7) multiplications,
+we can use 3 squarings (which is 3 multiplications).</p>
+<p>So, a bit more formally:</p>
+<p><em>pow(M, 2*n)</em> is <em>square(pow(M, n))</em>;</p>
+<p><em>pow(M, n+1)</em> is <em>M*pow(M, n)</em>.</p>
+<p>This leads to a recursive scheme
+to raise a matrix <em>M</em> to the <em>n</em>th power.
+It has two recursive cases,
+one when <em>n</em> is even (<em>n</em> is halved),
+one when <em>n</em> is odd (<em>n</em> is reduced by one).
+Both of these reduce <em>n</em>,
+so eventually we hit the base case,
+which is that <em>pow(M, 0)</em> is I.</p>
+<p>In R code:</p>
+<pre><code>pow_sq_recursive = function (A, k) {
+  if(k == 0) {
+    # identity
+    diag(1, nrow(A))
+  } else if(k %% 2 == 1) {
+    A %*% pow_sq_recursive(A, k-1)
+  } else {
+    pow_sq_recursive(A %*% A, k %/% 2)
+  }
+}
+</code></pre>
+<p>(I couldn't avoid also writing the true iterative
+version of this function,
+see <a href="https://github.com/drj11/R-square-exponentiation">the github repo</a> for details)</p>
+<p>I have shamelessly stolen Eric's code
+to produce a retread of his lovely graph:</p>
+<p><img alt="Powers of a matrix" src="../image/pow.png" title="Timings of M raised to power k, for various k"></p>
+<p>My favourite book,
+Structure and Interpretation of Computer Programs,
+has a section on this algorithm in Chapter 1.</p>
+</article>
+

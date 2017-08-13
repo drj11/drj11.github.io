@@ -13,3 +13,8 @@ https://commons.wikimedia.org/wiki/File:Pipeline,_4_stage.svg
 
 Wikipedia user Tim1965
 https://en.wikipedia.org/wiki/File:Memorial_Amphitheater_-_rear_pediment_-_Arlington_National_Cemetery_-_2011.JPG
+
+# pow.png
+
+David Jones, using code originally written by
+https://eric.netlify.com/2017/08/08/taking-powers-of-a-matrix-in-r/
