@@ -84,8 +84,8 @@ Eric reckons that 82 matrix multipiclations are equivalent to the
 diagonalisation method.
 The repeated square method has *O(log k)* growth;
 it uses 82 matrix multiplications for
-*k* between 2**42 (4 trillion, or 4e12)
-and 2**82 (5 septillion, or 5e24).
+*k* between pow(2, 42) (4 trillion, or 4e12)
+and pow(2, 82) (5 septillion, or 5e24).
 
 So when computing *pow(M, k)* you should switch
 from naive linear multiplication
