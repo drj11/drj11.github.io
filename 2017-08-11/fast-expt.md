@@ -15,6 +15,8 @@ Let's say want to raise a matrix *M* to some power *k*
 Because I got annoyed with unicode superscripts,
 I'm going to use the notation *pow(M, k)* for this.
 
+## Eigenvalues For The Win!
+
 Eric's (cute) observation is that we can decompose a matrix *M*
 into a diagonal form *PDP⁻¹*;
 then *pow(M, k)* is *P(pow(D, k))P⁻¹*.
@@ -30,6 +32,8 @@ There are a couple of other drawbacks:
 - complex arithmetic (for real or integer matrixes);
 - not exact for integer inputs;
 - not actually very fast.
+
+## Repeated Squaring tho
 
 The fast way is repeated squaring.
 To take an example:
