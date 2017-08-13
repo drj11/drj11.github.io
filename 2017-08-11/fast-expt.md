@@ -84,8 +84,9 @@ to produce a retread of his lovely graph:
 So, we can certainly see that repeated squaring
 is a lot faster than diagonalisation.
 
-Eric reckons that 82 matrix multipiclations are equivalent to the
-diagonalisation method.
+Eric reckons that 82 matrix multiplications
+take about the same time as
+the diagonalisation method.
 The repeated square method has *O(log k)* growth;
 it uses 82 matrix multiplications for
 *k* between pow(2, 42) (4 trillion, or 4e12)
