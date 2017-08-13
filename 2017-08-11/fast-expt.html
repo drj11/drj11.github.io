@@ -19,6 +19,7 @@ Who can say.</p>
 (exponentiation).
 Because I got annoyed with unicode superscripts,
 I'm going to use the notation <em>pow(M, k)</em> for this.</p>
+<h2>Eigenvalues For The Win!</h2>
 <p>Eric's (cute) observation is that we can decompose a matrix <em>M</em>
 into a diagonal form <em>PDP⁻¹</em>;
 then <em>pow(M, k)</em> is <em>P(pow(D, k))P⁻¹</em>.
@@ -34,6 +35,7 @@ a general matrix.</p>
 <li>not exact for integer inputs;</li>
 <li>not actually very fast.</li>
 </ul>
+<h2>Repeated Squaring tho</h2>
 <p>The fast way is repeated squaring.
 To take an example:
 <em>pow(M, 8)</em> is
@@ -66,11 +68,46 @@ which is that <em>pow(M, 0)</em> is I.</p>
 <p>(I couldn't avoid also writing the true iterative
 version of this function,
 see <a href="https://github.com/drj11/R-square-exponentiation">the github repo</a> for details)</p>
+<h2>Repeated squaring is a lot faster</h2>
 <p>I have shamelessly stolen Eric's code
 to produce a retread of his lovely graph:</p>
 <p><img alt="Powers of a matrix" src="../image/pow.png" title="Timings of M raised to power k, for various k"></p>
-<p>My favourite book,
-Structure and Interpretation of Computer Programs,
-has a section on this algorithm in Chapter 1.</p>
+<p>So, we can certainly see that repeated squaring
+is a lot faster than diagonalisation.</p>
+<p>Eric reckons that 82 matrix multiplications
+take about the same time as
+the diagonalisation method.
+The repeated square method has <em>O(log k)</em> growth;
+it uses 82 matrix multiplications for
+<em>k</em> between pow(2, 42) (4 trillion, or 4e12)
+and pow(2, 82) (5 septillion, or 5e24).</p>
+<p>So when computing <em>pow(M, k)</em> you should switch
+from naive linear multiplication
+to diagonalisation at about
+<em>k = 82</em>;
+with repeated squaring you can go a bit further,
+I estimate switching at <em>k</em> well above 4 trillion.</p>
+<h2>Repeated squaring is textbook stuff</h2>
+<p>It's worth noting that the repated squaring algorithm
+applies to any situation where we can use multiplication.
+So we can use it for ordinary numbers,
+polynomials
+(useful for increment recomputation of
+Cyclic Redundancy Check polynomials),
+finite groups, and of course matrixes.</p>
+<p>I'm actually not sure how obscure this
+"repeated squaring" technique is,
+but it's in Chapter 1 of my favourite book,
+<a href="https://mitpress.mit.edu/sicp/chapter1/node15.html">Structure and Interpretation of Computer Programs</a>.
+It's also required on any crypto course,
+because various crypto algorithms involve raising numbers
+(in finite groups) to large powers.</p>
+<h2>But What About R?</h2>
+<p>But surely this is all silly?
+We shouldn't be writing blog posts about
+how to efficiently exponentiate in R,
+because R already has sensible builtins
+that use well understood and efficient algorithms.</p>
+<p>Doesn't it?</p>
 </article>
 

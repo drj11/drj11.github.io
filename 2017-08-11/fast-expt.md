@@ -101,11 +101,29 @@ I estimate switching at *k* well above 4 trillion.
 
 ## Repeated squaring is textbook stuff
 
+It's worth noting that the repated squaring algorithm
+applies to any situation where we can use multiplication.
+So we can use it for ordinary numbers,
+polynomials
+(useful for increment recomputation of
+Cyclic Redundancy Check polynomials),
+finite groups, and of course matrixes.
+
 I'm actually not sure how obscure this
 "repeated squaring" technique is,
 but it's in Chapter 1 of my favourite book,
 [Structure and Interpretation of Computer Programs](https://mitpress.mit.edu/sicp/chapter1/node15.html).
 It's also required on any crypto course,
 because various crypto algorithms involve raising numbers
-(in finite fields) to large powers.
+(in finite groups) to large powers.
+
+## But What About R?
+
+But surely this is all silly?
+We shouldn't be writing blog posts about
+how to efficiently exponentiate in R,
+because R already has sensible builtins
+that use well understood and efficient algorithms.
+
+Doesn't it?
 
