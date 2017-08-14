@@ -101,7 +101,7 @@ I estimate switching at *k* well above 4 trillion.
 
 ## Repeated squaring is textbook stuff
 
-It's worth noting that the repated squaring algorithm
+It's worth noting that the repeated squaring algorithm
 applies to any situation where we can use multiplication.
 So we can use it for ordinary numbers,
 polynomials
