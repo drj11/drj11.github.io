@@ -1,5 +1,6 @@
 [brutal]: #title "PyCon UK 2017"
 [brutal]: #author "David Jones"
+[brutal]: #date "2017-11-04"
 
 4 days in Cardiff, the land of my people (I'm ¼ Welsh).
 
