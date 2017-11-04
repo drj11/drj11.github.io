@@ -150,3 +150,17 @@ href="https://www.flickr.com/photos/152472562@N06/26232709589/"
 title="PYCON_201710"><img
 src="https://farm5.staticflickr.com/4472/26232709589_6d28a60d59_z.jpg"
 width="640" height="427" alt="PYCON_201710"></a>
+
+It was fun, and it was good.
+All good things must come to an end,
+and so did PyCon UK.
+I felt a little sad leaving,
+but Rae Knowler stepped in to forward some advice from Ash
+McAllan.
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Hey <a href="https://twitter.com/hashtag/pyconuk?src=hash&amp;ref_src=twsrc%5Etfw">#pyconuk</a> folks, this is for us as well. 💜🐍🏔 <a href="https://t.co/B4yiXg37Hy">https://t.co/B4yiXg37Hy</a></p>&mdash; Rae Knowler (@RaeKnowler) <a href="https://twitter.com/RaeKnowler/status/924785656261435397?ref_src=twsrc%5Etfw">October 29, 2017</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+## Closing
+
+Hope to see you next year!
