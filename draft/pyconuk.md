@@ -8,6 +8,9 @@ What makes a conference stand out is the other things.
 PyCon UK stands out in it's inclusivity,
 it's commitment to diversity, and it's welcoming atmosphere.
 
+All the photos below are embed's from
+[the conference's official photographer Mark Hawkins](https://www.flickr.com/photos/152472562@N06/).
+
 ## Affordances
 
 There are deliberate affordances that
