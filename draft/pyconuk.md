@@ -5,8 +5,8 @@
 
 Every conference has talks, workshops, keynotes.
 What makes a conference stand out is the other things.
-PyCon UK stands out in it's inclusivity,
-it's commitment to diversity, and it's welcoming atmosphere.
+PyCon UK stands out in its inclusivity,
+its commitment to diversity, and its welcoming atmosphere.
 
 All the photos below are embed's from
 [the conference's official photographer Mark Hawkins](https://www.flickr.com/photos/152472562@N06/).
@@ -165,5 +165,8 @@ McAllan.
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ## Closing
+
+The [2017 schedule](http://2017.pyconuk.org/schedule/) has
+links to the talks and the speaker's slides.
 
 Hope to see you next year!
