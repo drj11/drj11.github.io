@@ -1,0 +1,65 @@
+<meta charset="utf-8">
+<title>Using Python pyproj</title>
+<body>
+<nav>
+<a href="../2017-11-04/pyconuk.html">(previous)</a>
+</nav>
+<article>
+<h1>Using Python pyproj</h1>
+<time>2017-12-09</time>
+<address>by David Jones</address>
+<p>So I have a CSV with a bunch of coordinates on the
+<a href="https://www.ordnancesurvey.co.uk/resources/maps-and-geographic-resources/the-national-grid.html">British National Grid</a>
+and I want to display these shapes on a map on the web.
+Almost all web mapping tools expect coordinates in WGS84.</p>
+<p>So I needed to convert the coordinates.
+I <a href="https://twitter.com/darkgreener/status/939116556516315138">cheekily asked</a> data scientist
+<a href="https://anna.ps/">Anna Powell-Smith</a> who suggested <a href="http://geopandas.org/">GeoPandas</a>.</p>
+<p>So, in a fresh <code>conda</code> environment:</p>
+<pre><code>conda install geopandas
+</code></pre>
+<h1>Wait</h1>
+<p>I would love to say that in the time it took to download the
+2.3 Gigabytes that GeoPandas needs, I found
+<a href="https://jswhit.github.io/pyproj/">pyproj</a> and wrote my
+conversion tool using it.</p>
+<p>Life isn't quite so poetic,
+but it is the case that
+a conda env containing <em>GeoPandas</em> is 2.3 Gigabytes, and
+a conda env containing <em>pyproj</em> is 156 Megabytes.</p>
+<p>(Incidentally, I came across pyproj because I saw it whizz by as
+all the dependencies for GeoPandas were scrolling by,
+and it sounded like the thing that <em>actually converted
+coordinates</em>)</p>
+<p>The pyproj documentation is not exactly introductory,
+but <a href="https://jswhit.github.io/pyproj/pyproj-pysrc.html#transform">the docstrings in the source</a>
+were pretty useful in working out how to use it.</p>
+<h1>Project and transform</h1>
+<p>I create an object for the source projection,
+which is British National Grid:</p>
+<pre><code>os_proj = pyproj.Proj(init='epsg:27700')
+</code></pre>
+<p>and an object for the target projection, which is WGS 84:</p>
+<pre><code>wgs_proj = pyproj.Proj(init='epsg:4326')
+</code></pre>
+<p>The numbers after the <code>epsg</code> are seemingly random,
+but you can discover them by Googling <code>epsg British National Grid</code>
+or similar.</p>
+<p>So with a pair of <code>x</code>, <code>y</code> coordinates in hand
+(which are Eastings and Northings in metres for
+British National Grid), you can transform them from one
+projection to another with:</p>
+<pre><code>lon, lat = pyproj.transform(os_proj, wgs_proj, x, y)
+</code></pre>
+<p>which (because our target project is WGS84) gives a longitude
+and a latitude (in degrees).</p>
+<p>You can mass convert by passing in arrays of coordinates apparently,
+but I convert a CSV file row-by-row calling <code>pyproj.transform</code>
+once per row.
+That converts a 15000 row file essentially instantaneously
+(&lt; 1 second), so that's fine.</p>
+<p>The files and the code are in the
+<a href="https://github.com/SheffieldDFG/sheffield-lsoa">sheffield-lsoa</a>
+repo.</p>
+</article>
+
