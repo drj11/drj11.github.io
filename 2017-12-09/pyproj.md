@@ -70,3 +70,6 @@ That converts a 15000 row file essentially instantaneously
 The files and the code are in the
 [sheffield-lsoa](https://github.com/SheffieldDFG/sheffield-lsoa)
 repo.
+
+So, despite not using GeoPandas in the end,
+I do thank Anna Powell-Smith for the recommendation.
