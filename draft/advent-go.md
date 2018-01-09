@@ -52,4 +52,4 @@ the days of advent of code.
 Day 24 involves a fairly exhaustive longest graph-traversal
 scenario,
 and using Go means that we can code it fairly naively and it
-still finishes in reasonable time.
+still finishes in reasonable time (< 1 second).
