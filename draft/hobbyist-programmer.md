@@ -23,7 +23,7 @@ But most of us haven't been formally taught how to do that,
 and where we have,
 most of those teachers didn't do that from the context of a
 professionally maintained body of knowledge about how to teach
-prople to program.
+people to program.
 
 The theory of how to teach people the skills they need to program in a
 professional context simply hasn't been around that long.
@@ -35,8 +35,8 @@ Sentance calls *pedagogical content knowledge*
 I have a post graduate diploma in Computer Science,
 so I guess I have commercially useful qualifications.
 But:
-1) Mostly courses designed to be useful for further academic study; and,
-2) taught mostly by academic computer scientists, not by teachers.
+1) it was mostly courses designed to be useful for further academic study; and,
+2) it was mostly taught by academic computer scientists, not by teachers.
 
 I did a lot of programming between ages 10 and 18 and that was
 all taught by me and the ZX81 BASIC programming manual.
