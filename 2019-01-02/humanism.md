@@ -6,7 +6,7 @@ In 2018 I joined Humanists UK.
 With I suppose a slow dawning that I was, or might be, a
 Humanist.
 To be honest, I have little idea of what a Humanist is,
-so why did I joined the society for Humanists?
+so why did I join the society for Humanists?
 Their campaigns.
 
 When I look at what campaigns Humanists UK supported and what
