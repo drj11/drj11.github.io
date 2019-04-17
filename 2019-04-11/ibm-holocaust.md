@@ -7,7 +7,8 @@
 The book is fairly well known and
 had been recommended by several people.
 
-The 80-column punched card is the main character in the book.
+The [80-column punched card](https://en.wikipedia.org/wiki/Punched_card)
+is the main character in the book.
 To a modern reader this technology seems impossibly ancient,
 but in the 1930s it was the cutting edge of data processing.
 
