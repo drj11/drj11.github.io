@@ -12,6 +12,12 @@ is the main character in the book.
 To a modern reader this technology seems impossibly ancient,
 but in the 1930s it was the cutting edge of data processing.
 
+The book documents the rise of the punched card and its ability
+to record, sort, and tabulate data.
+Data about trains, data about inventory, data about people.
+IBM's rise and its increasing monopolisation of this technology
+forms some of the earlier material in the book.
+
 Black's central thesis is that IBM were aiding the Nazi's in
 their genocide of the Jewish people
 (Black focusses on the extermination of Jews, but not exclusively).
