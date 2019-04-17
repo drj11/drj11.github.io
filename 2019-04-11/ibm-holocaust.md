@@ -15,7 +15,8 @@ but in the 1930s it was the cutting edge of data processing.
 The book documents the rise of the punched card and its ability
 to record, sort, and tabulate data.
 Data about trains, data about inventory, data about people.
-IBM's rise and its increasing monopolisation of this technology
+IBM's corresponding rise and
+its increasing monopolisation of this technology
 forms some of the earlier material in the book.
 
 Black's central thesis is that IBM were aiding the Nazi's in
@@ -50,7 +51,7 @@ the Nazis identify as undesirable.
 The detail is impressive, even down the to column numbers of
 the punched cards.
 He is also able to show how vital these machines are.
-It's just that the IBM machines are used to exterminate people,
+It's not just that the IBM machines are used to exterminate people,
 it's that there is no other way to do it as efficiently as it
 was done.
 Where the machines are unavailable or, as is the case with
@@ -73,11 +74,13 @@ IBM's activities were un-American and unpatriotic.
 But the more this taskforce learnt about IBM and its technology,
 the more it realised that the liberating Allied forces could
 make use of it.
-Lists of key installations of IBM machines were made,
-not so that they could be bombed in order to the cripple the
-Nazi war machine, but so that the liberating forces could deploy
-special troops and take over control of the IBM machines intact
-so that they could be used for Allied forces.
+Lists of key installations of IBM machines were made.
+But instead of crippling the Nazi war machine by bombing these installations,
+the lists were handed to specially trained troops placed forward
+in the liberating army.
+Troops that would capture the IBM machines intact and
+take over control of the IBM machines,
+putting them to work for the Allied forces.
 
 What are we to make of all this?
 The grim message repeated time and time again in the book is how
@@ -102,7 +105,7 @@ Where possible each of us should strive to avoid that.
 Good questions to ask are:
 "Am I building something that could be used to make a Nazi death machine?",
 and, "Am I collecting data that will be used by Nazis to kill
-or supress people when the Nazis invade and overthrow my legitimate
+or suppress people when the Nazis invade and overthrow my legitimate
 government?".
 
 The book certainly makes the case that technocracy is
