@@ -113,6 +113,6 @@ problematic.
 Technocrats who were striving to bring order with their new machines
 are shown time and time again to become useful tools in the Nazi
 war machine.
-Their love of what the machines were capable of and could be
-made to do technically made them blind to the larger picture of
-what Nazis were doing with this data.
+They loved the technology.
+They loved what the machines could do.
+But they never should have.
