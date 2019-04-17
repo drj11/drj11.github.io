@@ -4,8 +4,8 @@
 
 «IBM and the Holocaust» by Edwin Black.
 
-The book is fairly well known and had been recommended by
-several people.
+The book is fairly well known and
+had been recommended by several people.
 
 The 80-column punched card is the main character in the book.
 To a modern reader this technology seems impossibly ancient,
