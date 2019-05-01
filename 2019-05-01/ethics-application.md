@@ -7,7 +7,7 @@ I decided I should try and become a departmental ethics reviewer.
 It turns out that there isn't really any application process,
 you just ask.
 
-Nonetheless when I asked to write a few sentences,
+Nonetheless when I was asked to write a few sentences,
 it turned into a longer Personal Statement.
 
 I'm recording it here in my blog because
