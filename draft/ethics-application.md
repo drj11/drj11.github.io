@@ -1,11 +1,18 @@
-Ethics Review
+# Departmental Ethics Review
 
-Received e-mail 2019-05-01 from Alice Tucker
-saying that I am accepted as an ethics reviewer but am required
-to train first.
+I decided I should try and become a departmental ethics reviewer.
 
-Alice would also like me to write a few sentences to explain my
-areas of interest and strengths.
+It turns out that there isn't really any application process,
+you just ask.
+
+Nonetheless when I asked to write a few sentences,
+it turned into a longer Personal Statement.
+
+I'm recording it here in my blog because
+although written in a hurry it summarises some of
+my reflections over the past few years.
+
+---
 
 I am a software engineer in the Research Software Engineering
 group at The University of Sheffield.
