@@ -1,4 +1,6 @@
-# Departmental Ethics Review
+[brutal]: #title "Departmental Ethics Review"
+[brutal]: #author "David Jones"
+[brutal]: #date "2019-05-01"
 
 I decided I should try and become a departmental ethics reviewer.
 
@@ -71,5 +73,4 @@ caring responsibilities might not have the time to take on
 additional work-related responsibilities such as ethical review,
 resulting in the pool of ethical reviewers being diluted in diversity
 and enriched with people of privilege.
-
 
