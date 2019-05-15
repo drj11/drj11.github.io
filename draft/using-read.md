@@ -120,7 +120,7 @@ fit well with disk and RAM sizes in a computer).
 Consider: `yes 123456789 | ( head -n 1 ; head -n 1 )`.
 Does this program terminate?
 How many lines of output are written?
-What is the output.
+What is the output?
 A caution here: the answers I got vary and are clearly going to
 vary from system to system.
 
