@@ -145,7 +145,7 @@ it and writes that line to the output.
 We know that is `123456789`.
 The second `head` shares its input with the first head.
 It reads some more input from where the first `head` left off.
-We have a clue, the first byte of the second line is `3`.
+We have a clue: the first byte of the second line is `3`.
 This is consisent with the first `head` reading 8192 bytes:
 819 lines of `123456789` followed by the first two bytes of the
 820th line: `12`.
