@@ -16,15 +16,13 @@ Type `lols` followed by the ↵ key.
 Did you see a listing of the files in your directory?
 I get something like this:
 
-```
-ac1xdrj@owl:~/tmp$ dd count=1 bs=2
-lols
-lo1+0 records in
-1+0 records out
-2 bytes copied, 4.05288 s, 0.0 kB/s
-ac1xdrj@owl:~/tmp$ ls
-dl  metrics.4030284.csv
-```
+    ac1xdrj@owl:~/tmp$ dd count=1 bs=2
+    lols
+    lo1+0 records in
+    1+0 records out
+    2 bytes copied, 4.05288 s, 0.0 kB/s
+    ac1xdrj@owl:~/tmp$ ls
+    dl  metrics.4030284.csv
 
 It looks like the `dd` command is somehow
 passing the string `ls` to my shell and getting the shell to run it.
@@ -36,14 +34,12 @@ I'm using it here to read 2 bytes from the input.
 You can write a C program to do that if you like.
 Compile and run this for the same effect:
 
-```
-#include <unistd.h>
+    #include <unistd.h>
 
-int main(void) {
-    char cs[2];
-    read(0, cs, sizeof cs);
-}
-```
+    int main(void) {
+        char cs[2];
+        read(0, cs, sizeof cs);
+    }
 
 Is `dd` (or the C program above) really sending data to the shell? No.
 
@@ -135,10 +131,8 @@ So the answers are: Yes, the program terminates;
 Two lines are output (each invocation of `head` is responsible for one line);
 The output is:
 
-```
-123456789
-3456789
-```
+    123456789
+    3456789
 
 (maybe). The first line is definitely `123456789`,
 the second line could be a variety of things.
@@ -161,16 +155,14 @@ and it reads starting from `3`.
 We can use `strace` to see what `read()` system calls `head` is
 making:
 
-```
-$ yes 123456789 | ( strace -e read head -n 1 ; head -n 1 )
-read(4, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0P\t\2\0\0\0\0\0"..., 832) = 832
-read(4, "# Locale name alias data base.\n#"..., 4096) = 2995
-read(4, "", 4096)                       = 0
-read(0, "123456789\n123456789\n123456789\n12"..., 8192) = 8192
-123456789
-+++ exited with 0 +++
-3456789
-```
+    $ yes 123456789 | ( strace -e read head -n 1 ; head -n 1 )
+    read(4, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0P\t\2\0\0\0\0\0"..., 832) = 832
+    read(4, "# Locale name alias data base.\n#"..., 4096) = 2995
+    read(4, "", 4096)                       = 0
+    read(0, "123456789\n123456789\n123456789\n12"..., 8192) = 8192
+    123456789
+    +++ exited with 0 +++
+    3456789
 
 (here we have used `strace -e read` so that `strace` only shows
 the `read()` system calls)
@@ -185,11 +177,9 @@ If you've read Kernighan and Pike's «The UNIX Programming Environment»
 you'll be aware that `sed q` is a replacement for `head -n 1`.
 If we try the above using `sed` instead of `head`:
 
-```
-$ yes 123456789 | ( sed q ; sed q )
-123456789
-789
-```
+    $ yes 123456789 | ( sed q ; sed q )
+    123456789
+    789
 
 The second line starts with a `7` implying that
 the first invocation of `sed` reads 4096 bytes
