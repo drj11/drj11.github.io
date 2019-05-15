@@ -1,5 +1,9 @@
-https://twitter.com/PrincenAlice on Twitter finds
-a quirk in the Unix `read()` system call.
+This article starts with a [post on
+Twitter](https://mobile.twitter.com/PrincenAlice/status/1125446258829725697)
+about a quirk in the Unix `read()` system call.
+
+The issues are around the question:
+"what happens if there is more input available that read() returns"?
 
 To transplant that into the command line,
 try this in your own command line shell:
@@ -52,7 +56,7 @@ The Unix kernel returns 2 bytes to `dd`.
 The unread bytes that `dd` did not read are still available.
 The next call to `read()` will return them.
 
-As it happens in this case, the next call to `read()` is
+In this case, the next call to `read()` is
 the shell that originally invoked `dd`.
 The shell calls `read()` for the next command.
 It finds the input `ls␊` and treats that as a command to run.
@@ -85,22 +89,23 @@ The difference here is that no other program shares the input to
 In this case the unread bytes (`l`, `s`, `␊`) are tidied up by
 the kernel when the last process that could read them exits.
 
-In this case I set things up so that I had a program that read
-only a very small portion of its input.
-There are other cases where programs might not read all of their input.
+The setup above is deliberately obscure:
+a program that reads only a very small portion of the input.
+There are other cases where a program might naturally read some
+but not all of the input.
 `head -n 1` copies the first line of its input to its output.
 How much of its input does it read?
 Consider: `cat big-long-file | head -n 1`.
 In this case `head` does not need to read the entire input,
 it would be a waste to read the entire input.
-`cat thing` is not only a Useless Use of Cat but also a fairly
-innocuous example.
 
+`cat thing` is a fairly innocuous example
+(no, I don't want your Useless Use of Cat award).
 Instead of `cat thing` we might have something that using both
 CPU and network to provide input:
 `curl https://some-large-compressed-object | head -n 1`.
-In this case it might be very useful for `head` to only read the
-first part of its input.
+In this case it might be very useful for `head` to
+only read the first part of its input.
 Also we might have a program that produces an infinite stream,
 but we still only want part of it:
 `yes 123456789 | head -n 1`
@@ -148,6 +153,55 @@ The second `head` shares its input with the first head.
 It reads some more input from where the first `head` left off.
 We have a clue, the first byte of the second line is `3`.
 This is consisent with the first `head` reading 8192 bytes:
-819 lines of `123456789` followed by the first two bytes: `12`.
+819 lines of `123456789` followed by the first two bytes of the
+820th line: `12`.
 That leaves the second `head` to start right where that left off
 and it reads starting from `3`.
+
+We can use `strace` to see what `read()` system calls `head` is
+making:
+
+```
+$ yes 123456789 | ( strace -e read head -n 1 ; head -n 1 )
+read(4, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0P\t\2\0\0\0\0\0"..., 832) = 832
+read(4, "# Locale name alias data base.\n#"..., 4096) = 2995
+read(4, "", 4096)                       = 0
+read(0, "123456789\n123456789\n123456789\n12"..., 8192) = 8192
+123456789
++++ exited with 0 +++
+3456789
+```
+
+(here we have used `strace -e read` so that `strace` only shows
+the `read()` system calls)
+
+We can see a bunch of `read()` calls on other file descriptors,
+followed by `read(0, blah blah blah, 8192)`.
+`head` is reading 8192 bytes from stdin (file descriptor 0).
+
+The output after `+++` is produced by the second invocation of `head`.
+
+If you've read Kernighan and Pike's «The UNIX Programming Environment»
+you'll be aware that `sed q` is a replacement for `head -n 1`.
+If we try the above using `sed` instead of `head`:
+
+```
+$ yes 123456789 | ( sed q ; sed q )
+123456789
+789
+```
+
+The second line starts with a `7` implying that
+the first invocation of `sed` reads 4096 bytes
+(or some other number ending in 6).
+A fact you can confirm using `strace`.
+
+Note that the fact that `head` reads 8192 bytes and `sed` reads
+4096 bytes is not really a hard fact.
+It's just a partly visible consequence of the buffering
+implementation that they both use.
+So it may be that on your favourite Unix you get different results.
+While I was writing this article,
+I half-remember getting different results out of `head` and `sed`,
+depending on exactly how I invoked them.
+But I can't seem to reproduce that now.
