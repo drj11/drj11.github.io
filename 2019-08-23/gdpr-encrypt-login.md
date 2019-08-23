@@ -5,6 +5,7 @@
 On Twitter I recently asserted that presenting an unencrypted
 login page was a GDPR violation.
 Without much evidence to back me up.
+So now I'm doing a little background reading of the GDPR.
 
 # General Data Protection Regulation
 
