@@ -46,7 +46,7 @@ state-of-the-art across the (web) industry, and
 that the direct cost is minimal to zero, then
 that leaves little wiggle room.
 Data should be encrypted.
-You're login page should be encrypted.
+Your login page should be encrypted.
 
 ## Article 5
 
