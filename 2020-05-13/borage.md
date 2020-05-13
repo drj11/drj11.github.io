@@ -38,4 +38,40 @@ and sprinkled some seed on, and watered in.
 The stuff that may or may or contain viable seeds got scattered
 at random amongst various bits of the garden with no preparation.
 
+Key dates
 
+March 21 separated seed
+
+March 22 planted
+
+16 days later a sprout appears! woohoo!
+And a few days later a second one appears,
+but I don't seem to have recorded when.
+
+April 7 Number 1 sprouted (number 1)
+
+But imagine my surprise when more than 2 weeks after the first
+sprout, another one appears!
+I had given up on the other two pots.
+
+April 26 Number 3 sprouted!
+
+Come the beginning of May (41 days after plenting) I think the
+first two are ready for planting out in the garden.
+But a fourth sprout has appeared!
+
+May 2 Number 4 sprouted! And Number 1 and 2 planted out.
+
+At some point at least a few of the seeds I planted outside
+sprouted.
+I can't remember when, and I didn't take a photo.
+
+You can see from this photo taken today that the Borage that
+started in the greenhouse is far ahead of the seed that was
+planted out:
+
+May 13 now.
+
+In conclusion Borage can be grown from collected seed.
+Better results if you plant it conventionally in a pot first,
+but seemingly okay to scatter larger amounts on open ground.
