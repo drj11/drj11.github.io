@@ -21,7 +21,8 @@ the cable was broken near where it enters the power supply case.
 A common problem and one that i had probably fixed as a
 teenager.
 My first chance to use the soldering station that i got from
-Aldi ages ago have had lying around in the cupboard since then.
+Aldi ages ago.
+Obviously it's been lying around in the cupboard since then.
 Nothing fancy, i cut the cable around the fray, stripped a short
 section back, and twisted and soldered them back together.
 Insulated with a bit of tape.
