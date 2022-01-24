@@ -45,7 +45,7 @@ Linux uses ELF, so i use
 
     nasm -w+error -g -f elf64 -o 64th.o -l ignore/listing 64th.asm
 
-but macOS used Mach-O, so i need `-f macho`
+but macOS used Mach-O, so i need `-f macho64`
 
     nasm -w+error -g -f macho64 -o 64th.o -l ignore/listing 64th.asm
 
@@ -79,6 +79,7 @@ On macOS:
     ld -L$(xcode-select -p)/SDKs/MacOSX.sdk/usr/lib -o 64th -arch x86_64 -segprot __DICT rwx rwx -macosx_version_min 10.13 -lSystem -no_pie -e _start asmrc.o 64th.o
 
 Of note:
+
 - `-e` option can be used to select the entrypoint;
 - `-arch` must be explicit (good idea anyway);
 - `-L` option seems over-the-top? `xcrun` didn’t seem to help,
@@ -120,6 +121,7 @@ It is possible at runtime by using `mmap()`.
 Currently in SixtyForth `DOES>` is only used in the definition
 of `CONSTANT`.
 Alternative strategies could be:
+
 - Implement `DOES>` so that it does not compile machine code
   (not really in the spirit of FORTH and very slightly less
   efficient);
@@ -130,17 +132,19 @@ Alternative strategies could be:
 
 Some of these strategies combine.
 It is possible to `mmap()` a
-segment and link the dictionary there so that new definitions
-may use `DOES>`.
+segment and link the dictionary to it
+so that new definitions may use `DOES>`.
 There is a separate question as to wether it is desirable to do
 this before or after the `rc.4` code wants to use `CONSTANT`.
 
 
 ## System Call numbers and structures
 
-The syscall numbers change between Linux and macOS and for the
-`termios()` family of system calls the in-memory structures are
-different.
+The syscall numbers change between Linux and macOS;
+for example `write()` is syscall 1 on Linux and syscall
+0x2000004 on macOS.
+For system calls that take in-memory structures, like the
+`termios()` family, the in-memory structures are different.
 
 Because both systems implement the Sys V AMD64 (aka x86-64) ABI
 the rest of the calling conventions do not change.
@@ -150,9 +154,9 @@ SixtyForth only makes about 6 different system calls
 (read, write, mmap, exit, open, ioctl).
 
 syscall numbers are taken from
-https://sigsegv.pl/osx-bsd-syscalls/ with the not-very-well
-documented caveat that you have to add 0x2000000 to all the
-syscalls.
+[https://sigsegv.pl/osx-bsd-syscalls/](https://sigsegv.pl/osx-bsd-syscalls/)
+with the not-very-well documented caveat that
+you have to add 0x2000000 to all the syscalls.
 
 The flags (for `mmap()`) and the structs for `ioctl()` are
 a bit more tricky.
@@ -165,14 +169,17 @@ I suppose i can go and find the defintion of `_IOR` and guess
 the size of `struct winsize`, but in practice it was easier to
 write a C program to print out the value.
 Which in this case is 0x40087468.
-Incidentally it's nice to see that the Unix Version 7 tradition
-of including a subsystem letter in the `ioctl()` command has been
-continued (the `'t'` in the macro is 0x74 ASCII which becomes
-the hex-digits 74 in that long number; _t_ is for terminal).
+Incidentally it's nice to see traditions living on: that 
+`'t'` in the macro is 0x74 ASCII which becomes
+the hex-digits 74 in that long number.
+The idea of encoding the subsystem in the `ioctl()` command
+and using _t_ for terminal goes back to the first implementation
+of `ioctl()` in
+Unix Version 7.
 
-Similar for the structs.
+It’s similar for the structs.
 You can go to the header files again,
-but i still end up needed to know the _exact memory format_ for
+but i still need to know the _exact memory format_ for
 `tcflag_t` and how `cc_t c_cc[NCCS]` is packed.
 On Linux there is an extra wrinkle in that often the C library
 interface and the syscall interface use a different struct and
@@ -181,13 +188,13 @@ there is glue code to shuffle data around.
 Best thing to do is create a buffer, make the syscall, and
 hexdump the buffer to work out the exact memory layout with
 whatever struct definitions you have available as a hint.
-This is the reason that `DUMP` is implemented in assembly.
+This is one of the reasons that `DUMP` is implemented in assembly.
 
 It may seem dodgy or underhand to obtain knowledge in this way,
 but the knowledge obtained _absolutely cannot change_ because
 it forms part of the ABI with the operating system.
 For as long as the OS guarantees that old binaries will work,
-it cannot change the length or layour of structs and it cannot
+it cannot change the length or layout of structs and it cannot
 change flag values.
 
 
@@ -195,16 +202,54 @@ change flag values.
 
 On Linux at program start $rsp contains the address of `argc`,
 which is immediately followed in memory by the the argv vector
-(essentially argv = &argc + 8 bytes) and then the envp vector.
+(essentially `argv = &argc + 8 bytes`) and then the envp vector.
 It so happens that SixtyForth doesn’t use $rsp so it is
 unchanged by the time that the `rc.4` code wants to inspect the
 program arguments.
 
 On macOS argc, argv, envp are _as if passed as arguments_.
-The initial register state has them in $rdi, $rsi, $rdx.
+The initial register state has them in $rdi, $rsi, $rdx
+(thanks `lldb`).
 Those registers _are_ used by SixtyForth and because we need
 those values later they have to be specially saved.
 I added code to the `_start` entrypoint to save them in a block
 of memory that can be recalled with the FORTH word `iplsave`.
+
+
+## The Unified Future
+
+So far all of this work has been done on a branch.
+What will a unified future look like?
+
+In `.asm` we can have macros for the syscall numbers and
+the `SECTION` directives.
+The FORTH side of the `iplsave` mechanism can be the same,
+but the assembly that implements it will have to be different;
+so i guess that can be a macro too.
+
+For the FORTH side of system calls we can use symbols with
+different numeric values for syscall numbers, flags, and struct
+offsets.
+Where tho?
+
+Options:
+
+- define numeric values in assembly, one file per OS;
+- at runtime in FORTH by using not-yet-defined LINUX? MACOS? words;
+- a separate per-OS FORTH file that is included;
+- edit the rc.4 file with text-hackery prior to compiling it.
+
+In principle i prefer a separate `.4` file.
+In practice it will mean splitting the `rc.4` file up as well.
+Probably a good thing to be honest:
+
+- portable rc.4
+- os-variant.4
+- mildly os-dependent rc.4
+
+Might be a good idea to start splitting `rc.4` anyway.
+At the moment it contains a few hundred lines to implement the
+nano-like line editor which is more like an app that is
+implemented in SixtyForth, and big enough to be in its own file.
 
 # END

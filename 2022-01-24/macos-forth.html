@@ -1,0 +1,219 @@
+<meta charset="utf-8">
+<title>Implementing FORTH on macOS</title>
+<body>
+<nav>
+<a href="../2022-01-07/zxspectrum.html">(previous)</a>
+</nav>
+<article>
+<h1>Implementing FORTH on macOS</h1>
+<time>2022-01-24</time>
+<address>by David Jones</address>
+<p><em>SixtyForth</em></p>
+<p>A few years ago i
+<a href="https://gitlab.com/drj11/sixtyforth">implemented FORTH for 64-bit Intel architecture (AMD64)</a>.
+This was on Linux and i had deliberately not spent much time
+thinking “portably”.
+Most obviously not in terms of operating systems,
+but also CPU architecture, and wordsize.</p>
+<p>After buying a second-hand 2015 Mac Book Pro in
+the second March of the long year of the pandemic
+i would every now and then tinker with SixtyForth to
+try and get it working on macOS.</p>
+<p>With a bit of a push over the weekend i managed to get a basic
+implementation going: it reaches the interactive prompt, but
+the nano-style line editor does not work.</p>
+<p>What is involved?
+Well, the 2015 mac predates the switch to
+Apple Silicon so it is a 64-bit Intel architecture.
+That's a good start.
+macOS implements a largely POSIX subsystem,
+so that too is a good start.</p>
+<p>Many blog articles on the very low-level details,
+even ones that are using assembly,
+assume you are writing assembly <em>and</em> C, or
+are targetting the C runtime (so you may have a conventional
+<code>main()</code>, or are willing to link to the C library).</p>
+<p>There are not many hints for people who eschew C entirely.</p>
+<h2>Building</h2>
+<p>Building is the first stumbling block.
+I use <code>nasm</code> for the assembler.
+macOS and Linux use different object file formats.
+Linux uses ELF, so i use</p>
+<pre><code>nasm -w+error -g -f elf64 -o 64th.o -l ignore/listing 64th.asm
+</code></pre>
+<p>but macOS used Mach-O, so i need <code>-f macho64</code></p>
+<pre><code>nasm -w+error -g -f macho64 -o 64th.o -l ignore/listing 64th.asm
+</code></pre>
+<p>The source for SixtyForth is currently two files: one <code>64th.asm</code>
+file, and one <code>rc.4</code> file.
+<code>64th.asm</code> implements a fairly minimal interpreter, and
+<code>rc.4</code> (run commands FORTH) contains the rest of the
+implementation, written in itself.
+The <code>.asm</code> file is compiled using <code>nasm</code> (above),
+the <code>rc.4</code> file is “compiled” using <code>objcopy</code> making an object
+file that has a byte-copy of the <code>rc.4</code> text file.
+As part of FORTH startup the <code>rc.4</code> file is passed to <code>EVALUATE</code>
+as a single string.</p>
+<p>On macOS i couldn't wrangle <code>objcopy</code> to do this.
+So the <code>rc.4</code> file is now compiled using <code>nasm</code> and a <code>INCBIN</code>
+directive.
+The end result is the same, a <code>.o</code> file that has a byte-bopy of
+the text file.
+The extra file is a little bit more annoying, but in a way it’s
+a more portable toolchain because we already use <code>nasm</code> and we
+remove <code>objcopy</code> as a dependency.</p>
+<p>The linker step also changes. Relatively straightforward on
+Linux:</p>
+<pre><code>ld -g -o 64th 64th.o rc.o
+</code></pre>
+<p>On macOS:</p>
+<pre><code>ld -L$(xcode-select -p)/SDKs/MacOSX.sdk/usr/lib -o 64th -arch x86_64 -segprot __DICT rwx rwx -macosx_version_min 10.13 -lSystem -no_pie -e _start asmrc.o 64th.o
+</code></pre>
+<p>Of note:</p>
+<ul>
+<li><code>-e</code> option can be used to select the entrypoint;</li>
+<li><code>-arch</code> must be explicit (good idea anyway);</li>
+<li><code>-L</code> option seems over-the-top? <code>xcrun</code> didn’t seem to help,
+  but i have a hard time believing that i have to link to
+  <code>-lSystem</code> like that;</li>
+<li>the <code>-segprot __DICT rwx rwx</code> selects a non-default memory
+  protection for a custom segment, more on that next.</li>
+</ul>
+<h2>Sections and self-modifying code</h2>
+<p>The sections have to have different names when using the Mach-O format:
+<em>SEGNAME,sectname</em>.
+Conventionally both parts start with <code>__</code>, for example:
+<code>__DICT,__data</code>.
+In Mach-O all the sections with the same SEGNAME (segment name)
+are joined together in a <em>segment</em>.</p>
+<p>By default in macOS a segment is not both writable and
+executable.
+Data segments are writable and not executable;
+code segments are executable and not writable.</p>
+<p>Which eventually leads to the line in the linker:
+<code>-segprot __DICT rwx rwx</code>.</p>
+<p>SixtyForth requires that memory is both writable and executable
+in order to implement the class-defining word <code>DOES&gt;</code>.
+At compile time <code>DOES&gt;</code> pokes machine code into the word
+containing it, and arranges at run time for the most recently
+defined word to execute that machine code.</p>
+<p>A future port to Apple Silicon (ARM based, extremely not x86-64)
+would require a different strategy as
+it is not possible to have a segment that
+is created by the linker that is both writable and executable.
+It is possible at runtime by using <code>mmap()</code>.</p>
+<p>Currently in SixtyForth <code>DOES&gt;</code> is only used in the definition
+of <code>CONSTANT</code>.
+Alternative strategies could be:</p>
+<ul>
+<li>Implement <code>DOES&gt;</code> so that it does not compile machine code
+  (not really in the spirit of FORTH and very slightly less
+  efficient);</li>
+<li>Put the modifiable dictionary in a suitable JIT <code>mmap()</code>
+  segment;</li>
+<li>Implement <code>CONSTANT</code> (or the run-time part of it) in assembly;</li>
+<li>Eliminate the use of <code>CONSTANT</code> in <code>rc.4</code>.</li>
+</ul>
+<p>Some of these strategies combine.
+It is possible to <code>mmap()</code> a
+segment and link the dictionary to it
+so that new definitions may use <code>DOES&gt;</code>.
+There is a separate question as to wether it is desirable to do
+this before or after the <code>rc.4</code> code wants to use <code>CONSTANT</code>.</p>
+<h2>System Call numbers and structures</h2>
+<p>The syscall numbers change between Linux and macOS;
+for example <code>write()</code> is syscall 1 on Linux and syscall
+0x2000004 on macOS.
+For system calls that take in-memory structures, like the
+<code>termios()</code> family, the in-memory structures are different.</p>
+<p>Because both systems implement the Sys V AMD64 (aka x86-64) ABI
+the rest of the calling conventions do not change.
+Same registers and same <code>syscall</code> instruction.</p>
+<p>SixtyForth only makes about 6 different system calls
+(read, write, mmap, exit, open, ioctl).</p>
+<p>syscall numbers are taken from
+<a href="https://sigsegv.pl/osx-bsd-syscalls/">https://sigsegv.pl/osx-bsd-syscalls/</a>
+with the not-very-well documented caveat that
+you have to add 0x2000000 to all the syscalls.</p>
+<p>The flags (for <code>mmap()</code>) and the structs for <code>ioctl()</code> are
+a bit more tricky.
+Sure you can poke around header files and you get stuff like:</p>
+<pre><code>#define TIOCGWINSZ      _IOR('t', 104, struct winsize)  /* get window size */
+</code></pre>
+<p>For <code>TIOCGWINZ</code> (get winsize). Hmm.
+I suppose i can go and find the defintion of <code>_IOR</code> and guess
+the size of <code>struct winsize</code>, but in practice it was easier to
+write a C program to print out the value.
+Which in this case is 0x40087468.
+Incidentally it's nice to see traditions living on: that 
+<code>'t'</code> in the macro is 0x74 ASCII which becomes
+the hex-digits 74 in that long number.
+The idea of encoding the subsystem in the <code>ioctl()</code> command
+and using <em>t</em> for terminal goes back to the first implementation
+of <code>ioctl()</code> in
+Unix Version 7.</p>
+<p>It’s similar for the structs.
+You can go to the header files again,
+but i still need to know the <em>exact memory format</em> for
+<code>tcflag_t</code> and how <code>cc_t c_cc[NCCS]</code> is packed.
+On Linux there is an extra wrinkle in that often the C library
+interface and the syscall interface use a different struct and
+there is glue code to shuffle data around.</p>
+<p>Best thing to do is create a buffer, make the syscall, and
+hexdump the buffer to work out the exact memory layout with
+whatever struct definitions you have available as a hint.
+This is one of the reasons that <code>DUMP</code> is implemented in assembly.</p>
+<p>It may seem dodgy or underhand to obtain knowledge in this way,
+but the knowledge obtained <em>absolutely cannot change</em> because
+it forms part of the ABI with the operating system.
+For as long as the OS guarantees that old binaries will work,
+it cannot change the length or layout of structs and it cannot
+change flag values.</p>
+<h2>argc, argv, envp</h2>
+<p>On Linux at program start $rsp contains the address of <code>argc</code>,
+which is immediately followed in memory by the the argv vector
+(essentially <code>argv = &amp;argc + 8 bytes</code>) and then the envp vector.
+It so happens that SixtyForth doesn’t use $rsp so it is
+unchanged by the time that the <code>rc.4</code> code wants to inspect the
+program arguments.</p>
+<p>On macOS argc, argv, envp are <em>as if passed as arguments</em>.
+The initial register state has them in $rdi, $rsi, $rdx
+(thanks <code>lldb</code>).
+Those registers <em>are</em> used by SixtyForth and because we need
+those values later they have to be specially saved.
+I added code to the <code>_start</code> entrypoint to save them in a block
+of memory that can be recalled with the FORTH word <code>iplsave</code>.</p>
+<h2>The Unified Future</h2>
+<p>So far all of this work has been done on a branch.
+What will a unified future look like?</p>
+<p>In <code>.asm</code> we can have macros for the syscall numbers and
+the <code>SECTION</code> directives.
+The FORTH side of the <code>iplsave</code> mechanism can be the same,
+but the assembly that implements it will have to be different;
+so i guess that can be a macro too.</p>
+<p>For the FORTH side of system calls we can use symbols with
+different numeric values for syscall numbers, flags, and struct
+offsets.
+Where tho?</p>
+<p>Options:</p>
+<ul>
+<li>define numeric values in assembly, one file per OS;</li>
+<li>at runtime in FORTH by using not-yet-defined LINUX? MACOS? words;</li>
+<li>a separate per-OS FORTH file that is included;</li>
+<li>edit the rc.4 file with text-hackery prior to compiling it.</li>
+</ul>
+<p>In principle i prefer a separate <code>.4</code> file.
+In practice it will mean splitting the <code>rc.4</code> file up as well.
+Probably a good thing to be honest:</p>
+<ul>
+<li>portable rc.4</li>
+<li>os-variant.4</li>
+<li>mildly os-dependent rc.4</li>
+</ul>
+<p>Might be a good idea to start splitting <code>rc.4</code> anyway.
+At the moment it contains a few hundred lines to implement the
+nano-like line editor which is more like an app that is
+implemented in SixtyForth, and big enough to be in its own file.</p>
+<h1>END</h1>
+</article>
+
