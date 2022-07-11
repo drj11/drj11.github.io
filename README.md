@@ -11,3 +11,5 @@ You need to install `brutal` then run `make`.
 
 To install `brutal` create a conda env
 (which will have `setuptools`) and run `python setup.py install --user`.
+
+# END
