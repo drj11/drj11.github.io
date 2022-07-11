@@ -1,0 +1,68 @@
+<meta charset="utf-8">
+<title>PyPNG and the multiple factor authentication</title>
+<body>
+<nav>
+<a href="../2022-01-24/macos-forth.html">(previous)</a>
+</nav>
+<article>
+<h1>PyPNG and the multiple factor authentication</h1>
+<time>2022-07-11</time>
+<address>by David Jones</address>
+<p>I am maintainer of the obscure and only slightly useful
+<a href="https://gitlab.com/drj11/pypng">PyPNG package</a>.</p>
+<pre><code>python -m pip install pypng
+# For greater good.
+</code></pre>
+<p>It's a pure Python implementation of a PNG library.
+It can read and write PNG files.</p>
+<p>What's wrong with Pillow? ImageMagick? Is there something odd about a
+pure-Python version?</p>
+<p>From <em>it's very concept</em> the purpose of PyPNG is anti-package.
+You like compiling binary dependencies? Use Pillow.
+You wan't to link to 3rd party C code? Use <code>libpng</code>.</p>
+<p>The above is a bit of background to… an e-mail i got.</p>
+<blockquote>
+<p>Congratulations! A project you ('drj') maintain has been designated as a critical project on PyPI.</p>
+</blockquote>
+<p>oh great. Apparently i will</p>
+<blockquote>
+<p>be required to enable two-factor authentication on their account</p>
+</blockquote>
+<p>To be honest, in the grand scheme of things, fine. whatever.</p>
+<h2>What annoys me?</h2>
+<p>Timing. 18:17 (UK time), Friday evening.
+I'm logged off.
+And I won't get to write my grumpy blog post until Monday.</p>
+<p>No background, justification, from a noreply account, no-one to reach
+out to.</p>
+<p>No consultation.</p>
+<h2>Maximum Python Man</h2>
+<p>(they are always a man)</p>
+<p>I am not the Maximum Python Man,
+but i pay my dues
+(literally, i'm a paying member of PSF (currently <a href="https://www.python.org/psf/donations/">480 on the
+roll</a>) and usually of PyCon UK),
+i vote (mostly),
+i go to PyCon UK when i can and it's not infectious.
+I have even given talks and help my buddies with their workshops.
+I follow enough Python people that i usually hear about most things.</p>
+<p>Maybe if you're Senior Python Fellow in charge of
+making sure JP Morgan write another cheque and
+PyPI is your world then this is a pretty big deal and
+its benefits seem obvious and ineluctable.</p>
+<p>I pretty much login in to PyPI only when i update PyPNG and that's
+every 7 months on average.
+I have no idea what my password is so if my browser doesn't know,
+i'll reset via e-mail (this isn't a bad thing, i treat a lot of
+websites that way).
+If i have a new computer since my last upload or my API key is
+missing for some other reason, i'll generate a new one.</p>
+<p>I have 2FA in my life, for fairly important things.
+Like e-mail, and my NHS records.</p>
+<p>But PyPI? I use 3 different web-accessible version control systems, and
+you're less important than those.</p>
+<p>I woudn't be surprised if i make one more PyPI release and then tell
+people to <code>pip install</code> from gitlab after that.</p>
+<h1>END</h1>
+</article>
+
