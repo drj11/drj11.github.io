@@ -18,6 +18,13 @@ From _it's very concept_ the purpose of PyPNG is anti-package.
 You like compiling binary dependencies? Use Pillow.
 You wan't to link to 3rd party C code? Use `libpng`.
 
+It is so anti-package that it didn't even use `setuptools`,
+because… `setuptools` was a 3rd party dependency and i didn't want
+any of them.
+`distutils` is dead. Long live `distutils`.
+(you get a log of funny looks when say you don't depend on
+`setuptools`)
+
 The above is a bit of background to… an e-mail i got.
 
 > Congratulations! A project you ('drj') maintain has been designated as a critical project on PyPI.
