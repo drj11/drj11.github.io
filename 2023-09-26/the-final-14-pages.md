@@ -5,15 +5,17 @@
 It falls to me to write a review of Margaret Atwood’s novel
 «The Handmaid’s Tale».
 
-It is a curious choice to review, a work that has been
+This is a work that has been
 critiqued, criticised, prodded, poked, televised, revitalised,
-sexualised, and has been made famous with awards and selling
-millions of copies (although it seems curiously difficult to
+sexualised; it has won famous awards and
+sold millions of copies (although it seems curiously difficult to
 find a reasonable count).
+Why am i reviewing it?
 
 I want to write about the last 14 pages. These pages struck me
-with a punch when i first read it, and still do when i re-read
-the book for this review. I’ve had a few conversations
+with a punch when i first read it (around 2015 or so), and
+still do when i re-read the book for this review.
+I’ve had a few conversations
 about the book since first reading it, and most
 pay no attention to the final 14 pages.
 
@@ -25,17 +27,17 @@ and its layers (at least some of them).
 
 The book is, on the surface, written from the first person
 perspective of the narrator, a handmaid assigned the name Offred
-by the state of Gilead (to mark her as being owned by Fred).
-Later in the story we find this isn’t complete true, as the
-narrator admits herself that this is a reconstruction;
-because of course it has to be.
+by the state of Gilead.
+Later in the story we find this isn’t quite true, as
+the narrator admits herself that this is a reconstruction;
+because it has to be.
 In Gilead, the religious state in which the story takes place,
 a handmaid has no access to the materials needed to write or record,
 so the reconstruction is necessary.
-The narrator herself also departs more playfully, when
+The narrator herself also plays with her own narrative role, when
 she sexes up a particular scene (and then admits her digression); and
 also when she inserts the voice of her lost friend Moira, writing
-as how she would perceive Moira to say it.
+Moira’s the best way she can.
 
 For almost the whole book there is only one voice,
 that of Offred.
@@ -45,11 +47,11 @@ thoughts, we have only the thoughts of Offred;
 the actions of the other actors are perceived through Offred.
 
 In fact there are two other voices.
-In the final 14 pages (of course, it is only 14 pages in the
+In the final 14 pages (it is 14 pages in the
 mass-market paperback i am reading, your page count may vary),
 the "action" shifts to an academic conference with an honourary keynote.
-The host of the conference introduces the keynote speaker.
-2 more voices.
+The host of the conference and the keynote speaker that they
+introduce make up 2 more voices.
 
 In the "main" story, Offred goes about her business in Gilead.
 This is writ, as it were, as if on two translucent sheets:
@@ -72,9 +74,15 @@ So there is the main story, and at end of it,
 the final 14 pages, which is what i call the frame.
 The frame is the academic conference, in which it is revealed
 that the story we have just read, The Document, is a
-transcription of events (the reconstruction that Offred herself
-refers to) made from a voice recording scattered across the
-many (compact cassette) tapes found in an old buried box.
+transcription of events made from a voice recording.
+This recording is the the reconstruction that Offred herself
+refers to.
+The voice recording is scattered across the
+many (compact cassette) tapes found in an old buried box;
+so there is a further reconstruction, by academic workers
+referred to in the keynote, in order to assemble a coherent
+narrative from the unordered tapes.
+
 The "now" of the frame is the future, looking back at the story
 (the "main" story) recorded on these tapes.
 There are hints that the future in which the conference takes
@@ -84,21 +92,21 @@ was A Thing.
 
 So now we have The Story of Offred, as reconstructed by her,
 recorded onto Many Tapes, buried and rediscovered,
-reassembled and transcribed, discussed at an academic
-conference.
+transcribed and reassembled, discussed at an academic conference.
 
 What does this shift say about the gentle reader? Our locus has
 moved from the intimacy of Offred’s inner voice to the walnut
-wattling of a academic lecture theatre.
+wattling of an academic lecture theatre.
 Are we to suppose that we’re in the audience? We’re sitting
 through the keynote?
 
-The frame then, can be viewed as a lens. In the final 14 pages,
+The frame can be viewed as a lens. In the final 14 pages,
 we are seeing the story through that lens, from the perspective of
-a group of academics in the future. Pondering about the
-authenticity of the text, the tapes; speculating, with reference
-to archive material, on who the actors in the story may actually
-have been.
+a group of academics in the future.
+Academics pondering about the
+authenticity of the text, the tapes; they speculate, with reference
+to archive material, about the identities of the people in the
+story.
 
 We see that the academics are a group concerned with Text,
 Authenticity, Discourse.
