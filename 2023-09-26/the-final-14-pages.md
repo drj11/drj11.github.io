@@ -97,11 +97,12 @@ transcribed and reassembled, discussed at an academic conference.
 What does this shift say about the gentle reader? Our locus has
 moved from the intimacy of Offred’s inner voice to the walnut
 wattling of an academic lecture theatre.
-Are we to suppose that we’re in the audience? We’re sitting
-through the keynote?
+Are we inserted into the audience? We’re sitting through the keynote?
 
-The frame can be viewed as a lens. In the final 14 pages,
-we are seeing the story through that lens, from the perspective of
+The frame can be viewed as a lens.
+In the final 14 pages, we are seeing the story through that lens,
+the lens of The Academy.
+The reader’s view is now from the perspective of
 a group of academics in the future.
 Academics pondering about the
 authenticity of the text, the tapes; they speculate, with reference
@@ -113,8 +114,10 @@ Authenticity, Discourse.
 As the academics look upon Gilead they make their
 snide jokes about the quality of education in Other Places,
 and asides about conference lunches.
-Thus, as a group they are assured that even as brutal regimes come
-and go, The Academy will remain.
+In other words the academics in the novel are pretty much just
+like the academics that inhabit our world.
+Their concerns, largely unchanged, are literally academic.
+Brutal regimes come and go, but The Academy will remain.
 
 Does that seem bad? Gilead, as we see through Offred’s lens, is
 an inhumane and brutal regime. The state rapes, kills, tortures;
@@ -122,15 +125,28 @@ in the name of progress that will lead to fertility.
 The academics, instead of confronting this brutality, seem
 content to speculate about who Fred is, and how lucky they are
 that English satellites recorded the transmissions of state
-propaganda.
+propaganda; without the richness of this material from the
+Gilead regime, how would they be able to have such meaningful
+academic conferences about it?
 
-Setting the main story in North America is, i think, supposed to
-anger us. How could such a thing happen to the great nation of
-these United States?
+Setting the main story in North America is, i think,
+deliberately provocative.
+How could such a thing happen to the great nation of
+these United States? It’s possible that the reflective irony is
+supposed to anger us.
 
-But what about us in the audience? Are we complicit?
-Does the book suggest that we are looking on
-as nations slumber towards brutality?
+Shifting the reader to the audience of an academic conference
+is, i think, supposed to discomfort us.
+We are now listening to these academics presenting their
+papers (if you take on this framing, for the duration of the
+main story the reader has been an audience member listening to
+the The Document being presented).
+In fact, i suppose we are an academic in this framing.
+Are we complicit?
+The novel suggests that we are looking on
+as nations slumber towards brutality.
+At least, it suggests that the
+reader-inserted-into-the-conference is doing that.
 
 The lens is a mirror.
 Isn’t that exactly what we’re doing, right now?
