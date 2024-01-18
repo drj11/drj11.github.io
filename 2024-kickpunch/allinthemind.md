@@ -71,4 +71,6 @@ Can install ImageMagick. Yes we can, but it seems not to work.
 (I also tried both installing and compiling from source
 ArtPaint, but that didn’t work either).
 
+`git` works fine by the way.
+
 So, netpbm?
