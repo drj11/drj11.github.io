@@ -3,26 +3,22 @@
 
 <h1>Sunny Funny</h1>
 
-I remembered i had a barely used, but very only, Acer netbook in
-the attic. It turned out to be an Acer ZG5 from 2008 with a 1.6GHz CPU,
+The story starts with 3 elements: An Acer netbook from 2008;
+Haiku a compatible implementation of BeOS (from the 1990s); and,
+"cling wrap scanning", an ancient pixel tracing technique that
+uses clear plastic stuck to the monitor.
+
+I remembered i had a barely used Acer netbook in the attic.
+It turned out to be an Acer ZG5 from 2008 with a 1.6GHz CPU,
 1GB of RAM, and a 160GB rotating disk (this configuration
-isn’t listed on Wikiepdia, but whatever).
+isn’t listed on Wikipedia, but whatever).
 
-I had seen a few posts about people running Haiku (the new name
-for BeOS) on this class of hardware.
-BeOS, an obscure darling child of 1990s, should run reasonably
-well on this early 21st Century hardware.
-And it does.
-After a false start of installing it on a partition which the
-pre-existing grub couldn’t then boot into,
-i installed it on the raw unpartitioned disk (i think).
+My Mastodon timeline has been showing me a few Haiku posts, and
+i found it intriguing.
+It's a reimplementation of BeOS, an operating system from the
+1990s that was something of an obscure darling child.
 
-A little poking around reveals that doing ordinary web things is
-a disaster, but loading BeOS websites from the early 2000s and
-before works fine.
-What project could i try?
-
-Then i came across
+My Mastodon timeline also showed me
 [this post from Nina Kalinina about "cling wrap
 scanning"](https://typo.social/@nina_kali_nina@tech.lgbt/111456601630935995).
 Using a pen and clear plastic film, you take a copy of an
@@ -30,47 +26,137 @@ existing art.
 Then put the plastic over the screen (with tape or the magic of
 cling film) and use an image editor to copy the art with pixels.
 
-That would be a fun project to use the Haiku Netbook for.
-Looking through my collection of videogame media, i even found
-some art.
+So these things came together to form an idea for a project that
+i might try: Install Haiku on the netbook and find some art
+suitable for cling wrap scanning on it.
+
+I had seen a few posts about people running Haiku
+on this class of hardware.
+After a false start of installing it on a partition which the
+pre-existing grub couldn’t then boot into,
+i installed it on the raw unpartitioned disk (i think).
+Haiku runs reasonable well on the 2008 netbook, which is nice.
+Maybe it could breathe some life into the old netbook.
+
+A little exploration with Haiku reveals that doing ordinary web things is
+a disaster, but loading BeOS websites from the early 2000s and
+before works fine.
+
+Haiku comes with WonderBrush, originally a for-money application
+native to BeOS, but now distributed liberally.
+I also tried to install ArtPaint, a more modern paint program,
+but my initial efforts didn't work.
+I think because there was no 32-bit version packaged.
+But i did eventually install it later.
+
+So what art could i "cling wrap scan"?
+I start looking through my collection of videogame media, and
+found...
 This amazing poster from [PaRappa the Rapper].
 
-I traced over PaRappa using actual clingfilm, and it was
-terrible. It sticks okay onto the netbook though.
+I traced over PaRappa using actual clingfilm, and
+it was terrible. It sticks okay onto the netbook though.
 But the WonderBrush art program even in fullscreen only lets me
 use a small portion of the total screen for the editing area.
-I solved this problem by tracing over Sunny Funny and taping
-the art sideways (the artwork for Sunny is slightly narrower
-than PaRappa).
+I solved this problem by switching targetes.
+I traced over Sunny Funny instead, this time using a cut-open
+ziploc bag from the ones that came with COVID-19 tests.
+Sunny is slightly narrower than PaRappa, but even so
+had to tape the art sideways to fit it over the editable area in
+WonderBrush.
 
-What resolution? Something chunky like 320×200 perhaps? I
-actually traced using 200×200 at 600% (i think).
+What resolution? Something chunky like 320×200 perhaps?
+I traced using a 200×200 at 200% (i think).
 
-Once i had basic outlines i removed the clear plastic pen copy,
-and worked by eye.
+[Sunny in-situ]
+
+Once i had basic outlines i removed the clear plastic with its
+pen-drawn copy, and worked by mouse and eye.
 WonderBrush isn’t really a true pixel editor, and even with the
-"subpixel" box unchecked would "half-shade" pixels as a freehand
-pen line was drawn with the mouse.
+"subpixel" box unchecked would "half-shade" pixels when
+i was using the freehand tool with the mouse.
 Also my mouse skills are bad (possibly exacerbated by an
 authentic vintage mouse, and not a pro-gamer laserballs) and so
 the actual shapes were not very accurate.
+
+[wobbly Sunny]
 
 Digital art and pixel editing is not something i've done before,
 so it took me many many hours of single pixel cleaning and
 reshaping to get this:
 
+[Sunny flat no colour not rotated]
+
 Nice. But needs rotating, right? Simples.
 
-Aha. Can rotate in WonderBrush but it resamples with some sort
+Aha, i can rotate in WonderBrush but it resamples with some sort
 of high-fidelity cubic filter.
-Which for bilevel pixel art is a disaster.
+Which for bilevel pixel art is no bloody good.
 Couldn’t work out how to fix that.
 Seemingly can’t rotate in the image viewer.
 
 Can install ImageMagick. Yes we can, but it seems not to work.
-(I also tried both installing and compiling from source
-ArtPaint, but that didn’t work either).
+I also tried both installing and compiling from source
+ArtPaint, but that didn’t work either (`git` works fine by the
+way).
 
-`git` works fine by the way.
+So, netpbm? Installs but doesn't work.
 
-So, netpbm?
+At some point while i was poking around i see that in
+HaikuDepot, the package installer, it sometimes lists two
+packages wih the same name (i think i added a repository at some
+point).
+For practical purposes we can call these two version "cursed"
+and "might work".
+I wondered if i could install the non-cursed version of
+ArtPaint, and i could!
+
+ArtPaint could do the pixel-exact 90° rotation.
+But i wasn't finding the pixel editing as comfortable as
+WonderBrush, so i switched back to that for the rest of the
+project.
+Which by this point is filling with colour and drawing the
+stripes on Sunny's dress.
+
+[Sunny coloured in]
+
+Filling in reveals some previously unfound subpixels
+(pixels that are neither black nor transparent);
+i fixed the ones i found, but it seems likely 
+there might be a few remaining.
+Probably i will fix this ultimately by writing some sort of
+equality/difference tool in PyPNG.
+
+Using ArtPaint and WonderBrush, i actually found them annoying
+for the pixel work.
+Though I would probably have different opinions if i was more familiar
+with them.
+Mainly the problem is that it was too fiddly to turn a single
+pixel on or off.
+It's easy enough in WonderBrush to turn a single pixel on, but
+turning it off either involves _moving the mouse_ to select
+a new palette entry or right clicking to change the tool.
+The scrollwheel could be used to zoom, but
+only zoomed around the canvas centre, not where the mouse is
+pointing (although it did only stop at integer zooms, which was
+useful for this work; unlike ArtPaint).
+
+ArtPaint had slightly different issues, but similar in scope.
+
+For many pixels applications, a _true full screen_ mode would be useful.
+Nina Kalinina wrote a quick-and-dirty homegrown pixel editor in
+QBasic when she was doing this.
+And it makes a lot of sense to me. I was tempted.
+
+## Reflection
+
+Overall i enjoyed the project.
+It was nice to install an OS on the netbook that it could
+plausibly run.
+It was nice to have an excuse to poke around with Haiku/BeOS a bit.
+And it was nice to try the lo-tech lo-fi "scanning".
+
+And of course, retro sunflower girl from an iconic 1990s
+videogame, what's not to like about that?
+
+# END
