@@ -1,0 +1,169 @@
+<meta charset="utf-8">
+<title>Sunny Funny</title>
+<body>
+<nav>
+<a href="../2022-07-11/pypng-mfa.html">(previous)</a>
+</nav>
+<article>
+<h1>Sunny Funny</h1>
+<time>2024-01-23</time>
+<address>by David Jones</address>
+<p>The story starts with 3 elements: An Acer netbook from 2008;
+Haiku the implementation of BeOS (from the 1990s); and,
+"cling wrap scanning", an ancient pixel tracing technique that
+uses clear plastic stuck to the monitor.</p>
+<p>I remembered i had a barely used Acer netbook in the attic.
+It turned out to be an Acer ZG5 from 2008 with a 1.6GHz CPU,
+1GB of RAM, and a 160GB rotating disk (this configuration
+isn’t listed on Wikipedia, but whatever).</p>
+<p>My Mastodon timeline has been showing me a few Haiku posts, and
+i found it intriguing.
+It's a reimplementation of BeOS, an operating system from the
+1990s that was something of an obscure darling child.</p>
+<p>My Mastodon timeline also showed me
+<a href="https://typo.social/@nina_kali_nina@tech.lgbt/111456601630935995">this post from Nina Kalinina about "cling wrap
+scanning"</a>.
+Using a pen and clear plastic film, you take a copy of an
+existing art.
+Then put the plastic over the screen (with tape or the magic of
+cling film) and use an image editor to copy the art with pixels.</p>
+<p>So these things came together to form an idea for a project that
+i might try: Install Haiku on the netbook and find some art
+suitable for cling wrap scanning on it.</p>
+<p>I had seen a few posts about people running Haiku
+on this class of hardware.
+After a false start of installing it on a partition which the
+pre-existing grub couldn’t then boot into,
+i installed it on the raw unpartitioned disk (i think).
+Haiku runs reasonable well on the 2008 netbook, which is nice.
+Maybe it could breathe some life into the old netbook.</p>
+<p>A little exploration with Haiku reveals that doing ordinary web things is
+a disaster, but loading BeOS websites from the early 2000s and
+before works fine.</p>
+<p>Haiku comes with WonderBrush, originally a for-money application
+native to BeOS, but now distributed liberally.
+I also tried to install ArtPaint, a more modern paint program,
+but my initial efforts didn't work.
+I think because there was no 32-bit version packaged.
+But i did eventually install it later.</p>
+<p>So what art could i "cling wrap scan"?
+I start looking through my collection of videogame media, and
+found...
+This amazing poster from [PaRappa the Rapper].</p>
+<p><img <="" alt="a printed poster showing, in cartoon style, all the
+characters from PaRappa the Rapper" img="" src="../image/Sunny/PaRappaPosterSquare.jpg" style="max-width: 100vw; max-height: 100vh;" title="PaRappa the Rapper Poster"></p>
+<p>On the back are the instructions and a picture of PaRappa on his
+own.</p>
+<p>I traced over PaRappa using actual clingfilm, and
+it was terrible. It sticks okay onto the netbook though.
+But the WonderBrush art program even in fullscreen only lets me
+use a small portion of the total screen for the editing area.
+I solved this problem by switching targetes, Sunny Funny also
+appears.
+I traced over Sunny Funny instead, this time using a cut-open
+ziploc bag from the ones that came with COVID-19 tests.
+Sunny is slightly narrower than PaRappa, but even so
+had to tape the art sideways to fit it over the editable area in
+WonderBrush.</p>
+<p>Here's Sunny:</p>
+<p><img <="" alt="Sunny Funny from the back of the poster, she's wearing a
+blue and red dress" img="" src="../image/Sunny/SunnyPrint.jpg" style="max-width: 100vw; max-height: 100vh;" title="Sunny Funny"></p>
+<p>What resolution? Something chunky and EGA compatible like 320×200 perhaps?
+I traced using a 200×200 canvas at 200% (i think).</p>
+<p><img <="" alt="Piece of clear plastic taped to the screen of the small
+netbook. On the plastic is a drawing of Sunny Funny done with a
+sharpie. Sideways." img="" src="../image/Sunny/SunnyTaped.jpg" style="max-width: 100vw; max-height: 100vh;" title="Sunny taped to my netbook"></p>
+<p>Once i had basic outlines i removed the clear plastic with its
+pen-drawn copy, and worked by mouse and eye.
+WonderBrush isn’t really a true pixel editor, and even with the
+"subpixel" box unchecked would "half-shade" pixels when
+i was using the freehand tool with the mouse.
+Also my mouse skills are bad (possibly exacerbated by use an
+authentic vintage mouse, and not a pro-gamer laserballs (the
+trackpad was awful by the way)) and so
+the actual shapes were not very accurate.</p>
+<p><img <="" alt="Pixel image of my wobbly
+version of Sunny Funny. Recognisably the familiar
+anthropomorphic sunflower, but only in black and white, and
+quite wobbly shapes" img="" src="../image/Sunny/Sunny200wobbly-rgb.png" style="max-width: 100vw; max-height: 100vh;" title="Wobbly Sunny"></p>
+<p>Digital art and pixel editing is not something i've done before,
+so it took me many many hours of single pixel cleaning and
+reshaping to get this:</p>
+<p><img <="" alt="Still in black and white, Sunny
+has been cleaned up and most of the basic shapes are not so
+wobbly" img="" src="../image/Sunny/Sunny200flat.png" style="max-width: 100vw; max-height: 100vh;" title="Flat Pixelly Sunny"></p>
+<p>Nice. But needs rotating, right? Simples.</p>
+<p>Aha, i can rotate in WonderBrush but... it resamples with some sort
+of so-called <em>high-fidelity</em> cubic filter.
+Which for bilevel pixel art is <strong>no bloody good</strong>.
+Couldn’t work out how to fix that.
+Seemingly can’t rotate in the image viewer.</p>
+<p>Can install ImageMagick. Yes we can, but it seems not to work.
+I also tried both installing and compiling from source
+ArtPaint, but that didn’t work either (<code>git</code> works fine by the
+way).</p>
+<p>So, netpbm? Installs but doesn't work.</p>
+<p>At some point while i was poking around i see that in
+HaikuDepot, the package installer, it sometimes lists two
+packages wih the same name (i think i added a repository at some
+point).
+For practical purposes we can call these two version "cursed"
+and "uncursed".
+I wondered if i could install the uncursed version of
+ArtPaint, and i could!</p>
+<p>ArtPaint <em>can</em> do the pixel-exact 90° rotation.
+But i wasn't finding the pixel editing as comfortable as
+WonderBrush, so i switched back to that for the rest of the
+project.
+Which by this point is filling with colour and drawing the
+stripes on Sunny's dress.</p>
+<p>Here shown with 3× pixels so that it appears reasonable, and
+possibly without a blurring zoom, on modern displays.</p>
+<p><img <="" alt="Sunny in colour, wearing a fetching
+red and blue dress" img="" src="../image/Sunny/Sunnyx3ega.png" style="max-width: 100vw; max-height: 100vh;" title="Sunny in Colour"></p>
+<p>I picked 200×200 partly so it fitted into an EGA display
+(320×200), so it was natural to use the EGA palette.
+However, i may have typed one or more of the palette entries
+incorrectly (and see also subpixel problems below).</p>
+<p>There is another problem with this idea of EGA art.
+On actual EGA hardware the pixel aspect ratio is 1:1.2, whereas
+i have square pixels.
+This is only fixable by going back to the scanning step, and
+using a pixel editor that can edit non-square pixels on a
+square-pixel display.
+I don't think that exists.</p>
+<p>Filling in reveals some previously unfound subpixels
+(pixels that are neither black nor transparent);
+i fixed the ones i found, but it seems likely 
+there might be a few remaining.
+Probably i will fix this ultimately by writing some sort of
+equality/difference tool in PyPNG.</p>
+<p>Using ArtPaint and WonderBrush, i actually found them annoying
+for the pixel work.
+Though I would probably have different opinions if i was more familiar
+with them.
+Mainly the problem is that it was too fiddly to turn a single
+pixel on or off.
+It's easy enough in WonderBrush to turn a single pixel on, but
+turning it off either involves <em>moving the mouse</em> to select
+a new palette entry or right clicking to change the tool.
+The scrollwheel could be used to zoom, but
+only zoomed around the canvas centre, not where the mouse is
+pointing (although it did only stop at integer zooms, which was
+useful for this work; unlike ArtPaint).</p>
+<p>ArtPaint had slightly different issues, but similar in scope.</p>
+<p>For many pixels applications, a <em>true full screen</em> mode would be useful.
+Nina Kalinina wrote a quick-and-dirty homegrown pixel editor in
+QBasic when she was doing this.
+And it makes a lot of sense to me. I was tempted.</p>
+<h2>Reflection</h2>
+<p>Overall i enjoyed the project.
+It was nice to install an OS on the netbook that it could
+plausibly run.
+It was nice to have an excuse to poke around with Haiku/BeOS a bit.
+And it was nice to try the lo-tech lo-fi "scanning".</p>
+<p>And of course, retro sunflower girl from an iconic 1990s
+videogame, what's not to like about that?</p>
+<h1>END</h1>
+</article>
+

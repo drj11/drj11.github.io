@@ -1,7 +1,6 @@
-[brutal]: #xdate "2024-01-18"
+[brutal]: #date "2024-01-23"
 [brutal]: #author "David Jones"
-
-<h1>Sunny Funny</h1>
+[brutal]: #title "Sunny Funny"
 
 The story starts with 3 elements: An Acer netbook from 2008;
 Haiku the implementation of BeOS (from the 1990s); and,
@@ -54,16 +53,38 @@ I start looking through my collection of videogame media, and
 found...
 This amazing poster from [PaRappa the Rapper].
 
+<img
+src="../image/Sunny/PaRappaPosterSquare.jpg"
+alt="a printed poster showing, in cartoon style, all the
+characters from PaRappa the Rapper"
+title="PaRappa the Rapper Poster"
+style="max-width: 100vw; max-height: 100vh;"
+</img>
+
+On the back are the instructions and a picture of PaRappa on his
+own.
+
 I traced over PaRappa using actual clingfilm, and
 it was terrible. It sticks okay onto the netbook though.
 But the WonderBrush art program even in fullscreen only lets me
 use a small portion of the total screen for the editing area.
-I solved this problem by switching targetes.
+I solved this problem by switching targetes, Sunny Funny also
+appears.
 I traced over Sunny Funny instead, this time using a cut-open
 ziploc bag from the ones that came with COVID-19 tests.
 Sunny is slightly narrower than PaRappa, but even so
 had to tape the art sideways to fit it over the editable area in
 WonderBrush.
+
+Here's Sunny:
+
+<img
+src="../image/Sunny/SunnyPrint.jpg"
+alt="Sunny Funny from the back of the poster, she's wearing a
+blue and red dress"
+title="Sunny Funny"
+style="max-width: 100vw; max-height: 100vh;"
+</img>
 
 What resolution? Something chunky and EGA compatible like 320×200 perhaps?
 I traced using a 200×200 canvas at 200% (i think).
