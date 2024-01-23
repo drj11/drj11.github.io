@@ -4,7 +4,7 @@
 <h1>Sunny Funny</h1>
 
 The story starts with 3 elements: An Acer netbook from 2008;
-Haiku a compatible implementation of BeOS (from the 1990s); and,
+Haiku the implementation of BeOS (from the 1990s); and,
 "cling wrap scanning", an ancient pixel tracing technique that
 uses clear plastic stuck to the monitor.
 
@@ -65,33 +65,53 @@ Sunny is slightly narrower than PaRappa, but even so
 had to tape the art sideways to fit it over the editable area in
 WonderBrush.
 
-What resolution? Something chunky like 320×200 perhaps?
-I traced using a 200×200 at 200% (i think).
+What resolution? Something chunky and EGA compatible like 320×200 perhaps?
+I traced using a 200×200 canvas at 200% (i think).
 
-[Sunny in-situ]
+<img
+style="max-width: 100vw; max-height: 100vh;"
+alt="Piece of clear plastic taped to the screen of the small
+netbook. On the plastic is a drawing of Sunny Funny done with a
+sharpie. Sideways." src="../image/Sunny/SunnyTaped.jpg"
+title="Sunny taped to my netbook"
+</img>
 
 Once i had basic outlines i removed the clear plastic with its
 pen-drawn copy, and worked by mouse and eye.
 WonderBrush isn’t really a true pixel editor, and even with the
 "subpixel" box unchecked would "half-shade" pixels when
 i was using the freehand tool with the mouse.
-Also my mouse skills are bad (possibly exacerbated by an
-authentic vintage mouse, and not a pro-gamer laserballs) and so
+Also my mouse skills are bad (possibly exacerbated by use an
+authentic vintage mouse, and not a pro-gamer laserballs (the
+trackpad was awful by the way)) and so
 the actual shapes were not very accurate.
 
-[wobbly Sunny]
+<img src="../image/Sunny/Sunny200wobbly-rgb.png"
+alt="Pixel image of my wobbly
+version of Sunny Funny. Recognisably the familiar
+anthropomorphic sunflower, but only in black and white, and
+quite wobbly shapes"
+title="Wobbly Sunny"
+style="max-width: 100vw; max-height: 100vh;"
+</img>
 
 Digital art and pixel editing is not something i've done before,
 so it took me many many hours of single pixel cleaning and
 reshaping to get this:
 
-[Sunny flat no colour not rotated]
+<img src="../image/Sunny/Sunny200flat.png"
+alt="Still in black and white, Sunny
+has been cleaned up and most of the basic shapes are not so
+wobbly"
+title="Flat Pixelly Sunny"
+style="max-width: 100vw; max-height: 100vh;"
+</img>
 
 Nice. But needs rotating, right? Simples.
 
-Aha, i can rotate in WonderBrush but it resamples with some sort
-of high-fidelity cubic filter.
-Which for bilevel pixel art is no bloody good.
+Aha, i can rotate in WonderBrush but... it resamples with some sort
+of so-called _high-fidelity_ cubic filter.
+Which for bilevel pixel art is **no bloody good**.
 Couldn’t work out how to fix that.
 Seemingly can’t rotate in the image viewer.
 
@@ -107,18 +127,39 @@ HaikuDepot, the package installer, it sometimes lists two
 packages wih the same name (i think i added a repository at some
 point).
 For practical purposes we can call these two version "cursed"
-and "might work".
-I wondered if i could install the non-cursed version of
+and "uncursed".
+I wondered if i could install the uncursed version of
 ArtPaint, and i could!
 
-ArtPaint could do the pixel-exact 90° rotation.
+ArtPaint _can_ do the pixel-exact 90° rotation.
 But i wasn't finding the pixel editing as comfortable as
 WonderBrush, so i switched back to that for the rest of the
 project.
 Which by this point is filling with colour and drawing the
 stripes on Sunny's dress.
 
-[Sunny coloured in]
+Here shown with 3× pixels so that it appears reasonable, and
+possibly without a blurring zoom, on modern displays.
+
+<img src="../image/Sunny/Sunnyx3ega.png"
+alt="Sunny in colour, wearing a fetching
+red and blue dress"
+title="Sunny in Colour"
+style="max-width: 100vw; max-height: 100vh;"
+</img>
+
+I picked 200×200 partly so it fitted into an EGA display
+(320×200), so it was natural to use the EGA palette.
+However, i may have typed one or more of the palette entries
+incorrectly (and see also subpixel problems below).
+
+There is another problem with this idea of EGA art.
+On actual EGA hardware the pixel aspect ratio is 1:1.2, whereas
+i have square pixels.
+This is only fixable by going back to the scanning step, and
+using a pixel editor that can edit non-square pixels on a
+square-pixel display.
+I don't think that exists.
 
 Filling in reveals some previously unfound subpixels
 (pixels that are neither black nor transparent);
