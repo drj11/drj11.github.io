@@ -34,7 +34,7 @@ on this class of hardware.
 After a false start of installing it on a partition which the
 pre-existing grub couldn’t then boot into,
 i installed it on the raw unpartitioned disk (i think).
-Haiku runs reasonable well on the 2008 netbook, which is nice.
+Haiku runs reasonably well on the 2008 netbook, which is nice.
 Maybe it could breathe some life into the old netbook.
 
 A little exploration with Haiku reveals that doing ordinary web things is
@@ -51,7 +51,8 @@ But i did eventually install it later.
 So what art could i "cling wrap scan"?
 I start looking through my collection of videogame media, and
 found...
-This amazing poster from [PaRappa the Rapper].
+This amazing poster from [PaRappa the
+Rapper](https://en.wikipedia.org/wiki/PaRappa_the_Rapper).
 
 <img
 src="../image/Sunny/PaRappaPosterSquare.jpg"
@@ -68,12 +69,11 @@ I traced over PaRappa using actual clingfilm, and
 it was terrible. It sticks okay onto the netbook though.
 But the WonderBrush art program even in fullscreen only lets me
 use a small portion of the total screen for the editing area.
-I solved this problem by switching targetes, Sunny Funny also
-appears.
+I solved this problem by switching targets: Sunny Funny also
+appears on the back, and the art is slightly narrower.
 I traced over Sunny Funny instead, this time using a cut-open
 ziploc bag from the ones that came with COVID-19 tests.
-Sunny is slightly narrower than PaRappa, but even so
-had to tape the art sideways to fit it over the editable area in
+I had to tape the art sideways to fit it over the editable area in
 WonderBrush.
 
 Here's Sunny:
@@ -100,7 +100,7 @@ title="Sunny taped to my netbook"
 Once i had basic outlines i removed the clear plastic with its
 pen-drawn copy, and worked by mouse and eye.
 WonderBrush isn’t really a true pixel editor, and even with the
-"subpixel" box unchecked would "half-shade" pixels when
+"subpixel" box unchecked it would "half-shade" pixels when
 i was using the freehand tool with the mouse.
 Also my mouse skills are bad (possibly exacerbated by use an
 authentic vintage mouse, and not a pro-gamer laserballs (the
