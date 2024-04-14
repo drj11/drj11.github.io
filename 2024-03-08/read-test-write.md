@@ -48,6 +48,26 @@ back in. So you need an external reader that can be trusted
 to correctly interpret good PNG files and be reasonabily
 diligent in rejecting badly formatted ones.
 
+Another problem in testing writing is that often there are
+multiple ways to encode the same image.
+For example in PNG you can write an image in interlaced format
+or not, either way the resulting pixels when it is read are the
+same.
+As it happens i've just disabled interlaced writing in PyPNG,
+but the test for that still passes, because it tests that an
+"interlaced" image can be written and that when read we get the
+same pixels as when writing a non-interlaced image.
+When i disabled interlacing, both images are written as non
+interlaced, but they still read the same.
+
+For a lot of file formats in general we cannot say exactly what
+should be written in any particular case.
+In PNG the stream is compressed and there are many choices as
+to how to compress it.
+As long as it decompresses into the same pixels, it’s all fine,
+but it means that a test can’t demand that any particular
+sequence of bytes is written.
+
 How do you generate input images for testing reading? Well, if
 you can’t find them lying around, maybe you could make some.
 By creating a library that writes them... What if you have a
