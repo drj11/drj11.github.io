@@ -153,27 +153,27 @@ not a tutorial—probably best if you know some sort of assembler already.
 
 ### Emergency Cheatsheet for Z80 assembler
 
-- LD Dest,Source — LOADs (that is, _moves_) a thing from Source to Destination,
+- `LD` _Dest,Source_ — LOADs (that is, _moves_) a thing from Source to Destination,
   Although Z80 is an 8-bit processor, some 16-bit loads are possible.
   Note: Destination on left (generally true for most of the Z80 instructions).
-- IN A,(C) — read from I/O port C (BC really) and put result in A.
-- OR Thing — modify register A by ORing Thing into it, a lot of instructions
-  implicitly use register A. Can also AND.
-- CPL — Complement A.
-- CP Thing — Compare, subtract Thing from A without changing A but set
+- `IN A,(C)` — read from I/O port C (BC really) and put result in A.
+- `OR` _Thing_ — modify register A by ORing Thing into it, a lot of instructions
+  implicitly use register A. `AND` works similarly.
+- `CPL` — Complement A.
+- `CP` _Thing_ — Compare, subtract Thing from A without changing A but set
   flags accordingly (in this code, C flag for Carry is used).
-- SBC A, Thing (also written `SBC Thing`); Subtract with Carry (from A);
+- `SBC A,` _Thing_ (also written `SBC Thing`); Subtract with Carry (from A);
   when performing a subtraction, the Carry flag is actually a Borrow flag.
-- AND Thing — mofidy register A by ANDing Thing into it.
-- RLC Reg — Rotate Left Circular, the bits of the 8-bit register are
+- `AND` _Thing_ — mofidy register A by ANDing Thing into it.
+- `RLC` _Reg_ — Rotate Left Circular, the bits of the 8-bit register are
   rotated to the left, with bit 0 taking on the previous bit 7.
-- JR Cond, Target — Jump Relative (that is, short) to Target if Condition
+- `JR` _Cond,Target_ — Jump Relative (that is, short) to Target if Condition
   is met (in this case C means if C flag is set).
-- RRA — Rotate Right A, the bits of A are rotated, including the C flag:
+- `RRA` — Rotate Right A, the bits of A are rotated, including the C flag:
   C flag becomes the previous bit 0, bit 7 becomes the previous C flag.
-- RL Reg — Rotate Left, a rotate in which C flag participates:
+- `RL` _Reg_ — Rotate Left, a rotate in which C flag participates:
   C flag becomes the previous bit 7, bit 0 becomes the previous C flag.
-- RET — Return (from subroutine).
+- `RET` — Return (from subroutine).
 
 
 ## REFERENCES

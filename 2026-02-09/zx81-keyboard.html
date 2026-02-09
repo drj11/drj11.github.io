@@ -154,27 +154,27 @@ not a tutorial—probably best if you know some sort of assembler already.</p>
 </ul>
 <h3>Emergency Cheatsheet for Z80 assembler</h3>
 <ul>
-<li>LD Dest,Source — LOADs (that is, <em>moves</em>) a thing from Source to Destination,
+<li><code>LD</code> <em>Dest,Source</em> — LOADs (that is, <em>moves</em>) a thing from Source to Destination,
   Although Z80 is an 8-bit processor, some 16-bit loads are possible.
   Note: Destination on left (generally true for most of the Z80 instructions).</li>
-<li>IN A,(C) — read from I/O port C (BC really) and put result in A.</li>
-<li>OR Thing — modify register A by ORing Thing into it, a lot of instructions
-  implicitly use register A. Can also AND.</li>
-<li>CPL — Complement A.</li>
-<li>CP Thing — Compare, subtract Thing from A without changing A but set
+<li><code>IN A,(C)</code> — read from I/O port C (BC really) and put result in A.</li>
+<li><code>OR</code> <em>Thing</em> — modify register A by ORing Thing into it, a lot of instructions
+  implicitly use register A. <code>AND</code> works similarly.</li>
+<li><code>CPL</code> — Complement A.</li>
+<li><code>CP</code> <em>Thing</em> — Compare, subtract Thing from A without changing A but set
   flags accordingly (in this code, C flag for Carry is used).</li>
-<li>SBC A, Thing (also written <code>SBC Thing</code>); Subtract with Carry (from A);
+<li><code>SBC A,</code> <em>Thing</em> (also written <code>SBC Thing</code>); Subtract with Carry (from A);
   when performing a subtraction, the Carry flag is actually a Borrow flag.</li>
-<li>AND Thing — mofidy register A by ANDing Thing into it.</li>
-<li>RLC Reg — Rotate Left Circular, the bits of the 8-bit register are
+<li><code>AND</code> <em>Thing</em> — mofidy register A by ANDing Thing into it.</li>
+<li><code>RLC</code> <em>Reg</em> — Rotate Left Circular, the bits of the 8-bit register are
   rotated to the left, with bit 0 taking on the previous bit 7.</li>
-<li>JR Cond, Target — Jump Relative (that is, short) to Target if Condition
+<li><code>JR</code> <em>Cond,Target</em> — Jump Relative (that is, short) to Target if Condition
   is met (in this case C means if C flag is set).</li>
-<li>RRA — Rotate Right A, the bits of A are rotated, including the C flag:
+<li><code>RRA</code> — Rotate Right A, the bits of A are rotated, including the C flag:
   C flag becomes the previous bit 0, bit 7 becomes the previous C flag.</li>
-<li>RL Reg — Rotate Left, a rotate in which C flag participates:
+<li><code>RL</code> <em>Reg</em> — Rotate Left, a rotate in which C flag participates:
   C flag becomes the previous bit 7, bit 0 becomes the previous C flag.</li>
-<li>RET — Return (from subroutine).</li>
+<li><code>RET</code> — Return (from subroutine).</li>
 </ul>
 <h2>REFERENCES</h2>
 <p>[VICKERS81] "Sinclair ZX81 BASIC Programming"; Steven Vickers;
