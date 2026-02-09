@@ -151,6 +151,10 @@ not a tutorial—probably best if you know some sort of assembler already.
   keyboard, but bit 6 is used for US/UK detection in the ROM and
   determines how many MARGIN lines are output for the video display.
 
+The keypress information returned by this `KEYBOARD` routine is a bit _raw_,
+[BAKER81] has a further routine that converts this raw keypress information
+into character codes.
+
 ### Emergency Cheatsheet for Z80 assembler
 
 - `LD` _Dest,Source_ — LOADs (that is, _moves_) a thing from Source to Destination,
