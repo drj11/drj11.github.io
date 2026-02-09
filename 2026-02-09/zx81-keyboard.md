@@ -53,6 +53,12 @@ The zones look like this:
 Thus when S is pressed H is 0xFB (vertical zone 2 is clear), and
 L is 0xFD (horizontal zone 1 is clear).
 
+The hardware for the ZX81 keyboard is very simple and is a more regular
+version of the above scheme: the keys are arranged logically in a 8x5 matrix,
+the shift key is not special in hardware, it is part of the `Shift Z X C V`
+zone. Reading a keyboard port returns 5 bits corresponding to the keys
+pressed in one of the 8 zones according to which port was read (sort of).
+
 The routine for scanning the keyboard is given on [BAKER81] page 95 (here,
 numbers are in hexadecimal, but in my text i shall try and use a 0x prefix):
 
@@ -83,8 +89,10 @@ i've put an emergency cheatsheet at the end, but be warned it is
 not a tutorial—probably best if you know some sort of assembler already.
 
 - `IN A,(C)` puts BC on the entire 16-bit address bus (for an I/O cycle),
-  but traditionally only the bottom 8-bits, C, are used. In any case,
-  the port is decoded to the keyboard array (i think).
+  C = 0xFE is used for the keyboard, but in fact any port with the bottom
+  bit reset will do (the I/O decoder only uses A0). The upper 8 bits of the
+  port address (B) are used to drive 8 lines in the keyboard matrix (one for
+  each Horizontal Zone). In ordinary operation, only 1 bit in Bshould be reset.
 - The JR at address 0x18 is a loop and the only reason the routine terminates;
 - the loop is exited when C flag is clear; C flag is set (or reset) by the
   earlier `RLC B` instruction at 0x17;
@@ -93,6 +101,9 @@ not a tutorial—probably best if you know some sort of assembler already.
 - Therefore there are 8 iterations of the loop, exiting when the `RLC B`
   changes B from 0x7F (bit 7 reset) to 0xFE (bit 1 reset) which is the
   only time that the C flag is reset;
+- The entire routine is a loop of 8 iterations, with a bit of book-keeping
+  before and after.
+
 - HL has all bits set with `LD HL, 0xFFFF` at 0x00;
 - Within the loop both L and H are only changed by ANDing with
   other values (at 0x13 and preceding for L, and 0x16 and preceduing for H),
@@ -105,7 +116,8 @@ not a tutorial—probably best if you know some sort of assembler already.
 - The `SBC A, A` is preceded by `CP 0x01` so the C flag is set only when
   A is 0;
 - `CPL` at 0x0D means that A is 0 for the following `CP` instruction
-  (sets C flag) only when when it is 0xFF prior to this `CPL` instruction (after some ORing).
+  (sets C flag) only when when it is 0xFF prior to
+  this `CPL` instruction (after some ORing).
   In other words when no keys are pressed (in that zone);
 - the effect of the three instruction `CPL` `CP 0x01` `SBC A, A` is to
   set A to either 0xFF or 0x00 according to whether it starts as
@@ -134,6 +146,10 @@ not a tutorial—probably best if you know some sort of assembler already.
   (rightwards) and into H (leftwards); thus the Vertical Zones recorded in
   H are shifted left 1, and bit 0 of H is bit 0 from the
   (true) Horizontal Zone 0 of the keyboard matrix: the shift key.
+- The `OR 0xE0` at the beginning of the loop means that the leftmost
+  3 bits of the port data are ignored (set); they aren't used for the
+  keyboard, but bit 6 is used for US/UK detection in the ROM and
+  determines how many MARGIN lines are output for the video display.
 
 ### Emergency Cheatsheet for Z80 assembler
 
