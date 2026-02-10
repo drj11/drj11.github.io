@@ -1,6 +1,6 @@
-[brutal]: #xdate "2026-02-09"
+[brutal]: #date "2026-02-10"
 [brutal]: #author "drj"
-[brutal]: @title "ZX81 KEYBOARD Subroutine—Commentary"
+[brutal]: #title "ZX81 KEYBOARD Subroutine—Commentary"
 
 [Chapter Ten of "Mastering Machine Code On Your
 ZX81"](https://archive.org/details/masteringmachinecodeonyourzx81/page/87/mode/2up) [BAKER81],
@@ -169,6 +169,12 @@ not a tutorial—probably best if you know some sort of assembler already.
 The keypress information returned by this `KEYBOARD` routine is a bit _raw_,
 [BAKER81] has a further routine that converts this raw keypress information
 into character codes.
+
+The ZX81 keyboard seems a little bit primitive (it is), but more or less
+elaborate versions of this exist in most keyboards.
+Even things that you might not think of as keyboads, like the
+[Game Boy action and direction buttons which are arranged in a 2×4
+matrix](https://gbdev.io/pandocs/Joypad_Input.html).
 
 ### Emergency Cheatsheet for Z80 assembler
 
