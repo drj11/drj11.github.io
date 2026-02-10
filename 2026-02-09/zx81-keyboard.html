@@ -52,6 +52,16 @@ version of the above scheme: the keys are arranged logically in a 8x5 matrix,
 the shift key is not special in hardware, it is part of the <code>Shift Z X C V</code>
 zone. Reading a keyboard port returns 5 bits corresponding to the keys
 pressed in one of the 8 zones according to which port was read (sort of).</p>
+<p>Thanks to <a href="https://github.com/TankedThomas/ZX80">this github repo where someone is reconstructing the ZX80
+PCB</a> i can show this detail from the
+schematic (the ZX81 and the ZX Spectrum have the same keyboard schematic):</p>
+<p><img src="../image/ZX80KeyboardSchematic.png"></p>
+<p>The Z80 address bus A8 through to A15 are wired to the 8 horizontal
+zones, and five wires come off the bottom which are are fed into the Z80
+D0 to D4 lines through a 74LS135 driver which is selected when the
+keyboard I/O port is read.
+When a key is pressed in a zone that has its A- wire low, the corresponding
+D wire will be driven low and sensed by the Z80 <code>IN</code> instruction (as a 0 bit).</p>
 <p>The routine for scanning the keyboard is given on [BAKER81] page 95 (here,
 numbers are in hexadecimal, but in my text i shall try and use a 0x prefix):</p>
 <pre><code>K00: LD HL,FFFF
@@ -152,6 +162,9 @@ not a tutorial—probably best if you know some sort of assembler already.</p>
   keyboard, but bit 6 is used for US/UK detection in the ROM and
   determines how many MARGIN lines are output for the video display.</li>
 </ul>
+<p>The keypress information returned by this <code>KEYBOARD</code> routine is a bit <em>raw</em>,
+[BAKER81] has a further routine that converts this raw keypress information
+into character codes.</p>
 <h3>Emergency Cheatsheet for Z80 assembler</h3>
 <ul>
 <li><code>LD</code> <em>Dest,Source</em> — LOADs (that is, <em>moves</em>) a thing from Source to Destination,

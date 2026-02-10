@@ -59,6 +59,19 @@ the shift key is not special in hardware, it is part of the `Shift Z X C V`
 zone. Reading a keyboard port returns 5 bits corresponding to the keys
 pressed in one of the 8 zones according to which port was read (sort of).
 
+Thanks to [this github repo where someone is reconstructing the ZX80
+PCB](https://github.com/TankedThomas/ZX80) i can show this detail from the
+schematic (the ZX81 and the ZX Spectrum have the same keyboard schematic):
+
+<img src="../image/ZX80KeyboardSchematic.png"></img>
+
+The Z80 address bus A8 through to A15 are wired to the 8 horizontal
+zones, and five wires come off the bottom which are are fed into the Z80
+D0 to D4 lines through a 74LS135 driver which is selected when the
+keyboard I/O port is read.
+When a key is pressed in a zone that has its A- wire low, the corresponding
+D wire will be driven low and sensed by the Z80 `IN` instruction (as a 0 bit).
+
 The routine for scanning the keyboard is given on [BAKER81] page 95 (here,
 numbers are in hexadecimal, but in my text i shall try and use a 0x prefix):
 
