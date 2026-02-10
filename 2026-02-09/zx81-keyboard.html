@@ -94,7 +94,7 @@ not a tutorial—probably best if you know some sort of assembler already.</p>
   C = 0xFE is used for the keyboard, but in fact any port with the bottom
   bit reset will do (the I/O decoder only uses A0). The upper 8 bits of the
   port address (B) are used to drive 8 lines in the keyboard matrix (one for
-  each Horizontal Zone). In ordinary operation, only 1 bit in Bshould be reset.</li>
+  each Horizontal Zone). In ordinary operation, only 1 bit in B should be reset.</li>
 <li>The JR at address 0x18 is a loop and the only reason the routine terminates;</li>
 <li>the loop is exited when C flag is clear; C flag is set (or reset) by the
   earlier <code>RLC B</code> instruction at 0x17;</li>
@@ -121,33 +121,33 @@ not a tutorial—probably best if you know some sort of assembler already.</p>
   is effectively copied into all the bits of A. I will read around this,
   before and after, to see how L is changed.</p>
 </li>
-<li>The <code>SBC A, A</code> is preceded by <code>CP 0x01</code> so the C flag is set only when
+<li>The <code>SBC A,A</code> is preceded by <code>CP 0x01</code> so the C flag is set only when
   A is 0;</li>
 <li><code>CPL</code> at 0x0D means that A is 0 for the following <code>CP</code> instruction
   (sets C flag) only when when it is 0xFF prior to
   this <code>CPL</code> instruction (after some ORing).
   In other words when no keys are pressed (in that zone);</li>
-<li>the effect of the three instruction <code>CPL</code> <code>CP 0x01</code> <code>SBC A, A</code> is to
+<li>the effect of the three instruction <code>CPL</code> ; <code>CP 0x01</code> ; <code>SBC A, A</code> is to
   set A to either 0xFF or 0x00 according to whether it starts as
   0xFF or not. It is a quite compact way of encoding something like
   <code>A = (A == 0xFF) ? 0xFF : 0x00;</code> in C.</li>
-<li>After the <code>SBC</code> are the three instruction <code>OR B</code> <code>AND L</code> <code>LD L,A</code> (the only
-  time L changes inside the loop);</li>
+<li>After the <code>SBC</code> are the three instructions <code>OR B</code> ; <code>AND L</code> ; <code>LD L,A</code>
+  (the only time L changes after its initialisation);</li>
 <li>When A is 0xFF, <code>OR B</code> has no effect (all bits already set), <code>AND L</code>
   makes A a copy of L, and then L becomes a copy of A: so no change to L; but,
-  when A is 0x00, <code>OR B</code> assigns B to A (B has a single reset bit), <code>AND L</code> <code>LD L,A</code>
+  when A is 0x00, <code>OR B</code> assigns B to A (B has a single reset bit), <code>AND L</code> ; <code>LD L,A</code>
   clears a single bit in L and puts the result back into L.</li>
 <li>
 <p>Thus for each iteration of the loop, a bit in L is cleared if and only if
   a key is pressed in the corresponding Horizontal Zone.</p>
 </li>
 <li>
-<p>H is a lot simpler, <code>LD A,H</code> <code>AND D</code> <code>LD H, A</code> (effectively <code>AND H, D</code> if
+<p>H is a lot simpler, <code>LD A,H</code> ; <code>AND D</code> ; <code>LD H, A</code> (effectively <code>AND H, D</code> if
   that were a legal instruction) reset in H those bits in
   D that are reset; and D is a copy of A, preserved from <code>LD D, A</code> at 0x0C.</p>
 </li>
 <li>There are some fun entry and exit tweaks. On entry to the loop at 0x0A
-  the port has already been read with <code>IN A,(C)</code> <code>OR 0x01</code>;
+  the port has already been read with <code>IN A,(C)</code> ; <code>OR 0x01</code>;
   this reads the port (Horizontal Zone 0) and sets bit 0 of A.
   Thus in Horizontal Zone 0 only, bit 0 is always set,
   meaning the keypress of that key is ignored: It's the Shift key.</li>

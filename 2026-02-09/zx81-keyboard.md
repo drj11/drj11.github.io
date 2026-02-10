@@ -105,7 +105,7 @@ not a tutorial—probably best if you know some sort of assembler already.
   C = 0xFE is used for the keyboard, but in fact any port with the bottom
   bit reset will do (the I/O decoder only uses A0). The upper 8 bits of the
   port address (B) are used to drive 8 lines in the keyboard matrix (one for
-  each Horizontal Zone). In ordinary operation, only 1 bit in Bshould be reset.
+  each Horizontal Zone). In ordinary operation, only 1 bit in B should be reset.
 - The JR at address 0x18 is a loop and the only reason the routine terminates;
 - the loop is exited when C flag is clear; C flag is set (or reset) by the
   earlier `RLC B` instruction at 0x17;
@@ -126,30 +126,30 @@ not a tutorial—probably best if you know some sort of assembler already.
   when carry is set, or all bits reset, when carry is reset. The C flag
   is effectively copied into all the bits of A. I will read around this,
   before and after, to see how L is changed.
-- The `SBC A, A` is preceded by `CP 0x01` so the C flag is set only when
+- The `SBC A,A` is preceded by `CP 0x01` so the C flag is set only when
   A is 0;
 - `CPL` at 0x0D means that A is 0 for the following `CP` instruction
   (sets C flag) only when when it is 0xFF prior to
   this `CPL` instruction (after some ORing).
   In other words when no keys are pressed (in that zone);
-- the effect of the three instruction `CPL` `CP 0x01` `SBC A, A` is to
+- the effect of the three instruction `CPL` ; `CP 0x01` ; `SBC A, A` is to
   set A to either 0xFF or 0x00 according to whether it starts as
   0xFF or not. It is a quite compact way of encoding something like
   `A = (A == 0xFF) ? 0xFF : 0x00;` in C.
-- After the `SBC` are the three instruction `OR B` `AND L` `LD L,A` (the only
-  time L changes inside the loop);
+- After the `SBC` are the three instructions `OR B` ; `AND L` ; `LD L,A`
+  (the only time L changes after its initialisation);
 - When A is 0xFF, `OR B` has no effect (all bits already set), `AND L`
   makes A a copy of L, and then L becomes a copy of A: so no change to L; but,
-  when A is 0x00, `OR B` assigns B to A (B has a single reset bit), `AND L` `LD L,A`
+  when A is 0x00, `OR B` assigns B to A (B has a single reset bit), `AND L` ; `LD L,A`
   clears a single bit in L and puts the result back into L.
 - Thus for each iteration of the loop, a bit in L is cleared if and only if
   a key is pressed in the corresponding Horizontal Zone.
 
-- H is a lot simpler, `LD A,H` `AND D` `LD H, A` (effectively `AND H, D` if
+- H is a lot simpler, `LD A,H` ; `AND D` ; `LD H, A` (effectively `AND H, D` if
   that were a legal instruction) reset in H those bits in
   D that are reset; and D is a copy of A, preserved from `LD D, A` at 0x0C.
 - There are some fun entry and exit tweaks. On entry to the loop at 0x0A
-  the port has already been read with `IN A,(C)` `OR 0x01`;
+  the port has already been read with `IN A,(C)` ; `OR 0x01`;
   this reads the port (Horizontal Zone 0) and sets bit 0 of A.
   Thus in Horizontal Zone 0 only, bit 0 is always set,
   meaning the keypress of that key is ignored: It's the Shift key.
