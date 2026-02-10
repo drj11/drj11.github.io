@@ -2,9 +2,11 @@
 [brutal]: #author "drj"
 [brutal]: @title "ZX81 KEYBOARD Subroutine—Commentary"
 
-Chapter Ten of "Mastering Machine Code On Your ZX81" [BAKER81],
+[Chapter Ten of "Mastering Machine Code On Your
+ZX81"](https://archive.org/details/masteringmachinecodeonyourzx81/page/87/mode/2up) [BAKER81],
 has a description of the new ROM (ZX81) keyboard scanning routine.
-In the new ROM it is at 0x02BB and is called `KEYBOARD` in [LH1982].
+In the new ROM it is at 0x02BB and is called [`KEYBOARD` in
+[LH1982]](https://archive.org/details/complete-timex-ts1000-sinclair-zx81-rom-disassembly/page/n7/mode/2up).
 
 `KEYBOARD` is a neat little routine that
 deposits in HL information about which keys are pressed, and
@@ -195,10 +197,7 @@ into character codes.
 
 ## REFERENCES
 
-[VICKERS81] "Sinclair ZX81 BASIC Programming"; Steven Vickers;
-  Second Edition 1981.
-
-[BAKER81] "Mastering Machine Code On Your ZX81"
+[BAKER81] "Mastering Machine Code On Your ZX81"; Toni Baker; 1981.
 
 [LH1982] "The Complete Timex TS1000 & Sinclair ZX81 ROM Disassembly";
   Dr. Ian Logan, Dr. Frank O‘Hara.
