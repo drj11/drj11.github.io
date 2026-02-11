@@ -55,7 +55,9 @@ The zones look like this:
 Thus when S is pressed H is 0xFB (vertical zone 2 is clear), and
 L is 0xFD (horizontal zone 1 is clear).
 You can check the codes with a simple BASIC program i've added at
-the end of this article.
+the end of this article. (there is a small typo/misunderstanding
+by Baker here, where in [BAKER91] asserts that **S** decodes to 0xFBFB;
+not so.)
 
 The hardware for the ZX81 keyboard is very simple and is a more regular
 version of the above scheme: the keys are arranged logically in a 8x5 matrix,
