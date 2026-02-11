@@ -114,7 +114,7 @@ not a tutorial—probably best if you know some sort of assembler already.
 - the `RLC B` is the only instruction in the loop that affects B, which is
   assigned 0xFE before the loop (at 0x03);
 - Therefore there are 8 iterations of the loop, exiting when the `RLC B`
-  changes B from 0x7F (bit 7 reset) to 0xFE (bit 1 reset) which is the
+  changes B from 0x7F (bit 7 reset) to 0xFE (bit 0 reset) which is the
   only time that the C flag is reset;
 - The entire routine is a loop of 8 iterations, with a bit of book-keeping
   before and after.
