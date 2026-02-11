@@ -3,7 +3,7 @@
 [brutal]: #title "ZX81 KEYBOARD Subroutine—Commentary"
 
 [Chapter Ten of "Mastering Machine Code On Your
-ZX81"](https://archive.org/details/masteringmachinecodeonyourzx81/page/87/mode/2up) [BAKER81],
+ZX81"](https://archive.org/details/masteringmachinecodeonyourzx81/page/87/mode/2up) [BAKER1981],
 has a description of the new ROM (ZX81) keyboard scanning routine.
 In the new ROM it is at 0x02BB and is called [`KEYBOARD` in
 [LH1982]](https://archive.org/details/complete-timex-ts1000-sinclair-zx81-rom-disassembly/page/n7/mode/2up).
@@ -13,7 +13,7 @@ deposits in HL information about which keys are pressed, and
 additionally if Shift is pressed; Shift can be pressed
 in combination with another key.
 
-The keyboard is divided into 8 horizontal zones (sections in [BAKER81])
+The keyboard is divided into 8 horizontal zones (sections in [BAKER1981])
 of 5 keys each (except zone 0 which only has 4 keys);
 each zone corresponding to a bit in L.
 The keyboard is also divided into 5 vertical zones (sections) of 8 keys each
@@ -54,6 +54,8 @@ The zones look like this:
 
 Thus when S is pressed H is 0xFB (vertical zone 2 is clear), and
 L is 0xFD (horizontal zone 1 is clear).
+You can check the codes with a simple BASIC program i've added at
+the end of this article.
 
 The hardware for the ZX81 keyboard is very simple and is a more regular
 version of the above scheme: the keys are arranged logically in a 8x5 matrix,
@@ -74,7 +76,7 @@ keyboard I/O port is read.
 When a key is pressed in a zone that has its A- wire low, the corresponding
 D wire will be driven low and sensed by the Z80 `IN` instruction (as a 0 bit).
 
-The routine for scanning the keyboard is given on [BAKER81] page 95 (here,
+The routine for scanning the keyboard is given on [BAKER1981] page 95 (here,
 numbers are in hexadecimal, but in my text i shall try and use a 0x prefix):
 
     K00: LD HL,FFFF
@@ -167,7 +169,7 @@ not a tutorial—probably best if you know some sort of assembler already.
   determines how many MARGIN lines are output for the video display.
 
 The keypress information returned by this `KEYBOARD` routine is a bit _raw_,
-[BAKER81] has a further routine that converts this raw keypress information
+[BAKER1981] has a further routine that converts this raw keypress information
 into character codes.
 
 The ZX81 keyboard seems a little bit primitive (it is), but more or less
@@ -200,12 +202,30 @@ matrix](https://gbdev.io/pandocs/Joypad_Input.html).
   C flag becomes the previous bit 7, bit 0 becomes the previous C flag.
 - `RET` — Return (from subroutine).
 
+### A BASIC program to inspect the values
+
+The SLOW display ROM routines call KEYBOARD every frame (50 times a second
+on a UK model) and deposit the HL result in system variable `LAST_K` (the
+address of which is listed in [VICKERS1981] Chapter 28).
+So it is not necessary to call the subroutine directly.
+
+A simple BASIC program can display the scancodes, in decimal.
+L (for horizontal zone) is displayed on the left,
+H (for vertical zone and Shift) on the right.
+
+    10 PRINT AT 21,0;PEEK 16421,PEEK 16422
+    20 SCROLL
+    30 GOTO 10
+
+(press SPACE/BREAK to break into the running program and stop it)
 
 ## REFERENCES
 
-[BAKER81] "Mastering Machine Code On Your ZX81"; Toni Baker; 1981.
+[BAKER1981] "Mastering Machine Code On Your ZX81"; Toni Baker; 1981.
 
 [LH1982] "The Complete Timex TS1000 & Sinclair ZX81 ROM Disassembly";
   Dr. Ian Logan, Dr. Frank O‘Hara.
+
+[VICKERS1981] "ZX81 BASIC Programming"; Steven Vickers; Second Edition 1981.
 
 # END
