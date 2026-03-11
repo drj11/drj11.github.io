@@ -1,0 +1,65 @@
+<meta charset="utf-8">
+<title>Some alternatives to vim</title>
+<body>
+<nav>
+<a href="../2026-02-10/zx81-keyboard.html">(previous)</a>
+</nav>
+<article>
+<h1>Some alternatives to vim</h1>
+<time>2026-03-11</time>
+<address>by drj</address>
+<p>Recently some slop vommits were made to the source code repo hosting <em>vim</em>,
+the well-known editor based on <em>vi</em> the well known <em>Visual Editor</em> from Unix.</p>
+<p>Depending on your viewpoint this is somewhere between world-shatteringly deplorable
+to irrelevant.
+For me, it is a minor annoyance. I use vi/vim on the daily and i do not want
+to be associated with slop vommit tools.
+But i’m also somewhat pragmatic and recognise that i probably already am.</p>
+<p>The short version is that i have now compiled modern-ish version of both <code>vi</code> and
+<code>nvi</code> and will be trying those.</p>
+<p>I mostly switched to vim in the mid 1990s,
+swiching away from <em>nvi</em> because it had bugs over the execution of paste buffers
+(did you know <code>@x</code> executes buffer <em>x</em> as if it were typed into vi?).</p>
+<p>But ever since then i’ve really been wanting to return to <code>nvi</code>, or maybe
+even <code>vi</code>.
+Like, i know <code>vim</code> does some cool things like you can use the arrow keys in
+insert mode, but honestly i don’t use them that much.
+And it is does a lot of things that lowkey annoy me. Anyway.</p>
+<p>Fast forward to 2026 and <code>nvi</code> now works. Maybe.
+I have spent some time (a not very productive day) investigating some alternatives
+to vim:</p>
+<ul>
+<li><a href="https://codeberg.org/NerdNextDoor/evi"><em>evi</em></a> a hard-fork of Vim from a point
+  early enough to avoid Ai. I have no intention of using this, because for me
+  if i am switching away, i may as well revert to <code>nvi</code> or <code>vi</code>. But it was
+  a NerdNextDoor fediverse post which alerted me to the slop vommit issue.</li>
+<li><code>emacs</code>. Haha. Emacs was actually the first Serious Editor i used that wasn’t
+  entirely parochial (i used E and <a href="https://archive.org/details/zed-reference-manual">ZED</a>
+  before that, but they existed only
+  on PHOENIX the university’s baroque 3084Q mainframe). And i know emacs pretty well.
+  emacs 16. I will not be renewing my interesting in emacs.</li>
+<li><code>nvi</code>. <code>nvi</code> is <em>new vi</em>, made to replace <code>vi</code>. But there are loads of different
+  versions. On my Mac the <em>brew</em> version installs but has display problems for
+  non-ASCII characters, like þ. I found the Keith Bostic (author of <code>nvi</code>) source, but
+  couldn’t work out how to compile it. I found repo.or.cz/nvi.git but it’s
+  geoblocked (thanks to the UK’s oppressive digital regime). So what i’m actually
+  using to type this blog article is:</li>
+<li><code>nvi2</code> (it compiles a binary called <code>nvi</code>) which is <a href="https://github.com/lichray/nvi2">https://github.com/lichray/nvi2</a> .
+  Despite my trepidation at it requiring <code>cmake</code> and <code>ninja</code> to build (which i had
+  to install from homebrew) the build instructions ran fine, trouble free, and
+  relatively quickly.</li>
+<li><a href="https://github.com/n-t-roff/heirloom-ex-vi"><em>Heirloom vi</em> at https://github.com/n-t-roff/heirloom-ex-vi</a>
+  which i have now compiled (with <code>sh configure ; make</code>) and seems to be fine so far.
+  Traditionalists will be delighted to note that the arrow keys do not work
+  in insert mode. There is a note in the README about getting <code>PageUp</code> and <code>PageDown</code> keys
+  to work tho.</li>
+</ul>
+<p>The big change since the 1990s is that Unicode now works.</p>
+<h2>Addendum on a <code>vi</code> bug</h2>
+<p>I discovered while writing blog post that...</p>
+<p><code>de</code> and <code>ye</code> put different texts into the paste buffer.
+<code>ye</code> includes the character under the cursor, <code>de</code> does not (this last bit
+seems like a bug, but the fact they are different is definitely a bug).</p>
+<h1>END</h1>
+</article>
+
