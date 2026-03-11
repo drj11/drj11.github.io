@@ -112,7 +112,7 @@ not a tutorial—probably best if you know some sort of assembler already.
   bit reset will do (the I/O decoder only uses A0). The upper 8 bits of the
   port address (B) are used to drive 8 lines in the keyboard matrix (one for
   each Horizontal Zone). In ordinary operation, only 1 bit in B should be reset.
-- The JR at address 0x18 is a loop and the only reason the routine terminates;
+- The JR at address 0x1B is a loop and the only reason the routine terminates;
 - the loop is exited when C flag is clear; C flag is set (or reset) by the
   earlier `RLC B` instruction at 0x17;
 - the `RLC B` is the only instruction in the loop that affects B, which is
