@@ -12,7 +12,7 @@ to be associated with slop vommit tools.
 But i’m also somewhat pragmatic and recognise that i probably already am.
 
 The short version is that i have now compiled modern-ish version of both `vi` and
-`nvi` and will be trying those.
+`nvi` and [update:] after trying for 2 weeks, i have settled on `nvi`.
 
 I mostly switched to vim in the mid 1990s,
 swiching away from _nvi_ because it had bugs over the execution of paste buffers
@@ -29,9 +29,10 @@ I have spent some time (a not very productive day) investigating some alternativ
 to vim:
 
 - [_evi_](https://codeberg.org/NerdNextDoor/evi) a hard-fork of Vim from a point
-  early enough to avoid Ai. I have no intention of using this, because for me
-  if i am switching away, i may as well revert to `nvi` or `vi`. But it was
-  a NerdNextDoor fediverse post which alerted me to the slop vommit issue.
+  early enough to avoid Ai. Personally, i have no intention of using this,
+  because for me if i am switching away, i may as well revert to `nvi` or `vi`.
+  But it was a NerdNextDoor fediverse post which alerted me to the slop vommit issue.
+  I wish the project every success!
 - `emacs`. Haha. Emacs was actually the first Serious Editor i used that wasn’t
   entirely parochial (i used E and [ZED](https://archive.org/details/zed-reference-manual)
   before that, but they existed only
@@ -52,6 +53,10 @@ to vim:
   Traditionalists will be delighted to note that the arrow keys do not work
   in insert mode. There is a note in the README about getting `PageUp` and `PageDown` keys
   to work tho.
+- `emacs-evil`, the `evil` mode for Emacs, advertising itself as
+  "the extensible vi layer". This is not for me, but it came with a solid
+  recommendation from a friend, which is why i am adding it here [two weeks after
+  the original post].
 
 The big change since the 1990s is that Unicode now works.
 
