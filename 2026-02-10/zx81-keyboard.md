@@ -56,7 +56,7 @@ Thus when S is pressed H is 0xFB (vertical zone 2 is clear), and
 L is 0xFD (horizontal zone 1 is clear).
 You can check the codes with a simple BASIC program i've added at
 the end of this article. (there is a small typo/misunderstanding
-by Baker here, where in [BAKER91] asserts that **S** decodes to 0xFBFB;
+by Baker here, where it is asserted, in [BAKER91], that **S** decodes to 0xFBFB;
 not so.)
 
 The hardware for the ZX81 keyboard is very simple and is a more regular
@@ -126,7 +126,7 @@ not a tutorial—probably best if you know some sort of assembler already.
 - HL has all bits set with `LD HL, 0xFFFF` at 0x00;
 - Within the loop both L and H are only changed by ANDing with
   other values (at 0x13 and preceding for L, and 0x16 and preceduing for H),
-  this they start with all bits set, and have some of them reset.
+  they start with all bits set, and have some of them reset.
 
 - `SBC A,A` at 0x10 is a fun trick: A becomes either all bits set,
   when carry is set, or all bits reset, when carry is reset. The C flag
