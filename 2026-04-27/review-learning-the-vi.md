@@ -53,6 +53,59 @@ It is squirreled away at the back of the last chapter, and while
 it is signposted earlier, it is easy to miss.
 Programmers should skim the end of the last chapter after finishing chapter 2.
 
+## A little more detail
+
+Chapter 1 — The vi Text Editor — introduces `vi` as a Unix command:
+how to start, how to quit, and a few troubleshooting checklists to consult
+if things don’t seem to be working (the checklists continue in the rest of
+the book and often contain hidden nuggets).
+
+Chapter 2 — Simple Editing — is where the real work beings. Actually editing
+files with vi. `h j k l` `c d i` all of that.
+The pace is slow and careful, and illustrates many of the commands with
+before- and after-diagrams showing how the cursor moves and text changes.
+
+The next two chapters are Moving Around in a Hurry and Beyond the Basics;
+while they are not _critical_ for editing using _vi_ i highly recommend them
+(and they are shorter than the first 2 chapters).
+They cover searching (without using regular expressions,
+which are covered later), other movement commands (like `z` and `H` which
+are some of my favourites), and marking and buffers.
+
+You could stop there and declare yourself a competent _vi_ user, but
+the book, like _vi_ itself, tempts you onwards to learn more powerful
+techniques.
+
+Chapter 5 is Introducing the _ex_ editor; _ex_ while technically a
+different editor is also technically part of _vi_:
+you can use _ex_ from _vi_ and you can use _vi_ from _ex_.
+A lot of this chapter is moving blocks of text around and into
+and from other files.
+One part of _ex_, global replacement, is so powerful that its
+treatment has the whole of the following chapter.
+
+Chapter 6 — Global Replacement — is for the `g` and `s` commands
+in _ex_; it also features _regular expressions_ fairly extensively.
+The chapters are getting quite long now, and a lot of the
+material here is definitely expert stuff.
+One of the best bits is several pages of extended examples,
+which are a very diverse set of small snippets that do
+useful things.
+Some of them are classics and some of them have been made
+classics by this book.
+My fave is `:v/./d` to delete all blank lines (my version
+is actually one character shorter than the one given in the book).
+
+Chapter 7 — Advanced Editing — is the final and longest chapter (over
+30 pages of reference material follow though) and is
+somewhat miscellaneous.
+How to add custom commands and keyboard mappings to _vi_,
+and how to script with _ex_ i consider as fairly esoteric; but
+using Unix filters, like `!}fmt` to run the next paragraph through
+the Unix utility `fmt`, is fairly fun and within ordinary competence.
+This is also where the section for editing program source code appears.
+
+
 ## The Historical Perspective
 
 The 5th edition was publish in 1990 and i am reading the 1994 revision of that.
@@ -96,6 +149,7 @@ possibly not available on every Unix system because of
 licensing issues (perhaps that in fact motivates the idea of
 managing versions using ad-hoc scripts: SCCS wasn’t installed
 on your Unix).
+
 
 ## Closing notes
 
