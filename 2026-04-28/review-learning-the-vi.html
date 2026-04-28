@@ -1,0 +1,151 @@
+<meta charset="utf-8">
+<title>Learning the vi editor</title>
+<body>
+<nav>
+<a href="../2026-03-11/alternative-vim.html">(previous)</a>
+</nav>
+<article>
+<h1>Learning the vi editor</h1>
+<time>2026-04-28</time>
+<address>by drj</address>
+<p>I have been browsing the <code>nvi</code> sources and Keith Bostic (principal author)
+makes a couple of references to
+<a href="https://archive.org/details/learningvieditor00lamb_0"><em>Learning the vi Editor</em></a> by Linda Lamb.
+I can’t remember if i knew this book in the 1990s when it came out and
+when i was learning vi, but i wish i got a copy back then.</p>
+<p>I’m reviewing the 5th edition, and for this book it matters.
+After the 5th edition the book got renamed <em>Learning the vi and Vim editors</em>, got
+a lot thicker, and added lots of distracting content about <em>Vim</em>.
+<em>Vim</em> is not <em>vi</em>.</p>
+<p>The short version is that this edition is awesome and if you are serious
+about <em>vi</em> you should try and at least <a href="https://archive.org/details/learningvieditor00lamb_0">read a copy</a>.</p>
+<p>It’s a small book at 206 pages, and, perhaps in recognition of that, features
+a <em>Tarsius</em> on the cover (what? not a <em>Lamb</em>?); it’s very cute.
+The pace is good, a reasoned and gentle introduction to basic editing,
+before ramping up to more advanced tasks, uses of <em>ex</em> (the underling line editor),
+and then spiralling out into orbit with scripting and automation
+(and incidentally, a concise but very practical introduction to <em>shell scripting</em>).
+As the book itself proclaims, you could stop after the first 2 (or 3) chapters and
+be reasonably proficient with <em>vi</em> on the daily.
+The book is there and ready when you are curious to learn more.</p>
+<p>It was this sort of book that laid out the backbone of what was to
+become O’Reilly’s dominance in the technical book market for
+practising Unix professionals.
+Clear layout with impeccable technical experts and <em>writers</em> making both
+tutorial and reference content (both in one volume for vi).
+Also physically well made and with a cute animal on the cover;
+the copy i have now must be 30 years old, and
+although it has the glued perfect binding, it
+still lies flat without cracking.</p>
+<p>There is a handy reference section at the end.
+The 5th edition also comes with
+a glossy 3-panel folded reference card which is
+attached in a perforated insert at the back
+(luckily my second hand copy still has it attached,
+and i haven’t dared tear it out either).
+The tear-out car seems to largely repeat the
+reference section in the main body, but 
+is slightly more accurate and comprehensive.</p>
+<p>One minor niggle is that programmers might not
+find the small and useful section about lisp-mode, indentation,
+and ctags.
+It is squirreled away at the back of the last chapter, and while
+it is signposted earlier, it is easy to miss.
+Programmers should skim the end of the last chapter after finishing chapter 2.</p>
+<h2>A little more detail</h2>
+<p>Chapter 1 — The vi Text Editor — introduces <code>vi</code> as a Unix command:
+how to start, how to quit, and a few troubleshooting checklists to consult
+if things don’t seem to be working (the checklists continue in the rest of
+the book and often contain hidden nuggets).</p>
+<p>Chapter 2 — Simple Editing — is where the real work beings. Actually editing
+files with vi. <code>h j k l</code> <code>c d i</code> all of that.
+The pace is slow and careful, and illustrates many of the commands with
+before- and after-diagrams showing how the cursor moves and text changes.</p>
+<p>The next two chapters are Moving Around in a Hurry and Beyond the Basics;
+while they are not <em>critical</em> for editing using <em>vi</em> i highly recommend them
+(and they are shorter than the first 2 chapters).
+They cover searching (without using regular expressions,
+which are covered later), other movement commands (like <code>z</code> and <code>H</code> which
+are some of my favourites), and marking and buffers.</p>
+<p>You could stop there and declare yourself a competent <em>vi</em> user, but
+the book, like <em>vi</em> itself, tempts you onwards to learn more powerful
+techniques.</p>
+<p>Chapter 5 is Introducing the <em>ex</em> editor; <em>ex</em> while technically a
+different editor is also technically part of <em>vi</em>:
+you can use <em>ex</em> from <em>vi</em> and you can use <em>vi</em> from <em>ex</em>.
+A lot of this chapter is moving blocks of text around and into
+and from other files.
+One part of <em>ex</em>, global replacement, is so powerful that its
+treatment has the whole of the following chapter.</p>
+<p>Chapter 6 — Global Replacement — is for the <code>g</code> and <code>s</code> commands
+in <em>ex</em>; it also features <em>regular expressions</em> fairly extensively.
+The chapters are getting quite long now, and a lot of the
+material here is definitely expert stuff.
+One of the best bits is several pages of extended examples,
+which are a very diverse set of small snippets that do
+useful things.
+Some of them are classics and some of them have been made
+classics by this book.
+My fave is <code>:v/./d</code> to delete all blank lines (my version
+is actually one character shorter than the one given in the book).</p>
+<p>Chapter 7 — Advanced Editing — is the final and longest chapter (over
+30 pages of reference material follow though) and is
+somewhat miscellaneous.
+How to add custom commands and keyboard mappings to <em>vi</em>,
+and how to script with <em>ex</em> i consider as fairly esoteric; but
+using Unix filters, like <code>!}fmt</code> to run the next paragraph through
+the Unix utility <code>fmt</code>, is fairly fun and within ordinary competence.
+This is also where the section for editing program source code appears.</p>
+<h2>The Historical Perspective</h2>
+<p>The 5th edition was published in 1990 and i am reading the 1994 revision of that.
+That’s over 30 years ago.
+How much is still relevant?</p>
+<p>Well, basically everything except about half of the last chapter,
+very definitely still relevant.
+Every now and then there is a bit of discussion of using slow (300 baud)
+dial-up terminals, or types of terminal that were obsolete even in 1990.
+That stuff is not so relevant.</p>
+<p>A lot of the material for the more advanced sections is based around
+document preparation using <em>troff</em>, the tradition Unix typesetting system
+that was used to prepare this book.
+It helps if you know a bit of <em>troff</em> (which i do), but
+i doubt there are many people still writing new documents
+in <em>troff</em> macro packages, <a href="http://www.schemamania.org/troff/for-the-love-of-troff.pdf">love letters
+aside</a>.
+So maybe the typical reader in the 21st century does not feel
+motivated by these <em>troff</em> sections, and also slightly
+bewildered at seeing <em>troff</em> syntax, which has very 1979 vibes.</p>
+<p>I feel that parts of the book have been left behind.
+People don’t maintain little address books using <code>vi</code>
+in plain text files.
+They don’t have <code>vi</code> scripts that convert <em>troff</em> sources
+to indexes.
+The task of personalising the computing platform we use,
+has been taking over by
+scripts written in Perl or Python or
+has been swallowed up by little apps and webpages.</p>
+<p>One of the examples, more sketched than fully developed,
+uses diff’s <em>ed</em> mode (also compatible with <em>ex</em>)
+to create a series of versions of a file.
+Version control by-hand if you like.
+This is a nice example of more powerful scripting using <code>vi</code> and
+other Unix tools, but even in 1990 the overall motivation is weak:
+The version control systems SCCS and RCS were available, although
+possibly not available on every Unix system because of
+licensing issues (perhaps that in fact motivates the idea of
+managing versions using ad-hoc scripts: SCCS wasn’t installed
+on your Unix).</p>
+<h2>Closing notes</h2>
+<p>Probably still the best reference on <em>vi</em> all in one place.
+Users of more recent “clones” will probably be surprised by
+what <code>vi</code> could do (and still can, if you can find it).
+Also great if you like the way all Unix textbooks used to be
+in Helvetica and Times New Roman.</p>
+<p>By the way, i prepared this review and researched the examples
+in the book using <code>nvi2</code> which appears to be an entirely
+adequate replacement for <code>vi</code>.
+I have a few notes on <a href="https://drj11.github.io/2026-03-11/alternative-vim.html">alternatives to vim</a>
+in the previous blog entry (Vim is itself a putative successor to <em>vi</em>).</p>
+<h1>END</h1>
+</article>
+

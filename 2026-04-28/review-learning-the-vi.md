@@ -1,4 +1,4 @@
-[brutal]: #xdate "2026-04-27"
+[brutal]: #date "2026-04-28"
 [brutal]: #author "drj"
 [brutal]: #title "Learning the vi editor"
 
