@@ -4,7 +4,7 @@
 
 I have been browsing the `nvi` sources and Keith Bostic (principal author)
 makes a couple of references to
-_Learning the vi Editor_ by Linda Lamb.
+[_Learning the vi Editor_](https://archive.org/details/learningvieditor00lamb_0) by Linda Lamb.
 I can’t remember if i knew this book in the 1990s when it came out and
 when i was learning vi, but i wish i got a copy back then.
 
