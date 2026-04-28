@@ -166,4 +166,13 @@ adequate replacement for `vi`.
 I have a few notes on [alternatives to vim](https://drj11.github.io/2026-03-11/alternative-vim.html)
 in the previous blog entry (Vim is itself a putative successor to _vi_).
 
+Postscript: From a brief browse it is clear that the material in this book
+is also largely covered by Chapters 3 (_vi_) and 7 (_ex_) of O’Reilly’s single-volume
+Unix Text Processing book.
+Some of the paragraphs are almost word for word identical, and
+many of the examples are shared between the two books.
+There is a CC-BY 21st Century remake of
+[Unix Text Processing by the UTP Revival project](https://github.com/DeriJames/UTP-1.1/tree/master)
+that includes _troff_ sources and a PDF version. 
+
 # END
