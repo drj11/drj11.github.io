@@ -108,35 +108,36 @@ This is also where the section for editing program source code appears.
 
 ## The Historical Perspective
 
-The 5th edition was publish in 1990 and i am reading the 1994 revision of that.
+The 5th edition was published in 1990 and i am reading the 1994 revision of that.
 That’s over 30 years ago.
 How much is still relevant?
 
-Well, the basic and advanced sections, very definitely still relevant.
+Well, basically everything except about half of the last chapter,
+very definitely still relevant.
 Every now and then there is a bit of discussion of using slow (300 baud)
 dial-up terminals, or types of terminal that were obsolete even in 1990.
 That stuff is not so relevant.
 
 A lot of the material for the more advanced sections is based around
-document preparation using `troff`, the tradition Unix typesetting system
+document preparation using _troff_, the tradition Unix typesetting system
 that was used to prepare this book.
-It helps if you know a bit of `troff` (which i do), but
+It helps if you know a bit of _troff_ (which i do), but
 i doubt there are many people still writing new documents
-in `troff` macro packages, [love letter
+in _troff_ macro packages, [love letters
 aside](http://www.schemamania.org/troff/for-the-love-of-troff.pdf).
-
 So maybe the typical reader in the 21st century does not feel
-motivated by these troff sections, and also slightly
+motivated by these _troff_ sections, and also slightly
 bewildered at seeing _troff_ syntax, which has very 1979 vibes.
 
 I feel that parts of the book have been left behind.
-People don’t maintain little address books in using `vi`
+People don’t maintain little address books using `vi`
 in plain text files.
 They don’t have `vi` scripts that convert _troff_ sources
 to indexes.
-These tasks which are personalising the computing platform we use,
-are now the domain of scripts written in Perl or Python or
-have been swallowed by little apps and webpages.
+The task of personalising the computing platform we use,
+has been taking over by
+scripts written in Perl or Python or
+has been swallowed up by little apps and webpages.
 
 One of the examples, more sketched than fully developed,
 uses diff’s _ed_ mode (also compatible with _ex_)
@@ -156,5 +157,7 @@ on your Unix).
 Probably still the best reference on _vi_ all in one place.
 Users of more recent “clones” will probably be surprised by
 what `vi` could do (and still can, if you can find it).
+Also great if you like the way all Unix textbooks used to be
+in Helvetica and Times New Roman.
 
 # END
