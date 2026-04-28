@@ -160,4 +160,10 @@ what `vi` could do (and still can, if you can find it).
 Also great if you like the way all Unix textbooks used to be
 in Helvetica and Times New Roman.
 
+By the way, i prepared this review and researched the examples
+in the book using `nvi2` which appears to be an entirely
+adequate replacement for `vi`.
+I have a few notes on [alternatives to vim](https://drj11.github.io/2026-03-11/alternative-vim.html)
+in the previous blog entry (Vim is itself a putative successor to _vi_).
+
 # END
