@@ -28,6 +28,9 @@ Fast forward to 2026 and `nvi` now works. Maybe.
 I have spent some time (a not very productive day) investigating some alternatives
 to vim:
 
+- [Vim Classic](https://vim-classic.org/news/vim-8.3-released.html) Drew DeVault (makes
+  sourcehut) forks vim. I edited this article when this was announced on 2026-06.
+  It looks like it will last.
 - [_evi_](https://codeberg.org/NerdNextDoor/evi) a hard-fork of Vim from a point
   early enough to avoid Ai. Personally, i have no intention of using this,
   because for me if i am switching away, i may as well revert to `nvi` or `vi`.
