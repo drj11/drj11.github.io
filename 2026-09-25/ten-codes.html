@@ -1,0 +1,193 @@
+<meta charset="utf-8">
+<title>10 Lines of Code that Changed My World</title>
+<body>
+<nav>
+<a href="../2026-04-28/review-learning-the-vi.html">(previous)</a>
+</nav>
+<article>
+<h1>10 Lines of Code that Changed My World</h1>
+<time>2026-09-25</time>
+<address>by drj</address>
+<p>Roel Nieskins prompts us with his
+<a href="https://pixelambacht.nl/2026/ten-lines-of-code/">10 Lines of Code that Changed My World</a>.</p>
+<p>I responded on Fediverse with a bare post with just my 10.
+Here they're expanded with commentary.</p>
+<h2>WHSMITH</h2>
+<p>Just like Roel my first entrant is the silly little BASIC program
+you can type into almost any computer of the time (early 1980s)
+in WHSmith.</p>
+<pre><code>10 PRINT "DRJ IS SKILL"
+20 GOTO 10
+</code></pre>
+<p>And, i don't know if i ever typed exactly this program in, or
+just similar ones.  But this is the form in which this short program
+has crystallised.  An endless loop declaring one boy's power over
+the humble computer.  Except that on ZX81 it stops when it gets to
+the bottom of the screen.</p>
+<h2>Atari ST</h2>
+<p>Fast forward a few years when i saved up to buy an Atari ST, and
+started dabbling in C.  Probably with a copy of Lattice C bootlegged
+in the sixth form common room.</p>
+<p>I remember finding this, or similar, when looking at the assembly
+output of the C compiler:</p>
+<pre><code>LEA (A1, A1.W*2), A1
+</code></pre>
+<p>What does it do? Well, <code>LEA</code> is Load Effective Address, for computing
+addresses.  I admit at the time i was a little mystified as to why
+one would need to compute an address rather than just <em>use</em> one and
+load from it (the reason is pointer arithmetic in C by the way).</p>
+<p>I tracked it down to a <code>* 3</code> in the C code.  Although you're supposed
+to put addresses in 68000 A registers, that's just like a guideline,
+and of course you can put any data you like in there.  This
+<code>LEA</code> instruction effectively computes A1 + 2 * A1 and stores it in A1.
+Well, A1 + 2<em>A1 is 3</em>A1.  Doesn't matter if A1 is just a number and not
+a real address.</p>
+<p>I had two breakthroughs from seeing this:</p>
+<ul>
+<li>maybe the compiler is cleverer than me, or better at picking some
+    instructions;</li>
+<li>it doesn't matter what the instructions are <em>intended</em> to be used
+  for, it matters what they <em>do</em>. The purpose of an instruction is what it
+  does.</li>
+</ul>
+<h2>The Unix years</h2>
+<p>As an undergrad at University i was dying to get onto a Unix system,
+but you could only do that as a grad student or a final year undergrad
+with permission.  As soon as i was in that final year i got the
+necessary permission from my maths tutor, with the flimsy pretence
+that i need Unix for 10 MB Lisp images (i did do some of the
+computational part in Lisp).</p>
+<p>Which led me to <code>/bin/vi</code> and learning from a file called <code>vitut.txt</code>
+i think. And this vi/ex command:</p>
+<pre><code>:g/^/m0
+</code></pre>
+<p>which i now know is also in Linda Lamb's Learning the vi Editor
+(it astonishes me now that i never bothered requesting this from
+any of the 4 well-stocked libraries i had access to and that surely
+would have carried it).</p>
+<p>What does it do?  Looping over every line of the file in <code>vi</code>, it moves
+that line to after line 0, that is it becomes the new first line.
+Because of the sequencing, it reverses the order of lines in the file.
+Neat. But hardly ever useful.</p>
+<p>Lamb might like to write it <code>: g /^/ m 0</code> to separate out the parts.
+<code>g</code> is the global command that applies the command following to every
+line that matches the RE.  <code>/^/</code> matches any line that has a beginning,
+which is of course every line.</p>
+<h2>Danger</h2>
+<p>This one is dangerous and should not be tried at home, and definitely
+not tried on the shared Unix server, but at least if you do try it,
+try it just before tea break so everyone that can take their enforced
+screen-time break in the staff tea room.</p>
+<p>It's the quite well known Unix shell fork bomb:</p>
+<pre><code>:(){ :|:&amp; };:
+</code></pre>
+<p>A fork bomb create many processes rapidly (each new one
+creates two more), and in a typical Unix server will fill up
+the process table and crash.</p>
+<p>Instructive in how few safeguards Unix might have.</p>
+<p>But also, i had a burgeoning interest in <code>/bin/sh</code> and decoding
+this little snippet of shell involves some deep and arcane
+knowledge and possibly much studying of the man page.</p>
+<h2>Unix, once more</h2>
+<p>Have you ever wanted <code>uniq</code> but didn't have your input sorted? Or
+didn't want to sort it?</p>
+<p>Well, that's</p>
+<pre><code>progthingy | awk '!a[$0]--'
+</code></pre>
+<p>I think the canonical version of this, which i probably found
+in the AWK FAQ uses <code>++</code> instead of <code>--</code> but <code>--</code> works and is a tiny
+bit easier to type.</p>
+<p>Again, like the shell forkbomb, the real insight is the trips
+to the man page to decode the meaning carefully.</p>
+<p>Every input line is indexed into the <code>a[]</code> array and has its key value
+decremented (incremented in the FAQ version).  The initial value is
+blank which when inverted by <code>!</code> becomes <code>1</code> and the line matches
+and gets printed.  Any subsequent line that matches exactly won't
+print because its key value in the array will already be non-zero.</p>
+<h2>The Unix Programming Environment</h2>
+<p>This is another very short part of a Unix pipeline:</p>
+<pre><code>progthing | sed 9q
+</code></pre>
+<p><code>sed</code> is a stream editor, and this program <code>9q</code> quits on line 9.
+The default action of <code>sed</code> is to copy its input to its output,
+so this program quits after 9 lines of input have been copied.</p>
+<p>This was one of those moments where i knew <code>sed</code>, or so i thought,
+but i just hadn't thought about using it like this.</p>
+<p>It's given as an example in the excellent Unix text,
+The Unix Programming Environment.  Which was already aging a bit
+by the time i read it in the 1990s.  Around this example they talk
+about using existing utilities, and how that in principle
+one could imagine a utility <em>dedicated</em> to displaying the first N
+lines of a file, but why would anyone go to the trouble of creating
+that, when <code>sed</code> exists?</p>
+<p>Of course by the time i am reading this in the 1990s, every system
+has <code>head</code>, the utility they are railing against, and everyone
+has forgotten you can use <code>sed 9q</code>.  Even though, as the authors
+point out, it's shorter than <code>head -n 9</code> or even <code>head -9</code>.</p>
+<p>So now in 2026 i use <code>sed 9q</code> not because i am ignorant of <code>head</code>
+but to talk the smallest possible stand against the deluge of
+software on Unix that doesn't embody the Unix philosophy.</p>
+<h2>Python</h2>
+<p>I once had the pleasure of meeting esteemed Python guru
+Raymond Hettinger and we got to chatting about, i dunno, basic
+Python builtins and i bemoaned that i loved <code>zip()</code> which takes
+2 lists and forms a list of pairs, but where was <code>unzip()</code> which
+should take a list of pairs and return 2 lists?</p>
+<pre><code>zip(*s)
+</code></pre>
+<p>Like a swift kick to the head, zip* is unzip.
+And matrix transpose, where it
+featured in Norvig's Infrequently Asked Questions.</p>
+<h2>FORTH</h2>
+<p>A language i had been exposed to as a child with no success,
+but a fair amount of intrigue.  Easy to crash and on a ZX81
+that meant reloading from tape.</p>
+<p>Fast forward to the 21st century and i had the silly idea to
+implement my own FORTH in 64-bit x86 assembler.  Part way
+though that project i am browsing various things and in
+someone else's small x86 Forth i see:</p>
+<pre><code>SBB AX, AX
+</code></pre>
+<p>Subtract with Borrow.  What is the use of substracting AX from itself?
+This is always 0? No, it's 0 when the carry flag is clear, but
+when the carry flag is set, the result is -1; that is "all 1s".</p>
+<p>So it's useful to copy the carry flag into the AX register,
+which happens a lot in FORTH because comparison operations
+might be implemented via machine language instructions that
+leave the result in the carry flag, but in FORTH a numeric
+value needs placing on the stack.  There is also a certain
+FORTH tradition of making the TRUE value be all 1s so that
+bitwise operations can be used it like a mask.  I think i
+also used it for a branchless ABS.</p>
+<p>The equivalent opcode in Z80 machine code is</p>
+<pre><code>SBC A, A
+</code></pre>
+<p>(or just <code>SBC A</code>). It's used in the keyboard scanner of the ZX80
+for exactly the same purpose.</p>
+<h2>GO FORTH</h2>
+<p>I had more or less implemented my FORTH when i was poking around
+the FAQs or somesuch.  And came across the only half rhetorical
+question, "how do you implement coroutines? and can you do it only one
+line?".  Answer:</p>
+<pre><code>: CO R&gt; R&gt; SWAP &gt;R &gt;R ;
+</code></pre>
+<p><code>CO</code> is now a FORTH word which suspends execution of the current
+word and resumes its caller.  Effectively making a coroutine.
+The caller can now resume the fresh coroutine where it left off
+by calling <code>CO</code> again.</p>
+<p>Of course this worked on my FORTH even though i never knew this
+trick and only discovered it after implemented FORTH.</p>
+<h2>10PRINT</h2>
+<p>So apparently every other nerd on the internet knew this since 1982,
+but not me.  I was one of that day's 10,000 when in <em>2023</em> i came across
+the book 10PRINT by Nick Montfort et al.  A book of essays
+considering the text of the maze program made famous by its
+appearance in the Commodore 64 manual:</p>
+<pre><code>10 PRINT CHR$(205.5+RND(1)); : GOTO 10
+</code></pre>
+<p>In essence only a little more complicated than my first "DRJ IS SKILL"
+program, but a true wonder that it produces a real maze.</p>
+<p>It's a beautiful program, and i recommend the book too.</p>
+<h1>END</h1>
+</article>
+
