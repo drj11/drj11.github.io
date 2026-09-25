@@ -43,8 +43,8 @@ I tracked it down to a `* 3` in the C code.  Although you're supposed
 to put addresses in 68000 A registers, that's just like a guideline,
 and of course you can put any data you like in there.  This
 `LEA` instruction effectively computes A1 + 2 * A1 and stores it in A1.
-Well, A1 + 2*A1 is 3*A1.  Doesn't matter if A1 is just a number and not
-a real address.
+Well, `A1 + 2*A1` is `3*A1`.
+Doesn't matter if A1 is just a number and not a real address.
 
 I had two breakthroughs from seeing this:
 
