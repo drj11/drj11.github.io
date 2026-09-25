@@ -241,4 +241,9 @@ program, but a true wonder that it produces a real maze.
 
 It's a beautiful program, and i recommend the book too.
 
+[slightly later:] Incidentally, encouraged by the ports in the book,
+i wrote my own port of 10PRINT to Unix (first documented by me in 2023):
+
+    yes '╱ ╲' | awk '{printf $(1.5+rand())}'
+
 # END
